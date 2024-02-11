@@ -1,0 +1,152 @@
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: white;
+}
+
+.box1 {
+    width: 422px;
+    height: 66px;
+    left: 840px;
+    top: 573px;
+    position: absolute;
+    background: #DEF6F2;
+    border-radius: 10px;
+}
+
+.create-account {
+    width: 181px;
+    height: 21px;
+    left: 990px;
+    top: 905px;
+    position: absolute;
+    color: #1DA1F2;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    text-decoration: underline;
+    word-wrap: break-word;
+}
+
+.no-account {
+    width: 258px;
+    height: 21px;
+    left: 837px;
+    top: 869px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.username {
+    width: 181px;
+    height: 21px;
+    left: 837px;
+    top: 544px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.profile-image {
+    width: 281px;
+    height: 267px;
+    left: 910px;
+    top: 201px;
+    position: absolute;
+}
+
+.profile-image img {
+    width: 281px;
+    height: 267px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+.mingle {
+    width: 66px;
+    height: 21px;
+    left: 108px;
+    top: 236px;
+    position: absolute;
+    color: #3AAACF;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.box2 {
+    width: 422px;
+    height: 68px;
+    left: 840px;
+    top: 679px;
+    position: absolute;
+    background: #DEF6F2;
+    border-radius: 10px;
+}
+
+.password {
+    width: 181px;
+    height: 21px;
+    left: 841px;
+    top: 647px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.main-box {
+    width: 590px;
+    height: 379px;
+    left: 100px;
+    top: 201px;
+    position: absolute;
+    background: #DEF6F2;
+    border-radius: 20px;
+}
+
+.welcome-message {
+    left: 154px;
+    top: 281px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.login-button {
+    width: 178px;
+    height: 38px;
+    left: 962px;
+    top: 781px;
+    position: absolute;
+    background: #FBED76;
+    border-radius: 20px;
+}
+
+.login-button-text {
+    width: 181px;
+    height: 21px;
+    left: 1014px;
+    top: 789px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
