@@ -8,7 +8,8 @@
 .box1 {
     width: 422px;
     height: 66px;
-    left: 510px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 523px;
     position: absolute;
     background: #DEF6F2;
@@ -18,7 +19,8 @@
 .username {
     width: 181px;
     height: 21px;
-    left: 507px;
+    left: 39%;
+    transform: translateX(-50%);
     top: 494px;
     position: absolute;
     color: black;
@@ -31,7 +33,8 @@
 .box3 {
     width: 422px;
     height: 68px;
-    left: 510px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 629px;
     position: absolute;
     background: #DEF6F2;
@@ -41,7 +44,8 @@
 .password {
     width: 181px;
     height: 21px;
-    left: 511px;
+    left: 39%;
+    transform: translateX(-50%);
     top: 597px;
     position: absolute;
     color: black;
@@ -54,7 +58,8 @@
 .box5 {
     width: 178px;
     height: 38px;
-    left: 632px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 731px;
     position: absolute;
     background: #FBED76;
@@ -64,7 +69,8 @@
 .register {
     width: 181px;
     height: 21px;
-    left: 615px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 737px;
     position: absolute;
     background: #FBED76;
@@ -91,7 +97,8 @@
 .box7 {
     width: 281px;
     height: 267px;
-    left: 580px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 151px;
     position: absolute;
 }
@@ -107,7 +114,8 @@
 .text {
     width: 66px;
     height: 21px;
-    left: 108px;
+    left: 50%;
+    transform: translateX(-50%);
     top: 236px;
     position: absolute;
     color: #3AAACF;
@@ -124,4 +132,21 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .box1, .username, .box3, .password, .box5, .register, .box7 {
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+    .image{
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+}
 }
