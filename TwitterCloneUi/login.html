@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="log.css">
+    <title>Login and Signup Page</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container" id="loginContainer">
+            <form id="loginForm" action="/login" method="post">
+
+                <h2>Login</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <br>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <button id="showSignupBtn" class="ghost create-account-animation">Create Account</button>
+</p>
+        </div>
+
+        <div class="form-container" id="signupContainer" style="display: none;">
+            <form id="signupForm" action="/signup" method="post">
+
+                <h2>Sign Up</h2>
+                <label for="newUsername">Username:</label>
+                <input type="text" id="newUsername" required>
+                <br>
+                <label for="newPassword">Password:</label>
+                <input type="password" id="newPassword" required>
+                <br>
+                <label for="retypePassword">Retype Password:</label>
+                <input type="password" id="retypePassword" required>
+                <br>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <button id="showLoginBtn" class="ghost show-login-animation">Login</button>
+            </p>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginContainer = document.getElementById('loginContainer');
+        const signupContainer = document.getElementById('signupContainer');
+        const showSignupBtn = document.getElementById('showSignupBtn');
+        const showLoginBtn = document.getElementById('showLoginBtn');
+
+        showSignupBtn.addEventListener('click', function() {
+            loginContainer.style.display = 'none';
+            signupContainer.style.display = 'block';
+        });
+
+        showLoginBtn.addEventListener('click', function() {
+            loginContainer.style.display = 'block';
+            signupContainer.style.display = 'none';
+        });
+
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+
+        loginForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            // Login logic
+        });
+
+        signupForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            // Signup logic
+        });
+    });
+    </script>
+</body>
+</html>
