@@ -6,6 +6,7 @@
       "start-ui": "cd ./TwitterCloneUi && npm run dev"
    },
    "dependencies": {
+      "cors": "^2.8.5",
       "serverless-http": "^3.2.0"
    }
 }

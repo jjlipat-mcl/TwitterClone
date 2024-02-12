@@ -1,9 +1,9 @@
 body {
     background-color: #1a1a1a;
     color: #fff;
-}
+  }
 
-header {
+  header {
     background: none;
     padding: 20px 0;
     display: flex;
@@ -11,9 +11,9 @@ header {
     align-items: center;
     text-align: center;
     position: relative;
-}
+  }
 
-.border-divider {
+  .border-divider {
     position: absolute;
     bottom: 0;
     left: 20%;
@@ -21,34 +21,34 @@ header {
     height: 1px;
     background-color: #ddd;
     transition: width 1s ease-in-out;
-}
+  }
 
-.navbar {
+  .navbar {
     display: flex;
     flex-wrap: wrap;
-}
+  }
 
-nav ul {
+  nav ul {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
-}
+  }
 
-.nav-link {
+  .nav-link {
     text-decoration: none;
     color: #fff;
     font-size: 1em;
     margin: 0 15px;
     padding: 10px;
     border-radius: 5px;
-}
+  }
 
-.nav-link:hover {
+  .nav-link:hover {
     color: #45a049;
-}
+  }
 
-.feed-container {
+  .feed-container {
     max-width: 800px;
     margin: 20px auto;
     background-color: white;
@@ -56,28 +56,11 @@ nav ul {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     height: 100%;
-}
+  }
 
-.tweet {
-    display: flex;
-    border-bottom: 1px solid #eee;
-    padding: 10px;
-}
+ 
 
-.tweet img {
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.tweet-content {
-    flex-grow: 1;
-}
-
-h3 {
-    margin: 0;
-}
-
-button {
+  button {
     margin-top: 10px;
     padding: 8px 16px;
     background-color: #00acee;
@@ -86,68 +69,68 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 1.2em;
-}
+  }
 
-button:hover {
+  button:hover {
     background-color: #007bb5;
-}
+  }
 
-.social-links a {
+  .social-links a {
     margin-right: 10px;
     text-decoration: none;
     color: #00acee;
-}
+  }
 
-.social-links a:hover {
+  .social-links a:hover {
     text-decoration: underline;
-}
+  }
 
-.container {
+  .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100vh;
     padding: 0 150px;
     flex-direction: column;
-}
+  }
 
-.left-section {
+  .left-section {
     width: 100%;
     text-align: center;
     padding-right: 20px;
     padding-left: 20px;
-}
+  }
 
-.left-section h2 {
+  .left-section h2 {
     color: #4CAF50;
     font-size: 4em;
     margin-bottom: 10px;
-}
+  }
 
-.left-section p {
+  .left-section p {
     color: #ddd;
     font-size: 1.2em;
-}
+  }
 
-.social-links {
+  .social-links {
     margin-top: 20px;
     text-align: left;
-}
+  }
 
-.social-links a {
+  .social-links a {
     color: #4CAF50;
     text-decoration: none;
     margin: 0 10px;
     font-size: 1.2em;
     transition: color 0.3s ease-in-out;
     display: inline-block;
-}
+  }
 
-.social-links a:hover {
+  .social-links a:hover {
     color: #45a049;
-}
+  }
 
-.form-container {
+  .form-container {
     width: 100%;
     max-width: 400px;
     background-color: #333;
@@ -156,22 +139,22 @@ button:hover {
     padding: 20px;
     position: relative;
     margin-top: 20px;
-}
+  }
 
-.form-container h2 {
+  .form-container h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #4CAF50;
-}
+  }
 
-.form-container label {
+  .form-container label {
     display: block;
     margin-bottom: 5px;
     color: #ddd;
-}
+  }
 
-.form-container input[type="text"],
-.form-container input[type="password"] {
+  .form-container input[type="text"],
+  .form-container input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #555;
@@ -180,9 +163,9 @@ button:hover {
     margin-bottom: 10px;
     background-color: #444;
     color: #ddd;
-}
+  }
 
-.form-container button[type="submit"] {
+  .form-container button[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #4CAF50;
@@ -191,13 +174,13 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1.2em;
-}
+  }
 
-.form-container button[type="submit"]:hover {
+  .form-container button[type="submit"]:hover {
     background-color: #45a049;
-}
+  }
 
-.overlay-container {
+  .overlay-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -206,9 +189,9 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
 
-.overlay-panel {
+  .overlay-panel {
     position: absolute;
     top: 0;
     width: 100%;
@@ -220,47 +203,47 @@ button:hover {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
+  }
 
-.ghost {
+  .ghost {
     background-color: transparent;
     border: none;
     color: #4CAF50;
     font-size: 1em;
     cursor: pointer;
-}
+  }
 
-.ghost:hover {
+  .ghost:hover {
     color: #45a049;
-}
+  }
 
-@media screen and (min-width: 600px) {
+  @media screen and (min-width: 600px) {
     .container {
-        flex-direction: row;
+      flex-direction: row;
     }
 
     .left-section {
-        width: 50%;
-        text-align: left;
-        padding: 10px;
+      width: 50%;
+      text-align: left;
+      padding: 10px;
     }
 
     .form-container {
-        margin-top: 0;
-        margin-left: 20px;
+      margin-top: 0;
+      margin-left: 20px;
     }
-}
+  }
 
-@media screen and (max-width: 400px) {
+  @media screen and (max-width: 400px) {
     .left-section h2 {
-        font-size: 2em;
+      font-size: 2em;
     }
 
     .left-section p {
-        font-size: 1em;
+      font-size: 1em;
     }
 
     .form-container {
-        max-width: 100%;
+      max-width: 100%;
     }
-}
+  }
