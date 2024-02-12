@@ -27,7 +27,6 @@
             const loginForm = document.getElementById('loginForm');
             const signupForm = document.getElementById('signupForm');
             const loginError = document.getElementById('loginError');
-            const signupError = document.getElementById('signupError');
 
             loginForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
@@ -81,7 +80,7 @@
                 }
 
                 try {
-                    const res = await fetch("/api/v1/auth/register", {
+                    const sec = await fetch("/api/v1/auth/register", {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json'
@@ -89,18 +88,7 @@
                         body: JSON.stringify({ username: newUser, password: retyped })
                     });
 
-                    if (res.ok) {
-                        // Registration successful, you can redirect or do other actions
-                        console.log("Registration successful!");
-                    } else if (res.status === 409) {
-                        // User already exists (status code 409 Conflict)
-                        signupError.innerText = "Username already exists. Please choose a different username.";
-                        signupError.style.display = 'block';
-                    } else {
-                        // Other error, handle accordingly
-                        signupError.innerText = "Error during registration. Please try again.";
-                        signupError.style.display = 'block';
-                    }
+                    // Rest of your code for handling the response
 
                 } catch (error) {
                     console.error("Error during registration:", error.message);
@@ -189,7 +177,7 @@
             <p>We can't reply to all emails but all good vibes are appreciated! You can email us at examplegmail@gmail.com</p>
             <div class="social-links">
                 <a href="https://discord.com" target="_blank">DISCORD</a> |
-                <a href="https.github.com" target="_blank">GITHUB</a> |
+                <a href="https://github.com" target="_blank">GITHUB</a> |
                 <a href="https://facebook.com" target="_blank">FACEBOOK</a> |
                 <a href="https://instagram.com" target="_blank">INSTAGRAM</a>
             </div>
@@ -225,7 +213,6 @@
                 <input type="password" id="retypePassword" required>
                 <br>
                 <button type="submit">Sign Up</button>
-                <p id="signupError" style="color: red; display: none;"></p>
             </form>
             <p>Already have an account? <button id="showLoginBtn" class="ghost show-login-animation">Login</button>
             </p>
