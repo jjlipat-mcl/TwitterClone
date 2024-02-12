@@ -23,7 +23,7 @@
     position: absolute;
     color: #1DA1F2;
     font-size: 20px;
-    font-family: Inter;
+    font-family: Helvetica;
     font-weight: 400;
     text-decoration: underline;
     word-wrap: break-word;
@@ -37,7 +37,7 @@
     position: absolute;
     color: black;
     font-size: 20px;
-    font-family: Inter;
+    font-family: Helvetica;
     font-weight: 400;
     word-wrap: break-word;
 }
@@ -50,7 +50,7 @@
     position: absolute;
     color: black;
     font-size: 20px;
-    font-family: Inter;
+    font-family: Helvetica;
     font-weight: 400;
     word-wrap: break-word;
 }
@@ -79,7 +79,7 @@
     position: absolute;
     color: #3AAACF;
     font-size: 20px;
-    font-family: Inter;
+    font-family: Helvetica;
     font-weight: 400;
     word-wrap: break-word;
 }
@@ -102,7 +102,7 @@
     position: absolute;
     color: black;
     font-size: 20px;
-    font-family: Inter;
+    font-family: Helvetica;
     font-weight: 400;
     word-wrap: break-word;
 }
@@ -123,7 +123,7 @@
     position: absolute;
     color: black;
     font-size: 20px;
-    font-family: Inter;
+    font-family: Helvetica;
     font-weight: 400;
     word-wrap: break-word;
 }
@@ -146,7 +146,35 @@
     position: absolute;
     color: black;
     font-size: 20px;
-    font-family: Inter;
+    font-family: Helvetica;
     font-weight: 400;
     word-wrap: break-word;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Helvetica;
+    font-size: 20px;
+    text-align: center;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.box1 input, .box2 input {
+    width: 100%;
+    padding: 10px;
+    font-size: 32px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
