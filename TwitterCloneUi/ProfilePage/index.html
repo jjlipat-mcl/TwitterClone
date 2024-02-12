@@ -14,78 +14,102 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!--sidebar starts-->
+<!---------------------------sidebar starts------------------------------>
+<!--------------------------button for sidebar--------------------------->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
     <div class="sidebar">
       <i class="fab fa-twitter"></i>
-      <a href="../index.html">
-        <div class="sidebarOption">
-          <span class="material-symbols-outlined">home</span>
-          <h2>Home</h2>
-        </div>
+      <div class="sidebarOption" onclick="navigateToFeed()">
+        <span class="material-symbols-outlined">home</span>
+        <h2>Home</h2>
+    </div>
       </a>
       <div class="sidebarOption">
           <span class="material-symbols-outlined">search</span>
           <h2>Explore</h2>
       </div>
-      <a href="index.html">
-          <div class="sidebarOption active">
-              <span class="material-symbols-outlined">perm_identity</span>
-              <h2>Profile</h2>
-          </div>
-      </a>
+        <div class="sidebarOption active">
+            <span class="material-symbols-outlined">perm_identity</span>
+            <h2>Profile</h2>
+        </div>
       <div class="sidebarOption">
           <span class="material-symbols-outlined">more_horiz</span>
           <h2>More</h2>
       </div>
       <button class="sidebar__tweet">Tweet</button>
   </div>
-  <!--sidebar ends-->
-    <div class="header__wrapper">
-      <header></header>
-      <div class="cols__container">
-        <div class="left__col">
-          <div class="img__container">
-            <img src="img/user.jpg"/>
-            <span></span>
-          </div>
-          <h2>Username</h2>
-          <p>@Username911</p>
+<!----------------------------------sidebar ends--------------------------------->
+<!----------------------------profile and feed starts---------------------------->
+  <div class="header__wrapper">
+    <header></header>
+    <div class="cols__container">
+      <div class="left__col">
+        <div class="img__container">
+          <img src="img/user.jpg"/>
+          <span></span>
+        </div>
+        <h2>Username</h2>
+        <p>@Username911</p>
 
-          <ul class="about">
-            <li><span>4,073</span>Followers</li>
-            <li><span>322</span>Following</li>
-            <li><span>0</span>Tweets</li>
+        <ul class="about">
+          <li><span>4,073</span>Followers</li>
+          <li><span>322</span>Following</li>
+          <li><span>0</span>Likes</li>
+        </ul>
+
+        <div class="content">
+          <h3>Bio</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+          </p>
+          <ul>
+            <li><i class="fab fa-twitter"></i></li>
+            <i class="fab fa-pinterest"></i>
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
           </ul>
-
-          <div class="content">
-            <h3>Bio</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-            </p>
-            <ul>
-              <li><i class="fab fa-twitter"></i></li>
-              <i class="fab fa-pinterest"></i>
-              <i class="fab fa-facebook"></i>
-              <i class="fab fa-instagram"></i>
-            </ul>
-          </div>
         </div>
-        <div class="back__button">
-          <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i></a>
+      </div>
+      <!-- <div class="back__button">
+        <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i></a>
+      </div> -->
+      <div class="right__col">
+        <nav>
+          <ul>
+            <li><a href="">tweets</a></li>
+            <li><a href="">about</a></li>
+            <li><a href="">media</a></li>
+            <li><a href="">Likes</a></li>
+          </ul>
+        </nav>
+        <div class="post__avatar">
+          <img src="img/user.jpg">
         </div>
-        <div class="right__col">
-          <nav>
-            <ul>
-              <li><a href="">tweets</a></li>
-              <li><a href="">about</a></li>
-              <li><a href="">media</a></li>
-              <li><a href="">replies</a></li>
-            </ul>
-          </nav>
+        <div class="post__headerText">
+          <h3>Username
+              <span class="post__headerSpecial">
+                  <span class="materials-icons post__badge"></span>@username911
+              </span>
+          </h3>
+        </div>
+        <div class="post_feed">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="photos">
+          <img src="https://www.focus2move.com/wp-content/uploads/2024/02/Lincoln-Aviator-2025-800-02.jpg" alt="">
+        </div>
+        <div class="post__footer">
+          <span class="material-symbols-outlined"> repeat </span>
+          <span class="material-symbols-outlined"> favorite_border </span>
+          <span class="material-symbols-outlined"> publish </span>
         </div>
       </div>
     </div>
-  <!--widget start-->
+  </div>
+<!-----------------------------profile and feed ends------------------------------>
+<!---------------------------------widget start----------------------------------->
   <div class="widgets">
     <div class="widgetsinput">
         <span class="material-symbols-outlined widgetssearchIcon"> search </span>
@@ -96,7 +120,17 @@
         <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Cheese <a href="https://t.co/8rwbMuTj93">pic.twitter.com/8rwbMuTj93</a></p>&mdash; cat with confusing auras (@CatsIX) <a href="https://twitter.com/CatsIX/status/1756250481041510605?ref_src=twsrc%5Etfw">February 10, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
   </div>
-  <!--widget end-->
+<!------------------------------------widget end---------------------------------->
+<!-------------------------javascript for toggleable sidebar----------------------->
+  <script>
+    function toggleSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = (sidebar.style.display === 'none' || sidebar.style.display === '') ? 'block' : 'none';
+    }
 
+    function navigateToFeed() {
+        window.location.href = "../index.html";
+    }
+</script>
   </body>
 </html>

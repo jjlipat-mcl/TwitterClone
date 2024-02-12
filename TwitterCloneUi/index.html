@@ -11,52 +11,9 @@
 </head>
 
 <body>
-    <script>
-        async function helloWorld() {
-            const res = await fetch("/api")
-            const text = await res.text()
-            console.log(text);
-        }
-
-        async function register() {
-            const res = await fetch("/api/v1/auth/register", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
-                })
-            })
-            return await res.text()
-        }
-
-        async function login() {
-            const res = await fetch("/api/v1/auth/login", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
-                })
-            })
-            const token = await res.text()
-            console.log(token);
-
-        }
-
-        async function start() {
-            await helloWorld()
-            await register()
-            await login()
-        }
-
-        start()
-    </script>
     <!--sidebar starts-->
+    <!--button for sidebar-->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
     <div class="sidebar">
         <i class="fab fa-twitter"></i>
         <div class="sidebarOption active">
@@ -67,12 +24,10 @@
             <span class="material-symbols-outlined">search</span>
             <h2>Explore</h2>
         </div>
-        <a href="ProfilePage/index.html">
-            <div class="sidebarOption">
-                <span class="material-symbols-outlined">perm_identity</span>
-                <h2>Profile</h2>
-            </div>
-        </a>
+        <div class="sidebarOption" onclick="navigateToProfile()">
+            <span class="material-symbols-outlined">perm_identity</span>
+            <h2>Profile</h2>
+        </div>
         <div class="sidebarOption">
             <span class="material-symbols-outlined">more_horiz</span>
             <h2>More</h2>
@@ -135,11 +90,44 @@
             <input type="text" placeholder="Search Twitter">
         </div>
         <div class="widgets__widgetContainer">
-            <h2>What's Happening?</h2>
+            <h2>What's happening</h2>
             <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Cheese <a href="https://t.co/8rwbMuTj93">pic.twitter.com/8rwbMuTj93</a></p>&mdash; cat with confusing auras (@CatsIX) <a href="https://twitter.com/CatsIX/status/1756250481041510605?ref_src=twsrc%5Etfw">February 10, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <div class="trending__container">
+            <h2>Trending right now</h2>
+            <ul>
+                <li>#OiledUp</li>
+                <p>12k tweets</p>
+                <li>#MobileLegends</li>
+                <p>12k tweets</p>
+                <li>#AngInet</li>
+                <p>12k tweets</p>
+                <li>#Andoseng</li>
+                <p>12k tweets</p>
+                <li>#Cats</li>
+                <p>12k tweets</p>
+            </ul>
         </div>
     </div>
     <!--widget end-->
+
+    
+
+    <!--javascript for toggleable sidebar-->
+    <script>
+        let sidebarVisible = false;
+    
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebarVisible = !sidebarVisible;
+            sidebar.style.display = sidebarVisible ? 'block' : 'none';
+        }
+    
+        function navigateToProfile() {
+            window.location.href = "ProfilePage/index.html";
+        }
+        
+    </script>
 </body>
 
 </html>

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+/********************************PROFILE******************************/
+
 * {
   margin: 0;
   padding: 0;
@@ -16,10 +18,24 @@ body {
   text-decoration: none;
 }
 
+.sidebar-toggle {
+  position: block;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  font-size: 20px;
+  cursor: pointer;
+  background: var(--twitter-background);
+  border: none;
+  color: var(--twitter-color);
+  padding: 10px;
+}
+
 .sidebarOption {
   display: flex;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .sidebarOption .material-symbols-outlined, .fa-twitter{
@@ -60,7 +76,7 @@ body {
   height: 100vh;
   max-width: 1300px;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 300px;
   padding: 0 10px;
   justify-content: space-between;
 }
@@ -72,6 +88,8 @@ body {
   margin-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
+  top: 0;
+  position: sticky;
 }
 
 .fa-twitter {
@@ -86,7 +104,8 @@ body {
   box-sizing: border-box;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  font-size: 16px; /* Set a base font size */
+  font-size: 16px;
+
 }
 
 ul {
@@ -102,8 +121,7 @@ a {
 }
 
 .header__wrapper header {
-  width: 160%;
-  /* Add overlay or gradient to the background */
+  width: 140%;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/bg.jpeg") no-repeat 50% 20% / cover;
   min-height: calc(100px + 8vw);
 }
@@ -157,12 +175,13 @@ a {
   display: flex;
   flex-direction: column;
   color: #818181;
-  font-size: 1.2rem; /* Increased font size */
+  font-size: 11px; /* Increased font size */
 }
 
 .header__wrapper .cols__container .left__col .about li span {
   color: #1d1d1d;
   font-weight: 600;
+  font-size: 17px;
 }
 
 .header__wrapper .cols__container .left__col .about:after {
@@ -214,6 +233,7 @@ a {
   text-transform: uppercase;
   color: #818181;
   font-size: 1.2rem;
+  margin-left: 40px;
 }
 
 .header__wrapper .cols__container .right__col nav ul li:nth-child(1) a {
@@ -223,7 +243,7 @@ a {
 }
 
 /* Updated CSS for the back button */
-.back__button {
+/* .back__button {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -240,49 +260,18 @@ a {
   display: flex;
   align-items: center;
   justify-content: center; 
-  padding: 10px; /* Add padding for better touch/click interaction */
+  padding: 10px;
 }
 
 .back__button a i {
   margin-right: 0; 
-}
+} */
 
-/* Responsiveness */
-
-@media (min-width: 868px) {
-  .header__wrapper .cols__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 90%;
-    justify-content: space-between;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 50px;
-  }
-  .header__wrapper .cols__container .left__col {
-    padding: 25px 0px;
-  }
-  .header__wrapper .cols__container .right__col nav ul {
-    flex-direction: row;
-    gap: 30px;
-  }
-}
-
-@media (min-width: 1017px) {
-  .header__wrapper .cols__container .left__col {
-    margin: 0;
-    margin-right: auto;
-  }
-  .header__wrapper .cols__container .right__col nav {
-    flex-direction: row;
-  }
-}
-
-/* widgets */
+/********************************WIDGETS******************************/
 .widgets {
   flex: 0.3;
-  margin-left: 35%;
-  min-width: 400px;
+  margin-left: 27%;
+  min-width: fit-content;
   justify-content: space-between;
 }
 
@@ -315,3 +304,212 @@ a {
   font-size: 18px;
   font-weight: 800;
 }
+
+/********************************POST/FEED******************************/
+.post__avatar img {
+  border-radius: 50%;
+  height: 40px;
+  position: relative;
+  left: -20px;
+  margin-top: -5px;
+  
+}
+
+.post {
+  width: fit-content;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--twitter-background);
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  align-self: flex-end;
+  margin-left: -232.1%;
+}
+
+.post__body img{
+  width: 950px;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.post__footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.post__headerSpecial {
+  font-weight: 600;
+  font-size: 12px;
+  color: gray;
+}
+
+.post__headerText h3 {
+  font-size: 19px;
+  margin-bottom: 25px;
+  margin-left: 50px;
+  margin-top: -55px;
+}
+
+.post_feed {
+  margin-left: 50px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.post_headerDescription {
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.post__body {
+  width: 100%;
+  object-fit: contain;
+  border-radius: 20px;
+  flex: 1;
+  padding: 10px;
+  max-width: 600px;
+  margin-left: 35%;
+  margin-bottom: -30px;  
+}
+
+.post__avatar {
+  padding: 20px;
+}
+
+.header__wrapper .cols__container .right__col .photos {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__wrapper .cols__container .right__col .photos img {
+  max-width: 100%;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 30px;
+  margin-left: 500px;
+}
+
+/********************************RESPONSIVE******************************/
+
+@media (min-width: 868px) {
+  .header__wrapper .cols__container {
+    max-width:1300px;
+    margin: 0 auto;
+    width: 120%;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+  }
+  .header__wrapper .cols__container .left__col {
+    padding: 45px 0px;
+  }
+  .header__wrapper .cols__container .right__col nav ul {
+    flex-direction: row;
+    gap: 30px;
+  }
+}
+
+@media (min-width: 1017px) {
+  .header__wrapper .cols__container .left__col {
+    margin: 0;
+    margin-right: auto;
+  }
+  .header__wrapper .cols__container .right__col nav {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 767px) {
+  
+ 
+  .header__wrapper .cols__container .left__col .img__container {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none; 
+    margin: 0 auto; 
+    max-width: 200px;
+  }
+
+  .header__wrapper .cols__container .left__col .img__container img {
+    width: 100%; 
+    height: auto;
+    margin-top: -100px;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--twitter-background);
+    z-index: 1000;
+    display: block;
+    margin-top: -10px;
+  }
+
+  .sidebar-toggle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+  }
+
+  .widgets {
+    display: none;
+  }
+
+  .img__container {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Add this line */
+  }
+
+  header {
+    width: 150%;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/bg.jpeg") no-repeat 50% 20% / cover;
+    min-height: calc(80px + 8vw); /* Adjust the value according to your design */
+  }
+
+ 
+  .post__body {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 20px;
+    flex: 1;
+    padding: 10px;
+    max-width: 600px;
+    margin-left: 0; /* Adjusted for mobile view */
+    margin-bottom: -30px;
+  }
+
+  .back__button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001; /* Ensure it's above the sidebar toggle */
+  }
+
+  .back__button a {
+    text-decoration: none;
+    background-color: #4882ee;
+    width: 30px;
+    height: 30px;
+    border-radius: 20%;
+    color: #fff;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+}
+
+
