@@ -19,16 +19,10 @@ body {
 }
 
 .sidebar-toggle {
-<<<<<<< HEAD
   display: none;
   position: fixed;
   top: 0;
   left: 0;
-=======
-  position: block;
-  top: 10px;
-  left: 10px;
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
   z-index: 1000;
   font-size: 20px;
   cursor: pointer;
@@ -83,7 +77,7 @@ body {
   height: 100vh;
   max-width: fit-content;
   margin-left: auto;
-  margin-right: 300px;
+  margin-right: auto;
   padding: 0 10px;
   justify-content: space-between;
 }
@@ -128,11 +122,7 @@ a {
 }
 
 .header__wrapper header {
-<<<<<<< HEAD
   width: 125%;
-=======
-  width: 140%;
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/bg.jpeg") no-repeat 50% 20% / cover;
   min-height: calc(100px + 8vw);
 }
@@ -280,15 +270,9 @@ a {
 
 /********************************WIDGETS******************************/
 .widgets {
-<<<<<<< HEAD
   flex: 0.4;
   margin-left: 15%;
   min-width: max-content;
-=======
-  flex: 0.3;
-  margin-left: 27%;
-  min-width: fit-content;
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
   justify-content: space-between;
   width: 100%;
   margin-right: 100px;
@@ -326,7 +310,6 @@ a {
   font-weight: 800;
 }
 
-<<<<<<< HEAD
 .trending__container{
   border: 2px solid whitesmoke;
   width: 100%;
@@ -420,8 +403,6 @@ a {
 }
 
 
-=======
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
 /********************************POST/FEED******************************/
 .post__avatar img {
   border-radius: 50%;
@@ -529,13 +510,10 @@ a {
     flex-direction: row;
     gap: 30px;
   }
-<<<<<<< HEAD
 
   .sidebar{
     display: block;
   }
-=======
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
 }
 
 @media (min-width: 1017px) {
@@ -546,13 +524,10 @@ a {
   .header__wrapper .cols__container .right__col nav {
     flex-direction: row;
   }
-<<<<<<< HEAD
 
   .sidebar{
     display: block;
   }
-=======
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
 }
 
 @media (max-width: 767px) {
@@ -585,10 +560,7 @@ a {
   }
 
   .sidebar-toggle {
-<<<<<<< HEAD
     display: block;
-=======
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
     position: fixed;
     top: 0;
     left: 0;
@@ -647,7 +619,6 @@ a {
   }
 }
 
-<<<<<<< HEAD
 @media screen and (max-width: 1200px) {
   body {
       flex-direction: column;
@@ -682,6 +653,4 @@ a {
       padding: 10px;
   }
 }
-=======
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
 

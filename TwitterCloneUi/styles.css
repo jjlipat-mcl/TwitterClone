@@ -17,11 +17,7 @@ body {
 }
 
 .sidebar-toggle {
-<<<<<<< HEAD
     display: none; /*change to none/block depending on if you want to display */
-=======
-    display: block;
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
     font-size: 20px;
     cursor: pointer;
     background: var(--twitter-background);
@@ -79,13 +75,8 @@ body {
 body {
     display: flex;
     height: 100vh;
-<<<<<<< HEAD
     max-width: fit-content;
     margin-left: auto;
-=======
-    max-width: 1300px;
-    margin-left: 0px;
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
     margin-right: auto;
     padding: 0 10px;
     justify-content: space-around;
@@ -310,11 +301,7 @@ body {
 
 .trending__container{
     border: 2px solid whitesmoke;
-<<<<<<< HEAD
     width: 120%;
-=======
-    width: 100%;
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
     height: fit-content;
     padding: 15px;
     border-radius: 20px;
@@ -344,7 +331,6 @@ body {
 }
 
 
-<<<<<<< HEAD
 .follow__container{
     border: 2px solid whitesmoke;
     width: 120%;
@@ -402,18 +388,13 @@ body {
     margin-top: 20px;
 }
 
-=======
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
 @media screen and (max-width: 1200px) {
     body {
         flex-direction: column;
     }
 
     .sidebar {
-<<<<<<< HEAD
         display: block;
-=======
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
         width: 100%;
         border-right: none;
         min-width: auto;
@@ -448,11 +429,7 @@ body {
     }
 
     .sidebar-toggle {
-<<<<<<< HEAD
         display: block;
-=======
-        display: fixed;
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
         font-size: 20px;
         cursor: pointer;
         background: var(--twitter-background);
@@ -486,8 +463,4 @@ body {
         width: 100%;
         padding: 10px;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 98a29c7ff76eedcc8160aa8bb936619a4aabb692
