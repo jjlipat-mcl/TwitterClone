@@ -5,55 +5,217 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <link rel="stylesheet" href="log.css">
 
-<body>
     <script>
-        async function helloWorld() {
-            const res = await fetch("/api")
-            const text = await res.text()
-            console.log(text);
-        }
+        // Earl Code
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginContainer = document.getElementById('loginContainer');
+            const signupContainer = document.getElementById('signupContainer');
+            const showSignupBtn = document.getElementById('showSignupBtn');
+            const showLoginBtn = document.getElementById('showLoginBtn');
 
-        async function register() {
-            const res = await fetch("/api/v1/auth/register", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
+            showSignupBtn.addEventListener('click', function () {
+                loginContainer.style.display = 'none';
+                signupContainer.style.display = 'block';
+            });
+
+            showLoginBtn.addEventListener('click', function () {
+                loginContainer.style.display = 'block';
+                signupContainer.style.display = 'none';
+            });
+
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            loginForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                // Login logic
+                 try {
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+
+                     const res = await fetch("/api/v1/auth/login", {
+                     method: "POST",
+                      headers: {
+                         'Content-Type': 'application/json'
+                         },
+                     body: JSON.stringify({ username, password })
+                    });
+
+        const checker = await res.text();
+        console.log(checker);
+
+    } catch (error) {
+        console.error("Error cause: ", error.message);
+    }
+});
+
+
+            signupForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const newUser = document.getElementById("newUsername").value;
+                const newPass = document.getElementById("newPassword").value;
+                const retyped = document.getElementById("retypePassword").value;
+
+                if (newPass != retyped) {
+                    console.log("retype it you imbecile");
+                }
+
+                try {
+                    const sec = await fetch("/api/v1/auth/register", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username: newUser, password: retyped })
+                    });
+
+                    // Rest of your code for handling the response
+
+                } catch (error) {
+                    console.error("Error during registration:", error.message);
+                }
+            });
+        })    
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const borderDivider = document.querySelector('.border-divider');
+
+                // Set initial width to 0%
+                borderDivider.style.width = '0%';
+
+                // Animate the width of the border-divider to 60% after a delay
+                setTimeout(() => {
+                    borderDivider.style.width = '60%';
+                }, 100); // Adjust the delay as needed
+            });
+
+            // Sirs Code
+
+            async function helloWorld() {
+                const res = await fetch("/api")
+                const text = await res.text()
+                console.log(text);
+            }
+
+            async function register() {
+                const res = await fetch("/api/v1/auth/register", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: "joblipat",
+                        password: "password"
+                    })
                 })
-            })
-            return await res.text()
-        }
+                return await res.text()
+            }
 
-        async function login() {
-            const res = await fetch("/api/v1/auth/login", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
+            async function login() {
+                const res = await fetch("/api/v1/auth/login", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: "joblipat",
+                        password: "password"
+                    })
                 })
-            })
-            const token = await res.text()
-            console.log(token);
+                const token = await res.text()
+                console.log(token);
 
-        }
+            }
 
-        async function start() {
-            await helloWorld()
-            await register()
-            await login()
-        }
+            async function start() {
+                await helloWorld()
+                await register()
+                await login()
+            }
 
-        start()
-    </script>
-    <p>Hello world. This is a sample page. Check the console to see if the front end is connected to the UI! </p>
+            start()
+        </script>
+    </head>
+
+    <body>
+
+        <!-- Navbar-->
+        <header>
+            <div class="border-divider"></div>
+            <nav class="navbar">
+                <ul class="nav">
+                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Discover</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Support</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+
+        <!--Community Section-->
+
+        <div class="container" id="container">
+            <div class="left-section">
+                <h2>JOIN THE COMMUNITY</h2>
+                <p>We can't reply to all emails but all good vibes are appreciated! You can email us at examplegmail@gmail.com</p>
+                <div class="social-links">
+                    <a href="https://discord.com" target="_blank">DISCORD</a> |
+                    <a href="https://github.com" target="_blank">GITHUB</a> |
+                    <a href="https://facebook.com" target="_blank">FACEBOOK</a> |
+                    <a href="https://instagram.com" target="_blank">INSTAGRAM</a>
+                </div>
+            </div>
+
+            <!--Form Section-->
+
+            <div class="form-container" id="loginContainer">
+                <form id="loginForm" action="/login" method="post">
+
+                    <h2>Login</h2>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                    <br>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <button id="showSignupBtn" class="ghost create-account-animation">Create Account</button>
+            </p>
+        </div>
+
+        <div class="form-container" id="signupContainer" style="display: none;">
+            <form id="signupForm" action="/signup" method="post">
+
+                <h2>Sign Up</h2>
+                <label for="newUsername">Username:</label>
+                <input type="text" id="newUsername" required>
+                <br>
+                <label for="newPassword">Password:</label>
+                <input type="password" id="newPassword" required>
+                <br>
+                <label for="retypePassword">Retype Password:</label>
+                <input type="password" id="retypePassword" required>
+                <br>
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <button id="showLoginBtn" class="ghost show-login-animation">Login</button>
+
+        </p>
+
+
+    </div>
+</div>
 </body>
 
 </html>
+
+
+
+
+
