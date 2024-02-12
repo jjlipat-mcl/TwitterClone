@@ -18,7 +18,7 @@
 .create-account {
     width: 181px;
     height: 21px;
-    left: 990px;
+    left: 1000px;
     top: 905px;
     position: absolute;
     color: #1DA1F2;
@@ -32,7 +32,7 @@
 .no-account {
     width: 258px;
     height: 21px;
-    left: 837px;
+    left: 940px;
     top: 869px;
     position: absolute;
     color: black;
@@ -115,27 +115,22 @@
     position: absolute;
     background: #DEF6F2;
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .welcome-message {
     left: 154px;
     top: 281px;
     position: absolute;
-    color: black;
-    font-size: 20px;
-    font-family: Helvetica;
-    font-weight: 400;
+    color: #0056b3;
+    font-size: 40px;
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-weight: 600;
     word-wrap: break-word;
-}
-
-.login-button {
-    width: 178px;
-    height: 38px;
-    left: 962px;
-    top: 781px;
-    position: absolute;
-    background: #FBED76;
-    border-radius: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .login-button-text {
@@ -152,12 +147,19 @@
 }
 
 .login-button {
+    width: 178px;
+    height: 38px;
+    left: 962px;
+    top: 781px;
+    position: absolute;
+    background: #FBED76;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #FBED76;
+    color: #000000;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -168,6 +170,7 @@
 
 .login-button:hover {
     background-color: #0056b3;
+    color: #ffffff
 }
 
 .box1 input, .box2 input {

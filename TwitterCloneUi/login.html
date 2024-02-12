@@ -23,7 +23,7 @@
         </div>
         <div class="password">Password</div>
         <div class="box2">
-            <input type="password" id="password" div"password">
+            <input type="password" id="password" div="password">
         </div>
         <div class="login-button" onclick="login()">LOG IN</div>
     </div>
@@ -36,7 +36,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+                    'Authorization': 'Bearer authorized',
                 },
                 body: JSON.stringify({username: username, password: password}),
             })

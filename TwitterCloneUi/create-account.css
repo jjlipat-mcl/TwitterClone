@@ -1,0 +1,127 @@
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: white;
+}
+
+.box1 {
+    width: 422px;
+    height: 66px;
+    left: 510px;
+    top: 523px;
+    position: absolute;
+    background: #DEF6F2;
+    border-radius: 10px;
+}
+
+.username {
+    width: 181px;
+    height: 21px;
+    left: 507px;
+    top: 494px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Helvetica;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.box3 {
+    width: 422px;
+    height: 68px;
+    left: 510px;
+    top: 629px;
+    position: absolute;
+    background: #DEF6F2;
+    border-radius: 10px;
+}
+
+.password {
+    width: 181px;
+    height: 21px;
+    left: 511px;
+    top: 597px;
+    position: absolute;
+    color: black;
+    font-size: 20px;
+    font-family: Helvetica;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.box5 {
+    width: 178px;
+    height: 38px;
+    left: 632px;
+    top: 731px;
+    position: absolute;
+    background: #FBED76;
+    border-radius: 20px;
+}
+
+.register {
+    width: 181px;
+    height: 21px;
+    left: 615px;
+    top: 737px;
+    position: absolute;
+    background: #FBED76;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #FBED76;
+    color: #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Helvetica;
+    font-size: 20px;
+    text-align: center;
+}
+
+.register:hover {
+    background-color: #0056b3;
+    color: #ffffff
+}
+
+.box7 {
+    width: 281px;
+    height: 267px;
+    left: 580px;
+    top: 151px;
+    position: absolute;
+}
+
+.image {
+    width: 281px;
+    height: 267px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+.text {
+    width: 66px;
+    height: 21px;
+    left: 108px;
+    top: 236px;
+    position: absolute;
+    color: #3AAACF;
+    font-size: 20px;
+    font-family: Helvetica;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.box1 input, .box3 input{
+    width: 100%;
+    padding: 10px;
+    font-size: 32px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
