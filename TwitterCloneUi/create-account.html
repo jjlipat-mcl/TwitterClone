@@ -22,4 +22,15 @@
         <div class="register" onclick="register()">Let’s get started</div>
     </div>
 </body>
+<script>
+    function register() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        if (username.length < 3 || password.length < 3) {
+            alert("Username and password must be at least 3 characters long");
+            return;
+        }
+        }
+</script>
 </html>
+
