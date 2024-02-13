@@ -53,6 +53,18 @@
     top: 589px;
 }
 
+.logout {
+    top: 900px;
+    width: 258px;
+    left: 100px;
+    position: absolute;
+    color: #1DA1F2;
+    font-size: 30px;
+    font-family: Helvetica;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
 /* Button Styling */
 #button {
     display: inline-block;
