@@ -4,56 +4,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Twitter Clone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+    <!--sidebar starts-->
+    <!--button for sidebar-->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar">
+        <i class="fab fa-twitter"></i>
+        <div class="sidebarOption active">
+            <span class="material-symbols-outlined">home</span>
+            <h2>Home</h2>
+        </div>
+        <div class="sidebarOption">
+            <span class="material-symbols-outlined">search</span>
+            <h2>Explore</h2>
+        </div>
+        <div class="sidebarOption" onclick="navigateToProfile()">
+            <span class="material-symbols-outlined">perm_identity</span>
+            <h2>Profile</h2>
+        </div>
+        <div class="sidebarOption" onclick="logOut()">
+            <span class="material-symbols-outlined">logout</span>
+            <h2>Log Out</h2>
+        </div>
+        <button class="sidebar__tweet">Tweet</button>
+    </div>
+    <!--sidebar ends-->
+
+    <!--feed start-->
+    <div class="feed">
+        <div class="feed__header">
+            <h2>Home</h2>
+        </div>
+
+        <!-- tweetbox starts -->
+        <div class="tweetbox">
+            <form>
+                <div class="tweetbox__input">
+                    <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" alt="profile">
+                    <input type="text" placeholder="What's happening?">
+                </div>
+                <button type="button" button class="tweetBox__tweetButton">Tweet</button>
+            </form>
+        </div>
+        <!-- tweetbox ends -->
+        <!-- post starts -->
+        <div class="post">
+            <div class="post__avatar">
+                <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" alt="">
+            </div>
+            <div class="post__body">
+                <div class="post__header">
+                    <div class="post__headerText">
+                        <h3>Sak Maestro
+                            <span class="post__headerSpecial">
+                                <span class="materials-icons post__badge"> verified </span>@senpai_sak
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="post__headerDescription">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <img src="https://www.focus2move.com/wp-content/uploads/2024/02/Lincoln-Aviator-2025-800-02.jpg" alt="">
+                <div class="post__footer">
+                    <span class="material-symbols-outlined"> repeat </span>
+                    <button class="heart" onclick="heartClick()">
+                        <i class="material-symbols-outlined"> favorite_border </i>
+                    </button>
+                    <span class="material-symbols-outlined"> publish </span>
+                </div>
+            </div>
+        </div>
+        <!-- post ends -->
+    </div>
+    <!--feed end-->
+    
+    <!--widget start-->
+    <div class="widgets">
+        <div class="widgetsinput">
+            <span class="material-symbols-outlined widgetssearchIcon"> search </span>
+            <input type="text" placeholder="Search Twitter">
+        </div>
+        <!-- <div class="widgets__widgetContainer">
+            <h2>What's happening</h2>
+            <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Cheese <a href="https://t.co/8rwbMuTj93">pic.twitter.com/8rwbMuTj93</a></p>&mdash; cat with confusing auras (@CatsIX) <a href="https://twitter.com/CatsIX/status/1756250481041510605?ref_src=twsrc%5Etfw">February 10, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div> -->
+        <div class="trending__container">
+            <h2>Trending right now</h2>
+            <ul>
+                <li>#OiledUp</li>
+                <p>12k tweets</p>
+                <li>#MobileLegends</li>
+                <p>12k tweets</p>
+                <li>#AngInet</li>
+                <p>12k tweets</p>
+                <li>#Andoseng</li>
+                <p>12k tweets</p>
+                <li>#Cats</li>
+                <p>12k tweets</p>
+            </ul>
+        </div>
+        <div class="follow__container">
+            <h2>People you may know</h2>
+            <div class="profile_container">
+                <div class="profile">
+                    <img src="ProfilePage/img/user.jpg">
+                    <div class="followuser">
+                    <p>Drake</p>
+                    <p>@drake</p>
+                    </div>
+                    <button class="followButton">Follow</button>
+                </div>
+            </div>
+            
+
+            <div class="profile_container">
+                <div class="profile">
+                    <img src="ProfilePage/img/user.jpg">
+                    <div class="followuser">
+                        <p>Allen</p>
+                        <p>@anitamaxwyn</p>
+                    </div>
+                    <button class="followButton">Follow</button>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    <!--widget end-->
+
+    
+
+    <!--javascript-->
     <script>
-        async function helloWorld() {
-            const res = await fetch("/api")
-            const text = await res.text()
-            console.log(text);
+        let sidebarVisible = window.innerWidth > 768;
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebarVisible = !sidebarVisible;
+            if (sidebarVisible) {
+                sidebar.style.display = 'block';
+            } else {
+                sidebar.style.display = 'none';
+            }
         }
 
-        async function register() {
-            const res = await fetch("/api/v1/auth/register", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
-                })
-            })
-            return await res.text()
+        function navigateToProfile() {
+            window.location.href = "ProfilePage/index.html";
         }
 
-        async function login() {
-            const res = await fetch("/api/v1/auth/login", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
-                })
-            })
-            const token = await res.text()
-            console.log(token);
-
+        function logOut() {
+            window.location.href = "login.html";
         }
 
-        async function start() {
-            await helloWorld()
-            await register()
-            await login()
+        function heartClick() {
+            const heart = document.querySelector('.heart');
+            heart.classList.toggle('heart-filled');
         }
 
-        start()
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                const sidebar = document.querySelector('.sidebar');
+                sidebar.style.display = 'block';
+                sidebarVisible = true;
+            }
+        });      
     </script>
-    <p>Hello world. This is a sample page. Check the console to see if the front end is connected to the UI! </p>
 </body>
 
 </html>

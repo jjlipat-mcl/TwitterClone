@@ -1,0 +1,29 @@
+@media screen and (max-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* This will center the items horizontally */
+        height: 100vh; /* This makes sure your body takes the full height of the viewport */
+        padding: 20px; /* This adds some space around your elements */
+    }
+
+    .title {
+        width: 100%; /* This will make sure your elements take the full width */
+        text-align: center; /* This will center your text */
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .wrapper {
+        margin-top: 5rem;
+        max-width: 450px;
+    }
+    
+    .pic_container {
+        display: none; /* This will hide your logo */
+    }
+}
