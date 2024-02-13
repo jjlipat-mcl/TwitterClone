@@ -180,6 +180,7 @@ button:hover {
     margin-bottom: 10px;
     background-color: #444;
     color: #ddd;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .form-container button[type="submit"] {
@@ -263,4 +264,15 @@ button:hover {
     .form-container {
         max-width: 100%;
     }
+}
+
+#message{
+    width: calc(100% - .5px);
+    padding: 10px;
+    box-sizing: border-box;
+    height: 250px; 
+    vertical-align: top;
+    color: #ddd;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    resize: none;
 }
