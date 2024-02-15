@@ -28,6 +28,7 @@ body {
     padding-left: 20px;
     padding-right: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    user-select: none;
     
 }
 
@@ -92,6 +93,7 @@ body {
     min-width: fit-content;
     overflow-y: scroll;
     margin-right: 40px;
+    user-select: none;
 }
 
 .feed__header {
