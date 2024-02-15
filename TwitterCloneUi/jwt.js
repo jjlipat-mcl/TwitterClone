@@ -60,6 +60,21 @@ async function loadTweets() {
             // Parse and process the response if needed
             const data = await response.json();
             console.log("Response Data:", data);
+
+            const container = document.getElementById("container");
+            data.forEach(postContent => {
+                const post = document.createElement("div");
+                post.classList.add("post");
+                post.innerHTML = `
+                    <div id="user-profile">
+                        <!-- You can include user profile information here -->
+                    </div>
+                    <div class="post-content">
+                        <p>${postContent.content}</p>
+                    </div>
+                `;
+                container.appendChild(post);
+            });
         } else {
             console.error("Error loading tweets:", response.status, response.statusText);
         }
