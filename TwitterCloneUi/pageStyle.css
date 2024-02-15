@@ -244,76 +244,7 @@ body {
     padding: 20px;
 }
 
-/* Widgets styling */
-.widgets {
-    margin-top: 10px;
-    padding: 10px;
-    flex: 0.3;
-    margin-left: 50px;
-    
-    border-radius: 20px;
-    overflow: hidden;
-}
 
-.widget__header {
-    font-size: 20px;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.widget {
-    background-color: #1a1a1a;
-    border-radius: 15px;
-    padding: 10px;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.widget:hover {
-    transform: scale(1.02);
-}
-
-.widget__content {
-    color: #45a049;
-}
-
-/* Search Bar styling */
-.searchBar {
-    display: flex;
-    align-items: center;
-    background-color: #1a1a1a;
-    border-radius: 30px;
-    padding: 8px;
-    margin-top: 20px;
-    overflow: hidden;
-}
-
-.searchBar__input {
-    flex: 1;
-    border: none;
-    padding: 15px; /* Increased padding for a larger input area */
-    outline: none;
-    background-color: #1a1a1a;
-    color: white;
-    font-size: 16px;
-}
-
-.searchBar__button {
-    background-color: #45a049;
-    border: none;
-    color: #fff;
-    font-weight: 700;
-    border-radius: 20px;
-    padding: 10px 15px; /* Adjusted padding for better button appearance */
-    margin-left: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.searchBar__button:hover {
-    background-color: #138a4a;
-}
 
 .profile {
     flex: 0.5;
