@@ -70,7 +70,7 @@ async function loadTweets() {
 
 async function postTweet() {
     try {
-        /*const tweetContent = document.getElementById('tweetContent').value;
+        const tweetContent = document.getElementById('tweetContent').value;
 
         // Validate tweet content
         if (!tweetContent) {
@@ -78,7 +78,7 @@ async function postTweet() {
             return;
         }
 
-        const jwtToken = await authenticateUser("username", "password");
+        /*const jwtToken = await authenticateUser("username", "password");
 
         if (!jwtToken) {
             console.error("Authentication failed. Unable to post tweet.");
