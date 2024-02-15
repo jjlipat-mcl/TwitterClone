@@ -14,10 +14,7 @@
 
 <!-- Start Sidebar -->
 <div class="sidebar">
-<<<<<<< HEAD
-=======
-    <i class="fab fa-twitter"></i>
->>>>>>> 05ed02df67fbcd67a6d9e1816a2191a5593e2ac0
+
     <a href="try.html" class="sidebarOption active">
         <span class="material-symbols-outlined">home</span>
         <h2>Home</h2>
@@ -62,83 +59,19 @@
             </form>
         </div>
     </div>
-    <!-- End Tweetbox -->
-
-    <!-- Start Post -->
-    <div id="container">
-        <!-- The tweets will be dynamically added here -->
+   
+        <div id="container">
+            <!-- The posts will be dynamically added here -->
+        </div>
+    </div>
     </div>
 </div>
-<!-- End Feed -->
 
-<!-- Start Widget -->
 <div class="widgets">
-    <!-- Widget content as you had it -->
+   
 </div>
-<!-- End Widget -->
-
-<script>
-    // Load existing tweets from the server
-    window.addEventListener('load', () => {
-        fetch("http://localhost:3000/api/docs")
-            .then(response => response.json())
-            .then(data => {
-                const container = document.getElementById("container");
-
-                data.posts.forEach(postContent => {
-                    const post = document.createElement("div");
-                    post.classList.add("post");
-                    post.innerHTML = `
-                        <div id="user-profile">
-                            <!-- You can include user profile information here -->
-                        </div>
-                        <div class="post-content">
-                            <p>${postContent.content}</p>
-                        </div>
-                    `;
-                    container.appendChild(post);
-                });
-            })
-            .catch(error => console.error("Error loading tweets:", error));
-    });
-
-    function postTweet() {
-    const tweetContent = document.getElementById("tweetContent").value;
-
-    fetch("http://localhost:3000/api/docs", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ content: tweetContent })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        const container = document.getElementById("container");
-        const post = document.createElement("div");
-        post.classList.add("post");
-        post.innerHTML = `
-            <div id="user-profile">
-                <!-- You can include user profile information here -->
-            </div>
-            <div class="post-content">
-                <p>${data.post.content}</p>
-            </div>
-        `;
-        container.appendChild(post);
-
-        document.getElementById("tweetContent").value = '';
-    })
-    .catch(error => console.error("Error posting tweet:", error));
-}
-
-</script>
 
 
+<script src="jwt.js"></script>
 </body>
 </html>
