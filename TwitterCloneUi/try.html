@@ -9,12 +9,164 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="pageStyle.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const loginContainer = document.getElementById('loginContainer');
+            const signupContainer = document.getElementById('signupContainer');
+            const showSignupBtn = document.getElementById('showSignupBtn');
+            const showLoginBtn = document.getElementById('showLoginBtn');
+
+            showSignupBtn.addEventListener('click', function () {
+                loginContainer.style.display = 'none';
+                signupContainer.style.display = 'block';
+            });
+
+            showLoginBtn.addEventListener('click', function () {
+                loginContainer.style.display = 'block';
+                signupContainer.style.display = 'none';
+            });
+
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const loginError = document.getElementById('loginError');
+
+            loginForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                try {
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+
+                    // Validate input
+                    if (!username || !password) {
+                        loginError.innerText = "Username and password are required.";
+                        loginError.style.display = 'block';
+                        return;
+                    }
+
+                    const res = await fetch("/api/v1/auth/login", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
+
+                    const checker = await res.text();
+                    console.log(checker);
+
+                    if (res.ok) {
+                        // Redirect to try.html after successful login
+                        window.location.href = "try.html";
+                    } else {
+                        // Display error message for incorrect credentials
+                        loginError.innerText = "Incorrect username or password. Please try again.";
+                        loginError.style.display = 'block';
+                    }
+
+                } catch (error) {
+                    console.error("Error cause: ", error.message);
+                }
+            });
+
+            signupForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const newUser = document.getElementById("newUsername").value;
+                const newPass = document.getElementById("newPassword").value;
+                const retyped = document.getElementById("retypePassword").value;
+
+                if (newPass != retyped) {
+                    console.log("Retype the password correctly.");
+                    return;
+                }
+
+                try {
+                    const sec = await fetch("/api/v1/auth/register", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username: newUser, password: retyped })
+                    });
+
+                    // Rest of your code for handling the response
+
+                } catch (error) {
+                    console.error("Error during registration:", error.message);
+                }
+            });
+        })
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const borderDivider = document.querySelector('.border-divider');
+
+            // Set initial width to 0%
+            borderDivider.style.width = '0%';
+
+            // Animate the width of the border-divider to 60% after a delay
+            setTimeout(() => {
+                borderDivider.style.width = '60%';
+            }, 100); // Adjust the delay as needed
+        });
+
+        // Sirs Code
+
+        async function helloWorld() {
+            const res = await fetch("/api")
+            const text = await res.text()
+            console.log(text);
+        }
+
+        async function register() {
+            const res = await fetch("/api/v1/auth/register", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: "joblipat",
+                    password: "password"
+                })
+            })
+            return await res.text()
+        }
+
+        async function login() {
+            const res = await fetch("/api/v1/auth/login", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: "joblipat",
+                    password: "password"
+                })
+            })
+            const token = await res.text()
+            console.log(token);
+
+        }
+
+        async function start() {
+            await helloWorld()
+            await register()
+            await login()
+        }
+
+        start()
+    </script>
+
+
 </head>
 <body>
     
 <!-- Start Sidebar -->
 <div class="sidebar">
+<<<<<<< HEAD
+=======
     <i class="fab fa-twitter"></i>
+>>>>>>> 05ed02df67fbcd67a6d9e1816a2191a5593e2ac0
     <a href="try.html" class="sidebarOption active">
         <span class="material-symbols-outlined">home</span>
         <h2>Home</h2>
@@ -62,52 +214,83 @@
     </div>
     <!-- End Tweetbox -->
 
-
-
     <!-- Start Post -->
-    <div class="post">
-        <div class="post__avatar">
-            <img src="data:image/jpeg;base64,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" alt="">
-        </div>
-
-        <div class="post__body">
-            <div class="post__header">
-                <div class="post__headerText">
-                    <a href="https://www.youtube.com"><h3>Boba B. Benson
-                        <span class="post__headerSpecial">
-                           <span class="material-symbols-outlined"> verified </span> @Urmombenson
-                        </span></h3></a>
-                     
-                </div>
-                <div class="post__headerDescription">
-                    <p>lorem ipsum dis baby</p>
-                </div>
-            </div>
-        
-
-        <img src="https://imageio.forbes.com/specials-images/imageserve/6064b148afc9b47d022718d1/Hennessey-Venom-F5/960x0.jpg?height=473&width=711&fit=bounds"
-        alt="">
-         
-        <div class="post__footer">
-            <span class="material-symbols-outlined"> repeat </span>
-            <span class="material-symbols-outlined"> favorite </span>
-            <span class="material-symbols-outlined"> publish </span>
-            </div>
-        </div>
+    <div id="container">
+        <!-- The tweets will be dynamically added here -->
     </div>
     <!-- End post -->
 
     
 </div>
-<!--End Feed-->
+<!-- End Feed -->
 
-<!--Start widget-->
+<!-- Start Widget -->
 <div class="widgets">
-    <div class="widgets_input">
-    
-        </div>
+    <!-- Widget content as you had it -->
 </div>
 <!-- End Widget -->
+
+<script>
+    // Load existing tweets from the server
+    window.addEventListener('load', () => {
+        fetch("http://localhost:3000/api/docs")
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById("container");
+
+                data.posts.forEach(postContent => {
+                    const post = document.createElement("div");
+                    post.classList.add("post");
+                    post.innerHTML = `
+                        <div id="user-profile">
+                            <!-- You can include user profile information here -->
+                        </div>
+                        <div class="post-content">
+                            <p>${postContent.content}</p>
+                        </div>
+                    `;
+                    container.appendChild(post);
+                });
+            })
+            .catch(error => console.error("Error loading tweets:", error));
+    });
+
+    function postTweet() {
+    const tweetContent = document.getElementById("tweetContent").value;
+
+    fetch("http://localhost:3000/api/docs", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content: tweetContent })
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const container = document.getElementById("container");
+        const post = document.createElement("div");
+        post.classList.add("post");
+        post.innerHTML = `
+            <div id="user-profile">
+                <!-- You can include user profile information here -->
+            </div>
+            <div class="post-content">
+                <p>${data.post.content}</p>
+            </div>
+        `;
+        container.appendChild(post);
+
+        document.getElementById("tweetContent").value = '';
+    })
+    .catch(error => console.error("Error posting tweet:", error));
+}
+
+</script>
 
 
 </body>
