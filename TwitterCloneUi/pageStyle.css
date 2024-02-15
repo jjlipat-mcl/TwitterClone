@@ -24,11 +24,10 @@ body {
     border-right: 1px solid var(--twitter-background);
     flex: 0.2;
     min-width: 250px;
-    margin-top: 15%;
+    margin-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
 }
 
 .sidebar footer {
@@ -49,19 +48,17 @@ body {
     cursor: pointer;
     transition: background-color 200ms ease-out, color 200ms ease-out;
     margin-bottom: 15px;
-    
 }
 
 .sidebarOption .material-symbols-outlined,
 .sidebarOption .fa-twitter {
-    padding: 25px;
+    padding: 10px;
     color: white;
-    
 }
 
 .sidebarOption h2 {
     font-weight: 800;
-    font-size: 25px;
+    font-size: 18px;
     color: white;
     margin-left: 10px;
 }
@@ -401,37 +398,3 @@ body {
     height: 400px;
 }
 
-    header {
-        background-color: #00aced;
-        color: #fff;
-        text-align: center;
-        padding: 1em;
-    }
-    #container {
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #2b2626;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    #user-profile {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin-right: 10px;
-    }
-
-    #user-profile img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .post {
-        border-bottom: 1px solid #ffffff;
-        padding: 10px 0;
-        display: flex;
-    }
