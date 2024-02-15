@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-async function authenticateUser(username, password) {
+/*async function authenticateUser(username, password) {
     try {
         const response = await fetch("http://127.0.0.1:8080/api/v1/auth/login", {
             method: "POST",
@@ -34,18 +34,20 @@ async function authenticateUser(username, password) {
         console.error("Authentication failed:", error.message);
         return null;
     }
-}
+}*/
 
 async function loadTweets() {
     try {
-        const jwtToken = await authenticateUser("username", "password");
+        /*const jwtToken = await authenticateUser("username", "password");
 
         if (!jwtToken) {
             console.error("Authentication failed. Unable to fetch tweets.");
             return;
-        }
+        }*/
+        //token needed for endpoints is retrieved from localStorage
+        const jwtToken = localStorage.getItem('token');
 
-        const response = await fetch("http://127.0.0.1:8080/api/v1/posts", {
+        const response = await fetch("http://localhost:3000/api/v1/posts", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${jwtToken}`,
@@ -68,7 +70,7 @@ async function loadTweets() {
 
 async function postTweet() {
     try {
-        const tweetContent = document.getElementById('tweetContent').value;
+        /*const tweetContent = document.getElementById('tweetContent').value;
 
         // Validate tweet content
         if (!tweetContent) {
@@ -81,9 +83,12 @@ async function postTweet() {
         if (!jwtToken) {
             console.error("Authentication failed. Unable to post tweet.");
             return;
-        }
+        }*/
+        
+        //token is retrieved from localStorage for Post request
+        const jwtToken = localStorage.getItem('token');
 
-        const response = await fetch("http://127.0.0.1:8080/api/v1/posts", {
+        const response = await fetch("http://localhost:3000/api/v1/posts", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${jwtToken}`,
