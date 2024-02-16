@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="log.css">
+    <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="pageStyle.css">
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const loginContainer = document.getElementById('loginContainer');
@@ -42,31 +44,30 @@
                         return;
                     }
 
-            const res = await fetch("http://localhost:3000/api/v1/auth/login", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-            //Token is acquired from POST request
-            const token = await res.text();
+                    const res = await fetch("/api/v1/auth/login", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
 
-            if (res.ok) {
-                // Token is stored in localStorage to be retrieved in another script
-                localStorage.setItem('token',token);
-                // Redirect to try.html after successful login
-                window.location.href = "try.html";
-            } else {
-                // Display error message for incorrect credentials
-                const errorData = await res.json();
-                document.getElementById('authError').innerText = `Authentication failed: ${errorData.message}`;
-                document.getElementById('authError').style.display = 'block';
-            }
-        } catch (error) {
-            console.error("Error cause: ", error.message);
-        }
-    });
+                    const checker = await res.text();
+                    console.log(checker);
+
+                    if (res.ok) {
+                        // Redirect to try.html after successful login
+                        window.location.href = "try.html";
+                    } else {
+                        // Display error message for incorrect credentials
+                        loginError.innerText = "Incorrect username or password. Please try again.";
+                        loginError.style.display = 'block';
+                    }
+
+                } catch (error) {
+                    console.error("Error cause: ", error.message);
+                }
+            });
 
             signupForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
@@ -81,7 +82,7 @@
                 }
 
                 try {
-                    const res = await fetch("http://localhost:3000/api/v1/auth/register", {
+                    const sec = await fetch("/api/v1/auth/register", {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json'
@@ -155,69 +156,87 @@
 
         start()
     </script>
+
+
 </head>
-
 <body>
-    <!-- Navbar-->
-    <header>
-        <div class="border-divider"></div>
-        <nav class="navbar">
-            <ul class="nav">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Discover</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
-            </ul>
-        </nav>
-    </header>
+    
+<!--Start Sidebar-->
+<div class="sidebar">
 
-    <!--Community Section-->
-    <div class="container" id="container">
-        <div class="left-section">
-            <h2>JOIN THE COMMUNITY</h2>
-            <p>We can't reply to all emails but all good vibes are appreciated! You can email us at examplegmail@gmail.com</p>
-            <div class="social-links">
-                <a href="https://discord.com" target="_blank">DISCORD</a> |
-                <a href="https://github.com" target="_blank">GITHUB</a> |
-                <a href="https://facebook.com" target="_blank">FACEBOOK</a> |
-                <a href="https://instagram.com" target="_blank">INSTAGRAM</a>
+    <div class="sidebarOption active"> 
+        <span class="material-symbols-outlined"> home </span>
+        <a href="try.html">
+            <h2>Home</h2></a>
+    </div>
+
+
+        <div class="sidebarOption"> 
+            <span class="material-symbols-outlined">search</span>
+            <h2>Explore</h2>
+        </div>
+
+ 
+        <div class="sidebarOption"> 
+            <span class="material-symbols-outlined">notifications_none</span>
+            <h2>Notifications</h2>
+        </div>
+
+
+        <div class="sidebarOption"> 
+            <span class="material-symbols-outlined">perm_identity</span>
+            <a href="profile.html">
+            <h2>Profile</h2></a>
+        </div>
+
+
+
+        <footer><p>Terms of Service</p>
+            <p>Privacy Policy</p>
+            <p>Cookie Policy</p>
+            <p>© 2024 Mapua Gang, Inc.</p>
+        </footer>
+</div>
+<!--End Sidebar-->
+
+
+<!--Start Notif bar-->
+<div class="notifications">
+    <div class="notification__container">
+        <header>
+        <div class="notification__header">
+            <h1>Notification</h1>
+            <span id="num of notif"></span>
             </div>
-        </div>
+            <p id ="mark-as-read"> Mark as All Read</p>
+            </header>
+            <main>
+                <div class="notificaitonCard unread">
+                    <div class="description">
+                        <p>Hi Hello</p>
+                        <p id="notif-time">1m ago</p>
+                    </div>
+                </div>
 
-        <!--Form Section-->
-        <div class="form-container" id="loginContainer">
-            <form id="loginForm" action="/login" method="post">
-                <h2>Login</h2>
-                <label for="username">Username:</label>
-                <input type="text" id="username" required>
-                <br>
-                <label for="password">Password:</label>
-                <input type="password" id="password" required>
-                <br>
-                <button type="submit">Login</button>
-                <p id="loginError" style="color: red; display: none;"></p>
-            </form>
-            <p>Don't have an account? <button id="showSignupBtn" class="ghost create-account-animation">Create Account</button>
-            </p>
+            </main>
         </div>
+    </div>
+</div>
 
-        <div class="form-container" id="signupContainer" style="display: none;">
-            <form id="signupForm" action="/signup" method="post">
-                <h2>Sign Up</h2>
-                <label for="newUsername">Username:</label>
-                <input type="text" id="newUsername" required>
-                <br>
-                <label for="newPassword">Password:</label>
-                <input type="password" id="newPassword" required>
-                <br>
-                <label for="retypePassword">Retype Password:</label>
-                <input type="password" id="retypePassword" required>
-                <br>
-                <button type="submit">Sign Up</button>
-            </form>
-            <p>Already have an account? <button id="showLoginBtn" class="ghost show-login-animation">Login</button>
-            </p>
-        </div>
+
+
+<!-- End Notif bar -->
+
+
+
+<!-- to do -->
+<!-- lessen the distance of right side of side bar -->
+
+
+<!--End Feed-->
+
+
+
+
 </body>
-
 </html>

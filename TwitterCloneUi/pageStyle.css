@@ -21,13 +21,15 @@ body {
 }
 
 .sidebar {
-    border-right: 1px solid var(--twitter-background);
+    
     flex: 0.2;
     min-width: 250px;
-    margin-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-top: 15%;
+    padding-left: 10px;
+    padding-right: 25px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    user-select: none;
+    
 }
 
 .sidebar footer {
@@ -48,6 +50,11 @@ body {
     cursor: pointer;
     transition: background-color 200ms ease-out, color 200ms ease-out;
     margin-bottom: 15px;
+    border-radius: 10px;
+    margin-right: 5px;
+    width: 240px;
+   
+    
 }
 
 .sidebarOption .material-symbols-outlined,
@@ -60,7 +67,9 @@ body {
     font-weight: 800;
     font-size: 18px;
     color: white;
-    margin-left: 10px;
+    margin-left: 5%;
+    width: 240px;
+
 }
 
 .sidebarOption a {
@@ -89,6 +98,7 @@ body {
     min-width: fit-content;
     overflow-y: scroll;
     margin-right: 40px;
+    user-select: none;
 }
 
 .feed__header {
@@ -117,11 +127,12 @@ body {
 .tweetbox__input {
     display: flex;
     align-items: center;
-    width: 100%;
+    width:500px;
     padding: 15px;
     background-color: #1a1a1a;
     border-radius: 8px;
     margin-bottom: 10px;
+
 }
 
 .tweetbox__input img {
@@ -159,9 +170,10 @@ body {
 }
 
 .tweetBoxContainer {
-    background-color: #1a1a1a;
+    
     padding: 4px;
     border-radius: 15px;
+
 }
 
 .post__avatar img {
@@ -179,6 +191,8 @@ body {
     margin-left: 7%;
     width: 500px;
     height: 400px;
+    margin-bottom: 10%;
+    background-color:whitesmoke;
 }
 
 .post__body img {
@@ -329,3 +343,104 @@ body {
     height: 400px;
 }
 
+header {
+    background-color: #00aced;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+}
+
+#container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.postProfile {
+    border-bottom: 1px solid #ffffff;
+    padding: 10px 0;
+    display: flex;
+}
+
+
+/* notification style Start */
+
+.notifications {
+    display: flex;
+    justify-content: center;
+    background-color:#1b1818;
+    width: 100%;
+    height: 100vh;
+    margin-left: 20px;
+    
+    
+}
+
+.notification__container {
+    background-color: #1b1818;
+    width: 700px;       
+    margin: 2rem;
+    padding: 1rem 1rem;
+    border-radius: 3rem;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem; 
+    background-color:#272927;
+    border-radius: 5px;
+    
+}
+
+.notification__Header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    background-color:#777;
+
+}
+
+
+.notification__Header {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+#num-of-notif {
+    background-color: rgb(15, 226, 110);
+    color: white;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    border-radius: 0.5rem;
+    margin-left: 10px;
+}
+
+#mark-as-read {
+    color: gray;
+    cursor: pointer;
+    transition: 0.6 ease;
+}
+  
+#mark-as-read:hover {
+    color:black;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    background-color:#212020;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+/* notification style End */
