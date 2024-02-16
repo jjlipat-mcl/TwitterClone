@@ -12,11 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function loadTweets() {
     try {
-        //get followed users
-        //get the post of each followed user
-        //concat all post to an array
-        //apply selection sort
-        //display as tweets
+        //1.get followed users
+        //2.get user post
+        //3.get the post of each followed user
+        //4.concat all post to an array
+        //5.sort all post based on time of posting
+        //6.display to Frontend
 
         const jwtToken = localStorage.getItem('token');
         const username = localStorage.getItem('username');
@@ -33,6 +34,7 @@ async function loadTweets() {
             },
         });
 
+        //Step1. get followed users
         if (get_follower.ok) {
             users = await get_follower.json();
             console.log("Users:", users);
@@ -42,6 +44,7 @@ async function loadTweets() {
             console.error("Something went wrong", get_follower.status, get_follower.statusText);
         }
 
+        //Step2.get own user's post
         const response = await fetch(postURL, {
             method: "GET",
             headers: {
@@ -56,34 +59,14 @@ async function loadTweets() {
             const data = await response.json();
             console.log("Response Data:", data);
 
-            postArr = data.reverse();
-            console.log("Post:",postArr)
+            postArr = data;
 
-            const container = document.getElementById("container");
-            data.forEach(postContent => {
-                const post = document.createElement("div");
-                post.classList.add("post");
-                post.innerHTML = `
-                    <div style="background: grey; padding: 60px; border-radius: 100px; margin-right: 20px; width: 20px; height: 20px;
-                    display: flex; flex-direction: row; margin-top: 10px;">
-                    <div id="user-profile">
-                        <!-- You can include user profile information here -->
-                        </div>
-                    </div>
-                    <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; font-size: 16px; 
-                    display:flex; flex-direction: column; margin-top: 10px; overflow: hidden; word-wrap: break-word;">
-                    <div class="post-content">
-                    <p style="color: dark-green; font-size: 14px; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; "
-                    <p>${postContent.content}</p>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(post);
-            });
         } else {
             console.error("Error loading tweets:", response.status, response.statusText);
         }
 
+        //Step3.get post of all followed users
+        //join all retrieved post in one array
         users.forEach(followers => {
             const fPost = fetch(`${postURL}?username=${followers}`,{
                 method: "GET",
@@ -100,9 +83,38 @@ async function loadTweets() {
             }
         });
 
-        //postArr.sort((a,b) => {
+        //Step4.sort all retrieved post based on time of posting
+        //Source: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
+        postArr.sort((a,b) => {
+            let compareA = new Date(a.dateTimePosted), compareB = new Date(b.dateTimePosted);
+            return compareB - compareA;
+        });
+        console.log("All Posts:",postArr);
+        
+        //Step6.display to Frontend
+        const container = document.getElementById("container");
+        postArr.forEach(postContent => {
+            const post = document.createElement("div");
+            post.classList.add("post");
+            post.innerHTML = `
+                <div style="background: grey; padding: 60px; border-radius: 100px; margin-right: 20px; width: 20px; height: 20px;
+                    display: flex; flex-direction: row; margin-top: 10px;">
+                    <div id="user-profile">
+                        <!-- You can include user profile information here -->
+                        <p>${postContent.postedBy}</p>
+                        </div>
+                    </div>
+                    <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; font-size: 16px; 
+                    display:flex; flex-direction: column; margin-top: 10px; overflow: hidden; word-wrap: break-word;">
+                    <div class="post-content">
+                        <p style="color: dark-green; font-size: 14px; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; "
+                        <p>${postContent.content}</p>
+                    </div>
+                </div>
+            `;
+            container.appendChild(post);
+        });
 
-        //})
     } catch (error) {
         console.error("Error loading tweets:", error.message);
     }
