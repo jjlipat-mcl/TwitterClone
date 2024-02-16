@@ -387,12 +387,12 @@ header {
 
 header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin-bottom: 2rem; 
-    background-color:#272927;
-    border-radius: 5px;
-    
+    align-items: center;
+    background-color: #00aced; /* Adjust the color as needed */
+    color: #fff;
+    text-align: center;
+    padding: 1em;
 }
 
 .notification__Header {
@@ -442,29 +442,20 @@ main {
 
 }
 
-/* notification style End */
-/* Add these styles for the logout button */
+/* Logout button styles */
 .logout-button {
-    margin-top: 20px;
-    text-align: center;
+    margin-right: 20px; /* Adjust the margin as needed */
 }
 
 .logout-button button {
-    background-color: #1da1f2;
-    color: #fff;
-    padding: 10px;
+    background-color: #fff; /* Adjust the color as needed */
+    color: #00aced; /* Adjust the color as needed */
     border: none;
-    border-radius: 5px;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .logout-button button:hover {
-    background-color: #0d85c9;
-}
-
-/* Responsive design for logout button */
-@media only screen and (max-width: 600px) {
-    .logout-button button {
-        padding: 8px;
-    }
+    background-color: #ddd; /* Adjust the hover color as needed */
 }

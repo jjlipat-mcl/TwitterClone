@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function loadTweets() {
     try {
-        //1.get followed users
-        //2.get user post
-        //3.get the post of each followed user
-        //4.concat all post to an array
-        //5.sort all post based on time of posting
-        //6.display to Frontend
+        // 1. Get followed users
+        // 2. Get user posts
+        // 3. Get posts of each followed user
+        // 4. Concatenate all posts into an array
+        // 5. Sort all posts based on the time of posting
+        // 6. Display to Frontend
 
         const jwtToken = localStorage.getItem('token');
         const username = localStorage.getItem('username');
@@ -34,17 +34,15 @@ async function loadTweets() {
             },
         });
 
-        //Step1. get followed users
+        // Step 1: Get followed users
         if (get_follower.ok) {
             users = await get_follower.json();
             console.log("Users:", users);
-            //users.forEach
-        }
-        else {
+        } else {
             console.error("Something went wrong", get_follower.status, get_follower.statusText);
         }
 
-        //Step2.get own user's post
+        // Step 2: Get own user's posts
         const response = await fetch(postURL, {
             method: "GET",
             headers: {
@@ -60,14 +58,13 @@ async function loadTweets() {
             console.log("Response Data:", data);
 
             postArr = data;
-
         } else {
             console.error("Error loading tweets:", response.status, response.statusText);
         }
 
-        //Step3.get post of all followed users
-        //join all retrieved post in one array
-        users.forEach(async (follower) => {
+        // Step 3: Get posts of all followed users
+        // Join all retrieved posts in one array
+        for (const follower of users) {
             try {
                 const fPost = await fetch(`${postURL}?username=${follower}`, {
                     method: "GET",
@@ -75,9 +72,9 @@ async function loadTweets() {
                         "Authorization": `Bearer ${jwtToken}`,
                     },
                 });
-        
+
                 if (fPost.ok) {
-                    const fdata = await fPost.json();  
+                    const fdata = await fPost.json();
                     postArr = postArr.concat(fdata);
                     console.log("Post:", postArr);
                 } else {
@@ -86,17 +83,21 @@ async function loadTweets() {
             } catch (error) {
                 console.error("Error loading tweets:", error.message);
             }
-        });
-        //Step4.sort all retrieved post based on time of posting
-        //Source: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
-        postArr.sort((a,b) => {
-            let compareA = new Date(a.dateTimePosted), compareB = new Date(b.dateTimePosted);
+        }
+
+        // Step 4: Sort all retrieved posts based on the time of posting
+        // Source: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
+        postArr.sort((a, b) => {
+            let compareA = new Date(a.dateTimePosted),
+                compareB = new Date(b.dateTimePosted);
             return compareB - compareA;
         });
-        console.log("All Posts:",postArr);
-        
-        //Step6.display to Frontend
+        console.log("All Posts:", postArr);
+
+       
         const container = document.getElementById("container");
+        container.innerHTML = ""; 
+
         postArr.forEach(postContent => {
             const post = document.createElement("div");
             post.classList.add("post");
@@ -106,19 +107,20 @@ async function loadTweets() {
                     <div id="user-profile">
                         <!-- You can include user profile information here -->
                         <p>${postContent.postedBy}</p>
-                        </div>
                     </div>
-                    <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; font-size: 16px; 
+                </div>
+                <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; font-size: 16px; 
                     display:flex; flex-direction: column; margin-top: 10px; overflow: hidden; word-wrap: break-word;">
                     <div class="post-content">
-                        <p style="color: dark-green; font-size: 14px; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; "
-                        <p>${postContent.content}</p>
+                        <p style="color: dark-green; font-size: 14px; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px;">
+                            ${postContent.content}
+                        </p>
                     </div>
+                    <p class="post-time"> ${new Date(postContent.dateTimePosted).toLocaleString()}</p>
                 </div>
             `;
             container.appendChild(post);
         });
-
     } catch (error) {
         console.error("Error loading tweets:", error.message);
     }
@@ -133,7 +135,8 @@ async function postTweet() {
             console.error("Tweet content is required.");
             return;
         }
-        //token is retrieved from localStorage for Post request
+
+        // Token is retrieved from localStorage for the POST request
         const jwtToken = localStorage.getItem('token');
 
         const response = await fetch("http://localhost:3000/api/v1/posts", {
@@ -148,9 +151,14 @@ async function postTweet() {
         });
 
         if (response.ok) {
-            // Handle successful tweet post (e.g., update UI, load updated tweets, etc.)
+            // Handle successful tweet post
             console.log('Tweet posted successfully');
-            loadTweets(); // Reload tweets after posting
+
+            // Clear tweet content after posting
+            document.getElementById('tweetContent').value = "";
+
+            // Reload tweets after posting
+            loadTweets();
         } else {
             console.error("Error posting tweet:", response.status, response.statusText);
         }
@@ -166,7 +174,7 @@ function logout() {
         localStorage.removeItem('username');
 
         // Redirect to the login page or perform any other desired action
-        window.location.href = 'login.html'; // Change 'login.html' to your actual login page
+        window.location.href = 'index.html'; // Change 'login.html' to your actual login page
     } catch (error) {
         console.error("Error during logout:", error.message);
     }
