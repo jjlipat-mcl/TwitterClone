@@ -47,7 +47,6 @@ window.onload = async () => {
     const posts = await getPosts()
     renderPosts(posts)
     displayExistingUsers();
-    renderFollowingPosts();
 }
 
 async function getPosts() {
