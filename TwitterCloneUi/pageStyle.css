@@ -52,7 +52,7 @@ body {
     margin-bottom: 15px;
     border-radius: 10px;
     margin-right: 5px;
-    width: 100px;
+   
    
     
 }
@@ -69,7 +69,8 @@ body {
     font-size: 25px;
     color: white;
     margin-left: 5%;
-    width: 100px;
+    width: 200px;
+    white-space: nowrap;
 
 }
 
@@ -482,6 +483,12 @@ main {
     cursor: pointer;
 }
 
+.liked {
+    color: red; /* Change to the desired color */
+}
+
+/*logoutbutton start*/
+
 .logoutButton {
     display: flex;
     align-items: center;
@@ -514,6 +521,9 @@ main {
 .logoutButton.active {
     color: #1da1f2;
 }
+/*logoutbutton end*/
+
+
 
 /*responsive design*/
 
@@ -537,6 +547,7 @@ main {
             flex-direction: row;
             flex-wrap: wrap;
             width: 40px;
+            transition: width 1s ease;
         }
 
         .feed {
@@ -546,12 +557,14 @@ main {
             overflow-y: scroll;
             margin-right: 40px;
             user-select: none;
+            transition: margin-right 1s ease;
         }
 
         .profile {  
             min-width: fit-content;
             margin-left: 10px;
             position: relative;
+            transition: margin-left 1s ease;
         }
 
         /* Align sidebar and other contents in a row */
