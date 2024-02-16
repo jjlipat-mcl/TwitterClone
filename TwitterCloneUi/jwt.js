@@ -103,8 +103,8 @@ async function loadTweets() {
             post.classList.add("post");
             post.innerHTML = `
             <div style="margin-bottom: 20px;"></div>
-            <div style="background: darkgrey; padding: 50px; border-radius: 10px; margin-right: 20px; width: 35px; height: 20px;
-            display: flex; flex-direction: row; margin-top: 20px; max-width: 100%;">
+            <div style="background: darkgrey; padding: 30px; border-radius: 10px; margin-right: 20px;  height: 30px;
+            display: flex; flex-direction: row; margin-top: 20px; max-width: 100%; align-items: center;">
             <div id="user-profile">
                 <!-- You can include user profile information here -->
                 <p>${postContent.postedBy}</p>
