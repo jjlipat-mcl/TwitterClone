@@ -13,6 +13,11 @@ body {
   --twitter-background: #e6ecf0;
 }
 
+.chikast {
+  height: 50px;
+  width: 50px;
+}
+
 .sidebar a {
   color: inherit;
   text-decoration: none;
@@ -91,6 +96,22 @@ body {
   padding-right: 20px;
   top: 0;
   position: sticky;
+  margin-right: 10rem;
+}
+
+.right__col{
+  margin-top: 30px;
+}
+
+.right__col .right__col {
+  border: 1px dotted black;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-direction: column; /* Make it a column layout */
+  align-items: flex-start; /* Align items at the start */
+
 }
 
 .fa-twitter {

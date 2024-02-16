@@ -155,7 +155,7 @@ async function renderPosts() {
             // Avatar
             const postAvatar = document.createElement('div');
             postAvatar.classList.add('post__avatar');
-            postAvatar.style.marginTop = '50px';
+            postAvatar.style.marginTop = '-60px';
             const avatarImg = document.createElement('img');
             avatarImg.src = "https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png";
             postAvatar.appendChild(avatarImg);
