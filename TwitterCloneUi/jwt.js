@@ -113,8 +113,59 @@ async function loadTweets() {
                     <div class="post-content">
                         <p style="color: dark-green; font-size: 14px; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; "
                         <p>${postContent.content}</p>
+                        <div class="btns">
+                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fas fa-heart"></i></Button>
+                <Button onclick="Toggle2()" id="btnh2" class="btn"><i class="far fa-heart"></i></Button>
+                <Button onclick="Toggle3()" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></Button>
+            </div>
+            
                     </div>
                 </div>
+                <script>
+               
+        
+                // First Like Button   
+                   var btnvar1 = document.getElementById('btnh1');
+            
+                   function Toggle1(){
+                            if (btnvar1.style.color =="red") {
+                                btnvar1.style.color = "grey"
+                            }
+                            else{
+                                btnvar1.style.color = "red"
+                            }
+                   }
+            
+            
+            
+                //    Second Like Button   
+                   var btnvar2 = document.getElementById('btnh2');
+            
+                   function Toggle2(){
+                            if (btnvar2.style.color =="red") {
+                                btnvar2.style.color = "grey"
+                            }
+                            else{
+                                btnvar2.style.color = "red"
+                            }
+                   }
+            
+            
+            
+            
+                //    Third Like Button   
+                   var btnvar3 = document.getElementById('btnh3');
+            
+                   function Toggle3(){
+                            if (btnvar3.style.color =="red") {
+                                btnvar3.style.color = "grey"
+                            }
+                            else{
+                                btnvar3.style.color = "red"
+                            }
+                   }
+            
+                </script>
             `;
             container.appendChild(post);
         });
@@ -171,3 +222,5 @@ function logout() {
         console.error("Error during logout:", error.message);
     }
 }
+
+
