@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card"></div>
+        <div class="website-image">
+            <img class="website-image mingle" src="mingle.png">
+        </div>
+        <button id="button" class="menu-item home" onclick="window.location.href='home.html'">Home</button>
+        <button id="button" class="menu-item profile" onclick="window.location.href='profile.html'">Profile</button>
+        <button id="button" class="menu-item likes" onclick="window.location.href='likes.html'">Likes</button>
+        <button id="button" class="menu-item following" onclick="window.location.href='following.html'">Following</button>
+        <button id="button" class="menu-item trends" onclick="window.location.href='trends.html'">Trends</button>
+        <button id="button" class="menu-item posting" onclick="window.location.href='post.html'">Say it!</button>
+        <a href="login.html"><button id="button" class="logout">Logout</button></a>
+        <div class="username" id="display-name">@username</div>
+        <div class="bio">Bio</div>
+        <div class="post-count">Your posts 2</div>
+        <div class="post-container"></div>
+        <div class="post-username" id="display-name">@username</div>
+        <div class="post-content">Some tweets.......</div>
+        <div class="post-likes">2 likes</div>
+        <div class="post-timestamp">11:11 - 2/10/2024</div>
+        <div class="follower-count">2</div>
+        <div class="follower-title">Followers</div>
+        <div class="following-count">1</div>
+        <div class="following-title">Following</div>
+        <div></div>
+    </div>
+
+    <script>
+        const jwtToken = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
+        var displayName = document.querySelectorAll("[id='display-name']");
+        for (var i = 0; i < displayName.length; i++)
+            displayName[i].innerHTML = "@" + username;
+    </script>
+</body>
+</html>

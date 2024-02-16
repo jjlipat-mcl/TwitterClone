@@ -11,3 +11,4 @@ force = true
 from = "/api/*"
 status = 200
 to = "/.netlify/functions/api/:splat"
+JWT_KEY="18278067f43cff69bd536d46635ac8087ca8530e2c683f2c73c1b415c8dcf260"

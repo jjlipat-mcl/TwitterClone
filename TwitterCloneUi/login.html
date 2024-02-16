@@ -44,6 +44,7 @@
             if(res.ok){
                 const token = await res.text();
                 localStorage.setItem('token', token);
+                localStorage.setItem('username', username);
                 window.location.href = 'home.html';
             } else{
                 alert('Invalid username or password');
