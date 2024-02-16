@@ -128,11 +128,12 @@ body {
 .tweetbox__input {
     display: flex;
     align-items: center;
-    width: 100%;
+    width:500px;
     padding: 15px;
     background-color: #1a1a1a;
     border-radius: 8px;
     margin-bottom: 10px;
+
 }
 
 .tweetbox__input img {
@@ -170,9 +171,10 @@ body {
 }
 
 .tweetBoxContainer {
-    background-color: #1a1a1a;
+    
     padding: 4px;
     border-radius: 15px;
+
 }
 
 .post__avatar img {
@@ -190,6 +192,8 @@ body {
     margin-left: 7%;
     width: 500px;
     height: 400px;
+    margin-bottom: 10%;
+    background-color:whitesmoke;
 }
 
 .post__body img {
@@ -351,7 +355,6 @@ header {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #2b2626;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

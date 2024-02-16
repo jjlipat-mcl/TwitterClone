@@ -125,4 +125,14 @@ async function postTweet() {
         console.error("Error posting tweet:", error.message);
     }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    const borderDivider = document.querySelector('.border-divider');
 
+    // Set initial width to 0%
+    borderDivider.style.width = '0%';
+
+    // Animate the width of the border-divider to 60% after a delay
+    setTimeout(() => {
+        borderDivider.style.width = '60%';
+    }, 100); // Adjust the delay as needed
+});
