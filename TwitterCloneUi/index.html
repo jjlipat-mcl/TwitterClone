@@ -40,30 +40,33 @@
                 return;
             }
 
-                    const res = await fetch("/api/v1/auth/login", {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ username, password })
-                    });
-
-                    const checker = await res.text();
-                    console.log(checker);
-
-                    if (res.ok) {
-                        // Redirect to try.html after successful login
-                        window.location.href = "try.html";
-                    } else {
-                        // Display error message for incorrect credentials
-                        loginError.innerText = "Incorrect username or password. Please try again.";
-                        loginError.style.display = 'block';
-                    }
-
-                } catch (error) {
-                    console.error("Error cause: ", error.message);
-                }
+            const res = await fetch("http://localhost:3000/api/v1/auth/login", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
             });
+            //Token is acquired from POST request
+            const token = await res.text();
+
+            if (res.ok) {
+                // Token is stored in localStorage to be retrieved in another script
+                localStorage.setItem('token',token);
+                localStorage.setItem('username',username);
+                localStorage.setItem('password',password);
+                // Redirect to try.html after successful login
+                window.location.href = "try.html";
+            } else {
+                // Display error message for incorrect credentials
+                const errorData = await res.json();
+                document.getElementById('authError').innerText = `Authentication failed: ${errorData.message}`;
+                document.getElementById('authError').style.display = 'block';
+            }
+        } catch (error) {
+            console.error("Error cause: ", error.message);
+        }
+    });
 
             signupForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
@@ -78,7 +81,7 @@
                 }
 
                 try {
-                    const sec = await fetch("/api/v1/auth/register", {
+                    const res = await fetch("http://localhost:3000/api/v1/auth/register", {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json'

@@ -10,44 +10,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-/*async function authenticateUser(username, password) {
-    try {
-        const response = await fetch("http://127.0.0.1:8080/api/v1/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username,
-                password,
-            }),
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            return data.token; // Assuming the token is returned in the response
-        } else {
-            console.error("Authentication failed:", response.status, response.statusText);
-            return null;
-        }
-    } catch (error) {
-        console.error("Authentication failed:", error.message);
-        return null;
-    }
-}*/
-
 async function loadTweets() {
     try {
-        /*const jwtToken = await authenticateUser("username", "password");
+        //get followed users
+        //get the post of each followed user
+        //concat all post to an array
+        //apply selection sort
+        //display as tweets
 
-        if (!jwtToken) {
-            console.error("Authentication failed. Unable to fetch tweets.");
-            return;
-        }*/
-        //token needed for endpoints is retrieved from localStorage
         const jwtToken = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
+        var postArr = new Array();
+        var users = new Array();
 
-        const response = await fetch("http://localhost:3000/api/v1/posts", {
+        const usernameURL = `http://localhost:3000/api/v1/users/${username}/following`;
+        const postURL = "http://localhost:3000/api/v1/posts";
+
+        const get_follower = await fetch(usernameURL, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${jwtToken}`,
+            },
+        });
+
+        if (get_follower.ok) {
+            users = await get_follower.json();
+            console.log("Users:", users);
+            //users.forEach
+        }
+        else {
+            console.error("Something went wrong", get_follower.status, get_follower.statusText);
+        }
+
+        const response = await fetch(postURL, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${jwtToken}`,
@@ -61,34 +56,46 @@ async function loadTweets() {
             const data = await response.json();
             console.log("Response Data:", data);
 
-            
+            postArr = data.reverse();
+            console.log("Post:",postArr)
 
             const container = document.getElementById("container");
             data.forEach(postContent => {
                 const post = document.createElement("div");
                 post.classList.add("post");
                 post.innerHTML = `
-
-                
-                    <div style="background: grey; padding: 60px; border-radius: 100px; margin-right: 20px; width: 20px; height: 20px;">
                     <div id="user-profile">
                         <!-- You can include user profile information here -->
-                        </div>
                     </div>
-                    <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; color: dark-green; font-size: 16px; display:flex; flex-direction: column\
-                    margin-top: 10px;">
                     <div class="post-content">
-                    <p style="color: dark-green; font-size: 16px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px;"
                         <p>${postContent.content}</p>
-                        </div>
                     </div>
-             
-                    `;
+                `;
                 container.appendChild(post);
             });
         } else {
             console.error("Error loading tweets:", response.status, response.statusText);
         }
+
+        users.forEach(followers => {
+            const fPost = fetch(`${postURL}?username=${followers}`,{
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${jwtToken}`,
+                },
+            });
+            if (fPost.ok){
+                const fdata = fpost.json();
+                postArr.concat(fdata);
+                console.log("Post:",postArr);
+            } else {
+                console.error("Error loading tweets:", response.status, response.statusText);
+            }
+        });
+
+        //postArr.sort((a,b) => {
+
+        //})
     } catch (error) {
         console.error("Error loading tweets:", error.message);
     }
@@ -103,14 +110,6 @@ async function postTweet() {
             console.error("Tweet content is required.");
             return;
         }
-
-        /*const jwtToken = await authenticateUser("username", "password");
-
-        if (!jwtToken) {
-            console.error("Authentication failed. Unable to post tweet.");
-            return;
-        }*/
-        
         //token is retrieved from localStorage for Post request
         const jwtToken = localStorage.getItem('token');
 

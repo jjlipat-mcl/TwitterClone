@@ -21,13 +21,15 @@ body {
 }
 
 .sidebar {
-    border-right: 1px solid var(--twitter-background);
+    
     flex: 0.2;
     min-width: 250px;
-    margin-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-top: 15%;
+    padding-left: 10px;
+    padding-right: 25px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    user-select: none;
+    
 }
 
 .sidebar footer {
@@ -48,6 +50,11 @@ body {
     cursor: pointer;
     transition: background-color 200ms ease-out, color 200ms ease-out;
     margin-bottom: 15px;
+    border-radius: 10px;
+    margin-right: 5px;
+    width: 240px;
+   
+    
 }
 
 .sidebarOption .material-symbols-outlined,
@@ -61,7 +68,9 @@ body {
     font-weight: 800;
     font-size: 25px;
     color: white;
-    margin-left: 10px;
+    margin-left: 5%;
+    width: 240px;
+
 }
 
 .sidebarOption a {
@@ -90,6 +99,7 @@ body {
     min-width: fit-content;
     overflow-y: scroll;
     margin-right: 40px;
+    user-select: none;
 }
 
 .feed__header {
@@ -177,9 +187,9 @@ body {
     border-radius: 10px;
     padding-bottom: 10px;
     margin-top: 10%;
-    margin-left: 5%;
+    margin-left: 7%;
     width: 500px;
-    height: 100px;
+    height: 400px;
 }
 
 .post__body img {
@@ -339,7 +349,6 @@ header {
 
 #container {
     max-width: 600px;
-    height: 100%;
     margin: 20px auto;
     padding: 20px;
     background-color: #2b2626;
