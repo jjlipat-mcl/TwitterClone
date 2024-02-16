@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="post_profile.js"></script>
   </head>
   <body>
 <!---------------------------sidebar starts------------------------------>
@@ -24,7 +25,7 @@
         <h2>Home</h2>
     </div>
       </a>
-      <div class="sidebarOption">
+      <div class="sidebarOption" onclick="navigateToExplore()">
           <span class="material-symbols-outlined">search</span>
           <h2>Explore</h2>
       </div>
@@ -48,8 +49,8 @@
           <img src="img/user.jpg"/>
           <span></span>
         </div>
-        <h2>Username</h2>
-        <p>@Username911</p>
+        <h2 id="name">Username</h2>
+        <p id="username">@Username911</p>
 
         <ul class="about">
           <li><span>4,073</span>Followers</li>
@@ -58,9 +59,9 @@
         </ul>
 
         <div class="content">
-          <h3>Bio</h3>
+          <h3>Profile</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+            This page displays all your Tweets.
           </p>
           <ul>
             <li><i class="fab fa-twitter"></i></li>
@@ -82,32 +83,35 @@
             <li><a href="">Likes</a></li>
           </ul>
         </nav>
-        <div class="post__avatar">
-          <img src="img/user.jpg">
-        </div>
-        <div class="post__headerText">
-          <h3>Username
-              <span class="post__headerSpecial">
-                  <span class="materials-icons post__badge"></span>@username911
-              </span>
-          </h3>
-        </div>
-        <div class="post_feed">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-        <div class="photos">
-          <img src="https://www.focus2move.com/wp-content/uploads/2024/02/Lincoln-Aviator-2025-800-02.jpg" alt="">
-        </div>
-        <div class="post__footer">
-          <span class="material-symbols-outlined"> repeat </span>
-          <span class="material-symbols-outlined"> favorite_border </span>
-          <span class="material-symbols-outlined"> publish </span>
-        </div>
+        <!-- <div class="post"> -->
+          <div class="post__avatar">
+            <img src="img/user.jpg">
+          </div>
+          <div class="post__headerText">
+            <h3>Username
+                <span class="post__headerSpecial">
+                    <span class="materials-icons post__badge"></span>@username911
+                </span>
+            </h3>
+          </div>
+          <div class="post__headerDescription">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <!-- <div class="photos">
+            <img src="https://www.focus2move.com/wp-content/uploads/2024/02/Lincoln-Aviator-2025-800-02.jpg" alt="">
+          </div> -->
+          <div class="post__footer">
+            <span class="material-symbols-outlined"> repeat </span>
+            <span class="material-symbols-outlined"> favorite_border </span>
+            <span class="material-symbols-outlined"> publish </span>
+          </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
+        
 <!-----------------------------profile and feed ends------------------------------>
 <!--widget start-->
 <div class="widgets">
@@ -122,44 +126,19 @@
   <div class="trending__container">
       <h2>Trending right now</h2>
       <ul>
-          <li>#OiledUp</li>
-          <p>12k tweets</p>
-          <li>#MobileLegends</li>
-          <p>12k tweets</p>
-          <li>#AngInet</li>
-          <p>12k tweets</p>
-          <li>#Andoseng</li>
-          <p>12k tweets</p>
-          <li>#Cats</li>
-          <p>12k tweets</p>
+        <li>#BPants</li>
+        <p>100k tweets</p>
+        <li>#Coding</li>
+        <p>69k tweets</p>
+        <li>#GSWPlayoffs</li>
+        <p>30k tweets</p>
+        <li>#LALakers</li>
+        <p>23k tweets</p>
+        <li>#Cats</li>
+        <p>12k tweets</p>
       </ul>
   </div>
-  <div class="follow__container">
-      <h2>People you may know</h2>
-      <div class="profile_container">
-          <div class="profile">
-              <img src="img/user.jpg">
-              <div class="followuser">
-              <p>Drake</p>
-              <p>@drake</p>
-              </div>
-              <button class="followButton">Follow</button>
-          </div>
-      </div>
-      
-
-      <div class="profile_container">
-          <div class="profile">
-              <img src="img/user.jpg">
-              <div class="followuser">
-                  <p>Allen</p>
-                  <p>@anitamaxwyn</p>
-              </div>
-              <button class="followButton">Follow</button>
-          </div>
-      </div>
-          
-  </div>
+  
 </div>
 <!--widget end-->
 <!-------------------------javascript for toggleable sidebar----------------------->
@@ -177,7 +156,7 @@
       }
 
       function navigateToFeed() {
-          window.location.href = "../index.html";
+          window.location.href = "../feed.html";
       }
 
       function logOut(){

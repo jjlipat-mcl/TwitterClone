@@ -240,7 +240,7 @@ a {
 .header__wrapper .cols__container .right__col nav ul li:nth-child(1) a {
   color: #1d1d1d;
   font-weight: 600;
-  font-size: 1.3rem; /* Increased font size */
+  font-size: 1.3rem; 
 }
 
 /* Updated CSS for the back button */
@@ -409,7 +409,7 @@ a {
   height: 40px;
   position: relative;
   left: -20px;
-  margin-top: -5px;
+  margin-bottom: -60px;
   
 }
 
@@ -449,7 +449,7 @@ a {
   margin-top: -55px;
 }
 
-.post_feed {
+.post__headerDescription {
   margin-left: 50px;
   margin-bottom: 10px;
   font-size: 20px;

@@ -15,12 +15,12 @@
     <!--button for sidebar-->
     <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
     <div class="sidebar">
-        <i class="fab fa-twitter"></i>
+        <img class="chikast" src="assets/twtlogo2.png">
         <div class="sidebarOption active">
             <span class="material-symbols-outlined">home</span>
             <h2>Home</h2>
         </div>
-        <div class="sidebarOption">
+        <div class="sidebarOption" onclick="navigateToExplore()">
             <span class="material-symbols-outlined">search</span>
             <h2>Explore</h2>
         </div>
@@ -32,7 +32,6 @@
             <span class="material-symbols-outlined">logout</span>
             <h2>Log Out</h2>
         </div>
-        <button class="sidebar__tweet">Tweet</button>
     </div>
     <!--sidebar ends-->
 
@@ -47,16 +46,21 @@
             <form>
                 <div class="tweetbox__input">
                     <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" alt="profile">
-                    <input type="text" placeholder="What's happening?">
+                    <input name="user-post" id="userPost" type="text" placeholder="What's happening?" oninput="checkInput()">
+                    <span id="counter">255</span>
                 </div>
-                <button type="button" button class="tweetBox__tweetButton">Tweet</button>
+                <button id="tweetButton" type="button" class="tweetBox__tweetButton" onclick="NewPost()" disabled>Tweet</button>
+                
+
             </form>
         </div>
+        
         <!-- tweetbox ends -->
+
         <!-- post starts -->
         <div class="post">
             <div class="post__avatar">
-                <img src="https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png" alt="">
+                <img src="./assets/twtlogo.png" alt="">
             </div>
             <div class="post__body">
                 <div class="post__header">
@@ -79,6 +83,36 @@
                     </button>
                     <span class="material-symbols-outlined"> publish </span>
                 </div>
+                
+            </div>
+        </div>
+        <div class="post">
+            <div class="post__avatar">
+                <img src="./assets/twtlogo.png" alt="">
+
+            </div>
+            <div class="post__body">
+                <div class="post__header">
+                    <div class="post__headerText">
+                        <h3>Sak Maestro
+                            <span class="post__headerSpecial">
+                                <span class="materials-icons post__badge"> verified </span>@senpai_sak
+                            </span>
+                        </h3>
+                    </div>
+                    <div class="post__headerDescription">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <img src="https://www.focus2move.com/wp-content/uploads/2024/02/Lincoln-Aviator-2025-800-02.jpg" alt="">
+                <div class="post__footer">
+                    <span class="material-symbols-outlined"> repeat </span>
+                    <button class="heart" onclick="heartClick()">
+                        <i class="material-symbols-outlined"> favorite_border </i>
+                    </button>
+                    <span class="material-symbols-outlined"> publish </span>
+                </div>
+                
             </div>
         </div>
         <!-- post ends -->
@@ -98,20 +132,20 @@
         <div class="trending__container">
             <h2>Trending right now</h2>
             <ul>
-                <li>#OiledUp</li>
-                <p>12k tweets</p>
-                <li>#MobileLegends</li>
-                <p>12k tweets</p>
-                <li>#AngInet</li>
-                <p>12k tweets</p>
-                <li>#Andoseng</li>
-                <p>12k tweets</p>
+                <li>#BPants</li>
+                <p>100k tweets</p>
+                <li>#Coding</li>
+                <p>69k tweets</p>
+                <li>#GSWPlayoffs</li>
+                <p>30k tweets</p>
+                <li>#LALakers</li>
+                <p>23k tweets</p>
                 <li>#Cats</li>
                 <p>12k tweets</p>
             </ul>
         </div>
+        <h2 class = "peopletxt">People you may know</h2>
         <div class="follow__container">
-            <h2>People you may know</h2>
             <div class="profile_container">
                 <div class="profile">
                     <img src="ProfilePage/img/user.jpg">
@@ -140,42 +174,8 @@
     <!--widget end-->
 
     
-
+    <script src="post.js"></script>
     <!--javascript-->
-    <script>
-        let sidebarVisible = window.innerWidth > 768;
-
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            sidebarVisible = !sidebarVisible;
-            if (sidebarVisible) {
-                sidebar.style.display = 'block';
-            } else {
-                sidebar.style.display = 'none';
-            }
-        }
-
-        function navigateToProfile() {
-            window.location.href = "ProfilePage/index.html";
-        }
-
-        function logOut() {
-            window.location.href = "login.html";
-        }
-
-        function heartClick() {
-            const heart = document.querySelector('.heart');
-            heart.classList.toggle('heart-filled');
-        }
-
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 768) {
-                const sidebar = document.querySelector('.sidebar');
-                sidebar.style.display = 'block';
-                sidebarVisible = true;
-            }
-        });      
-    </script>
 </body>
 
 </html>

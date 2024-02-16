@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+<!---------------------------sidebar starts------------------------------>
+<!--------------------------button for sidebar--------------------------->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar">
+      <i class="fab fa-twitter"></i>
+      <div class="sidebarOption" onclick="navigateToFeed()">
+        <span class="material-symbols-outlined">home</span>
+        <h2>Home</h2>
+    </div>
+      </a>
+      <div class="sidebarOption active">
+          <span class="material-symbols-outlined">search</span>
+          <h2>Explore</h2>
+      </div>
+        <div class="sidebarOption" onclick="navigateToProfile()">
+            <span class="material-symbols-outlined">perm_identity</span>
+            <h2>Profile</h2>
+        </div>
+        <div class="sidebarOption" onclick="logOut()">
+          <span class="material-symbols-outlined">logout</span>
+          <h2>Log Out</h2>
+      </div>
+      <button class="sidebar__tweet">Tweet</button>
+  </div>
+<!----------------------------------sidebar ends--------------------------------->
+<!-----------------------------------news start---------------------------------->
+<div class="news_container">
+    <div class="blog-section">
+        <div class="title">
+            <h2>ChiKast News</h2>                
+        </div>
+        <div class="cards">
+            <div class="card">
+                <div class="image-section">
+                    <img src="https://e3.365dm.com/22/12/2048x1152/skynews-elon-musk-twitter_6002576.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h4>Fighting Twitter's social media rivals</h4>                      
+                    <p>Elon Musk says he will resign as Twitter CEO 'as soon as I find someone foolish enough to take the job'
+                        The Twitter boss said he would "just run the software and servers teams" as he responded to a poll in which he asked users for their verdict on his tenure. It comes after Musk launched a poll asking users for their verdict on his tenure, saying he would "abide by the results".
+                        As the deadline passed on Sunday, 57.5% had voted for him to leave.</p>
+                    <a href="https://news.sky.com/story/elon-musk-says-he-will-resign-as-twitter-ceo-as-soon-as-i-find-someone-foolish-enough-to-take-the-job-12772302">Read More</a>
+                </div>
+                <div class="posted-date">
+                    <p>posted on December 21, 2022</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-section">
+                    <img src="https://nypost.com/wp-content/uploads/sites/2/2022/06/1403377703.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h4>Warriors topple Celtics in Game 6 to win 2022 NBA Finals</h4>                      
+                    <p>The Golden State Warriors are NBA champions once again, topping the Boston Celtics 103-90 on Thursday night for their fourth title in the last eight seasons.
+                        Stephen Curry scored 34 points and was named the NBA Finals MVP as the Warriors claimed the franchise’s seventh championship overall. </p>
+                    <a href="https://nypost.com/2022/06/16/warriors-topple-celtics-in-game-6-to-win-2022-nba-finals/">Read More</a>
+                </div>
+                <div class="posted-date">
+                    <p>posted on June 17, 2022</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-section">
+                    <img src="https://images.ps-aws.com/c?url=https%3A%2F%2Fd3cm515ijfiu6w.cloudfront.net%2Fwp-content%2Fuploads%2F2024%2F02%2F10134140%2Flewis-hamilton-ferrari-mercedes-garage-f1-february-2024.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h4>Lewis Hamilton warned he must change to fit in at Ferrari ahead of F1 2025 arrival</h4>                      
+                    <p>That is the view of former F1 driver Hans Joachim-Stuck, who believes life at Maranello will be “a completely new experience” for the seven-time World Champion.
+                        Despite signing a new two-year contract extension last August, Hamilton announced earlier this month that he will leave Mercedes at the end of 2024 to join Ferrari on a multi-year deal.</p>
+                    <a href="https://www.planetf1.com/news/lewis-hamilton-f1-2025-change-ferrari">Read More</a>
+                </div>
+                <div class="posted-date">
+                    <p>posted on February 11, 2024</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-section">
+                    <img src="https://evelynlearning.b-cdn.net/wp-content/uploads/2023/06/standing-cyborg-oversees-robotic-arm-manufacturing-progress-generated-by-ai-1024x585.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h4>Redefining Employment: The Rise of AI and Job Markets?</h4>                      
+                    <p>AI has indeed been advancing rapidly and is increasingly being used in various industries and job sectors. While AI and automation have the potential to streamline processes, increase efficiency, and improve productivity, they also have implications for the workforce.</p>
+                    <a href="https://www.evelynlearning.com/redefining-employment-the-rise-of-ai-and-job-markets/">Read More</a>
+                </div>
+                <div class="posted-date">
+                    <p>posted on June 22, 2023</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-section">
+                    <img src="https://www.gard.no/Content/36102308/cache=20231210111536/Israel_Gaza_flag.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h4>Israel-Gaza conflict: Impact on shipping</h4>                      
+                    <p>The Israel-Gaza conflict has impacted not just the security situation in Israeli ports. Vessels sailing in the Eastern Mediterranean Sea are warned to exercise caution, and threats related to the geopolitical tensions in the Southern Red Sea region have escalated even further, particularly for assets with a link to Israel. </p>
+                    <a href="https://www.gard.no/web/articles?documentId=36097505">Read More</a>
+                </div>
+                <div class="posted-date">
+                    <p>posted on December 11, 2023</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------------------------news end----------------------------------->
+<!--widget start-->
+<div class="widgets">
+  <div class="widgetsinput">
+      <span class="material-symbols-outlined widgetssearchIcon"> search </span>
+      <input type="text" placeholder="Search Twitter">
+  </div>
+  <div class="trending__container">
+      <h2>Trending right now</h2>
+      <ul>
+        <li>#BPants</li>
+        <p>100k tweets</p>
+        <li>#Coding</li>
+        <p>69k tweets</p>
+        <li>#GSWPlayoffs</li>
+        <p>30k tweets</p>
+        <li>#LALakers</li>
+        <p>23k tweets</p>
+        <li>#Cats</li>
+        <p>12k tweets</p>
+      </ul>
+  </div>
+</div>
+<!--widget end-->
+<!-------------------------javascript for toggleable sidebar----------------------->
+    <script>
+      let sidebarVisible = window.innerWidth > 768;
+
+      function toggleSidebar() {
+          const sidebar = document.querySelector('.sidebar');
+          sidebarVisible = !sidebarVisible;
+          if (sidebarVisible) {
+              sidebar.style.display = 'block';
+          } else {
+              sidebar.style.display = 'none';
+          }
+      }
+
+      function navigateToFeed() {
+          window.location.href = "../feed.html";
+      }
+
+      function navigateToProfile() {
+          window.location.href = "../ProfilePage/index.html";
+      }
+
+      function logOut(){
+              window.location.href = "../login.html"
+        }
+
+      window.addEventListener('resize', function () {
+          if (window.innerWidth > 768) {
+              const sidebar = document.querySelector('.sidebar');
+              sidebar.style.display = 'block';
+              sidebarVisible = true;
+          }
+      });
+
+    </script>
+  </body>
+</html>

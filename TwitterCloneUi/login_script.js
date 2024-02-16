@@ -1,22 +1,7 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById('Login').addEventListener('click', function() {    
-//         // Get username
-//         const username = document.querySelector('input[placeholder="Username"]').value;
-
-//         // Get password
-//         const password = document.querySelector('input[placeholder="Password"]').value;
-        
-//         // Redirect to the next page
-//         window.location.href = 'index.html';
-        
-//     });
-// });
-
-//localStorage.removeItem('existingUsers'); //clear users
 document.addEventListener('DOMContentLoaded', (event) => {
     const wrapper = document.querySelector(".wrapper"),
-    signupHeader = document.querySelector(".signup header"),
-    loginHeader = document.querySelector(".login header");
+        signupHeader = document.querySelector(".signup header"),
+        loginHeader = document.querySelector(".login header");
 
     loginHeader.addEventListener("click", () => {
         wrapper.classList.add("active");
@@ -25,46 +10,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
         wrapper.classList.remove("active");
     });
 
-    document.querySelector('#registerForm').addEventListener('submit', function(event) {
+    document.querySelector('#registerForm').addEventListener('submit', function (event) {
         event.preventDefault();
         register();
     });
 
-    document.querySelector('#loginForm').addEventListener('submit', function(event) {
+    document.querySelector('#loginForm').addEventListener('submit', function (event) {
         event.preventDefault();
         login();
-        
+
+    });
+});
+
+async function register() {
+    const name = document.querySelector('#registerName').value;
+    const username = document.querySelector('#registerUsername').value;
+    const password = document.querySelector('#registerPassword').value;
+
+    var raw = JSON.stringify({
+        name: name,
+        username: username,
+        password: password
     });
 
-
-    async function register() {
-        
-        const username = document.querySelector('#registerUsername').value;
-        const password = document.querySelector('#registerPassword').value;
-
-        var raw = JSON.stringify({
-            username: username,
-            password: password
-        });
-
-        var fetchRequest = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: raw,
-            redirect: 'follow',
-        };
-
-    //     fetch("http://localhost:3000/api/v1/auth/register", fetchRequest)
-    //     .then(response => response.text())
-    //     .then(result => console.log(result))
-    //     .catch(error => console.log('error', error)
-    // );
-        // fetch
-        fetch("http://localhost:3000/api/v1/auth/register", fetchRequest)
+    var fetchRequest = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: raw,
+        redirect: 'follow',
+    };
+    fetch("http://localhost:3000/api/v1/auth/register", fetchRequest)
         .then(response => {
             if (response.ok) {
+                saveName(username, name); // Save name after successful registration
                 return response.text();
             } else {
                 throw new Error('Username already exists');
@@ -82,87 +62,77 @@ document.addEventListener('DOMContentLoaded', (event) => {
             // Show the alert for username already exists
             alert('Username already exists');
         });
+}
 
-    }
+async function login() {
+    const username = document.querySelector('#loginUsername').value;
+    const password = document.querySelector('#loginPassword').value;
 
-    async function login() {
-        const username = document.querySelector('#loginUsername').value;
-        const password = document.querySelector('#loginPassword').value;
+    var raw = JSON.stringify({
+        "username": username,
+        "password": password
+    });
 
-        var raw = JSON.stringify({
-            "username": username,
-            "password": password
-        });
-        
-        var fetchRequest = {
-            method: 'POST',
-            body: raw,
-            redirect: 'follow',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        };
-    
-    
-         // fetch
-        fetch("http://localhost:3000/api/v1/auth/login", fetchRequest)
-        //     .then(response => response.text())
-        //     .then(async result => {
-        //         token = "Bearer " + result;  
-    
-        //         // save user
-        //         saveUser(username, password, token)
-        //     })
-        // .catch(error => console.log('error', error));
+    var fetchRequest = {
+        method: 'POST',
+        body: raw,
+        redirect: 'follow',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    };
+
+    // fetch
+    fetch("http://localhost:3000/api/v1/auth/login", fetchRequest)
         .then(response => {
             if (response.ok) {
                 return response.text();
+            } else if (response.status === 401) {
+                throw new Error('Incorrect username or password');
             } else {
-                throw new Error('Incorrect password');
+                throw new Error('Login failed');
             }
         })
         .then(async result => {
-            token = "Bearer " + result;  
+            const aNameStorage = JSON.parse(localStorage.getItem('aName'));
+            console.log('aNameStorage:', aNameStorage); // Debugging statement
 
-            // save user
-            saveUser(username, password, token);
+            if (aNameStorage && aNameStorage[username] && aNameStorage[username].aName) {
+                const name = aNameStorage[username].aName;
+                token = result;
 
-            window.location.href = 'index.html';
+                // save user
+                saveUser(username, name, token);
+
+                window.location.href = 'feed.html';
+            } else {
+                throw new Error('User data not found');
+            }
         })
         .catch(error => {
-            // console.log('error', error);
-            // document.querySelector('#loginUsername').value = '';
-            // // Clear the password input field and display an error message
-            // document.querySelector('#loginPassword').value = '';
-            // alert('Incorrect password');
-
             console.log('error', error);
             document.querySelector('#loginUsername').value = '';
             document.querySelector('#loginPassword').value = '';
-            alert('Incorrect username or password');
-
+            alert(error.message);
         });
-    
-    }
-    
-    
-    // save user
-    function saveUser(username, password, token) {
-        console.log("saveuser")
-        const existingUsers = JSON.parse(localStorage.getItem('existingUsers')) || {};
-    
-        existingUsers[username] = { password: password, token: token };
-        console.log(existingUsers)
-        localStorage.setItem('existingUsers', JSON.stringify(existingUsers));
-        localStorage.setItem('currentUser', username);
-    
-    }
-    
-    // async function start() { 
-    //     await register()
-    //     await login()
-    // }
+}
 
-    // start()
 
-});
+
+
+
+function saveName(username, name) {
+    const aName = JSON.parse(localStorage.getItem('aName')) || {};
+    aName[username] = { aName: name };
+    localStorage.setItem('aName', JSON.stringify(aName));
+}
+
+function saveUser(username, name, token) {
+    const existingUsers = JSON.parse(localStorage.getItem('existingUsers')) || {};
+
+    existingUsers[username] = { name: name, token: token };
+    localStorage.setItem('existingUsers', JSON.stringify(existingUsers));
+    localStorage.setItem('currentUser', username);
+    localStorage.setItem('currentToken', token)
+    localStorage.setItem('currentName', name)
+}
