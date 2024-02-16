@@ -1,59 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Log In</title>
+    <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
+    <div class="container">
+        <div class="profile-image">
+            <img src="mingle.png" />
+            <div class="mingle">Mingle</div>
+        </div>
+        <div class="main-box">Welcome to Mingle!</div>
+        <div class="username">Username</div>
+        <div class="box1">
+            <input type="text" id="username" name="username">
+        </div>
+        <div class="password">Password</div>
+        <div class="box2">
+            <input type="password" id="password" div="password">
+        </div>
+        <div class="login-button" onclick="login()">LOG IN</div>
+        <div class="no-account">Don’t have an account yet?</div>
+        <div class="create-account">
+            <a href="create-account.html">Create account</a>
+        </div>
+    </div>
+
     <script>
-        async function helloWorld() {
-            const res = await fetch("/api")
-            const text = await res.text()
-            console.log(text);
-        }
-
-        async function register() {
-            const res = await fetch("/api/v1/auth/register", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
-                })
-            })
-            return await res.text()
-        }
-
         async function login() {
-            const res = await fetch("/api/v1/auth/login", {
-                method: "POST",
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            sendData(username, password);
+        }
+        async function sendData(username, password) {
+            const res = await fetch('http://localhost:3000/api/v1/auth/login', {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
-                })
+                body: JSON.stringify({ username, password })
             })
-            const token = await res.text()
-            console.log(token);
-
+            if(res.ok){
+                const token = await res.text();
+                localStorage.setItem('token', token);
+                localStorage.setItem('username', username);
+                window.location.href = 'home.html';
+            } else{
+                alert('Invalid username or password');
+                const error = await res.json();
+                console.error(error);
+            }
         }
-
-        async function start() {
-            await helloWorld()
-            await register()
-            await login()
-        }
-
-        start()
     </script>
-    <p>Hello world. This is a sample page. Check the console to see if the front end is connected to the UI! </p>
 </body>
-
 </html>
+
