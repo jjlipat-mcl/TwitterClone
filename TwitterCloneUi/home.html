@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="home.css">
+    <style>
+
+
+    </style>
 </head>
 <body>
 <div class="container">
@@ -12,11 +16,18 @@
         <img class="website-image mingle" src="mingle.png">
     </div>
     <div class="timeline-title">Your Timeline</div>
-    <button id="button" class="menu-item home" onclick="home.html">Home</button>
-    <button id="button" class="menu-item profile">Profile</button>
-    <button id="button" class="menu-item likes">Likes</button>
-    <button id="button" class="menu-item following">Following</button>
-    <button id="button" class="menu-item followers">Followers</button>
-    <a href="login.html"><button id="button" class="logout">Logout</button></a>
+    <button id="button" class="menu-item home" onclick="window.location.href='home.html'">Home</button>
+    <button id="button" class="menu-item profile" onclick="window.location.href='profile.html'">Profile</button>
+    <button id="button" class="menu-item likes" onclick="window.location.href='likes.html'">Likes</button>
+    <button id="button" class="menu-item following" onclick="window.location.href='following.html'">Following</button>
+    <button id="button" class="menu-item trends" onclick="window.location.href='trends.html'">Trends</button>
+    <button id="button" class="menu-item posting" onclick="window.location.href='post.html'">Say it!</button>
+    <button id="button" class="logout" onclick="logout()">Logout</button></a>\
+    <script>
+        async function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'login.html';
+        }
+    </script>
 </div>
 </body>

@@ -23,12 +23,34 @@
     </div>
 </body>
 <script>
-    function register() {
+    async function register() {
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
         if (username.length < 3 || password.length < 3) {
             alert("Username and password must be at least 3 characters long");
             return;
+        }
+        else{
+            const regis ={
+                "username": username,
+                "password": password
+            }
+            const res = await fetch('http://localhost:3000/api/v1/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(regis)
+            });
+            if(res.ok){
+                const res = await res.json();
+                Console.log(res);
+            } else{
+                alert('Username already exists');
+                const error = await res.json();
+                console.error(error);
+            }
+
         }
         }
 </script>

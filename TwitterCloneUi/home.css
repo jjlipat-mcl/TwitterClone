@@ -3,6 +3,9 @@
     height: 100%;
     position: relative;
     background: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .yellow-box {
@@ -49,8 +52,12 @@
     top: 696px;
 }
 
-.followers {
+.trends {
     top: 589px;
+}
+
+.posting {
+    top: 800px;
 }
 
 .logout {
@@ -123,3 +130,4 @@
     width: 202px;
     height: 202px;
 }
+
