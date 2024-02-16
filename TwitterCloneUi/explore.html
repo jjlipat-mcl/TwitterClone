@@ -101,30 +101,6 @@
         .follow-button:hover {
             background-color: #3b8041;
         }
-        /* Add this to your existing styles */
-#searchForm {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-#searchUser {
-    padding: 10px;
-    margin-right: 10px;
-}
-
-#searchForm button {
-    padding: 10px;
-    background-color: #45a049;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#searchForm button:hover {
-    background-color: #3b8041;
-}
-
     </style>
 </head>
 
@@ -140,8 +116,6 @@
             </ul>
         </nav>
     </header>
-    <input type="text" id="searchUser" placeholder="Search user">
-<button onclick="exploreUser()">Search</button>
 
     <div id="container">
     </div>
@@ -234,7 +208,7 @@ async function loadTweets() {
             }
         }
 
-        
+        // Step 4: Sort all retrieved posts based on the time of posting
         postArr.sort((a, b) => {
             let compareA = new Date(a.dateTimePosted),
                 compareB = new Date(b.dateTimePosted);
@@ -295,33 +269,7 @@ function logout() {
         console.error("Error during logout:", error.message);
     }
 }
-async function searchUser() {
-    try {
-        const searchUsername = document.getElementById('searchUser').value;
 
-        if (!searchUsername) {
-            console.error("Please enter a username to search.");
-            return;
-        }
-
-        const searchUserURL = `http://localhost:3000/api/v1/users/${searchUsername}`;
-        const searchUserResponse = await fetch(searchUserURL, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${jwtToken}`,
-            },
-        });
-
-        if (searchUserResponse.ok) {
-            const userData = await searchUserResponse.json();
-            console.log("User Profile:", userData);
-        } else {
-            console.error("Error searching user:", searchUserResponse.status, searchUserResponse.statusText);
-        }
-    } catch (error) {
-        console.error("Error searching user:", error.message);
-    }
-}
     </script>
 </body>
 

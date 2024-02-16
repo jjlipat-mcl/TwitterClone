@@ -102,24 +102,6 @@ async function loadTweets() {
             const post = document.createElement("div");
             post.classList.add("post");
             post.innerHTML = `
-<<<<<<< HEAD
-                <div style="background: grey; padding: 60px; border-radius: 100px; margin-right: 20px; width: 20px; height: 20px;
-                    display: flex; flex-direction: row; margin-top: 10px;">
-                    <div id="user-profile">
-                        <!-- You can include user profile information here -->
-                        <p>${postContent.postedBy}</p>
-                    </div>
-                </div>
-                <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; font-size: 16px; 
-                    display:flex; flex-direction: column; margin-top: 10px; overflow: hidden; word-wrap: break-word;">
-                    <div class="post-content">
-                        <p style="color: dark-green; font-size: 14px; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px;">
-                            ${postContent.content}
-                        </p>
-                    </div>
-                    <p class="post-time">Posted on ${new Date(postContent.dateTimePosted).toLocaleString()}</p>
-                </div>
-=======
             <div style="margin-bottom: 20px;"></div>
             <div style="background: darkgrey; padding: 30px; border-radius: 10px; margin-right: 20px;  height: 30px;
             display: flex; flex-direction: row; margin-top: 20px; max-width: 100%; align-items: center;">
@@ -145,7 +127,6 @@ async function loadTweets() {
         </div>
         
                 
->>>>>>> 5afcb7cfea9c44adfd563311c1d243e51629b387
             `;
             container.appendChild(post);
         });
