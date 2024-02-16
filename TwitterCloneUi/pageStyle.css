@@ -443,3 +443,28 @@ main {
 }
 
 /* notification style End */
+/* Add these styles for the logout button */
+.logout-button {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logout-button button {
+    background-color: #1da1f2;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button button:hover {
+    background-color: #0d85c9;
+}
+
+/* Responsive design for logout button */
+@media only screen and (max-width: 600px) {
+    .logout-button button {
+        padding: 8px;
+    }
+}

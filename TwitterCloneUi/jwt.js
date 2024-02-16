@@ -67,22 +67,26 @@ async function loadTweets() {
 
         //Step3.get post of all followed users
         //join all retrieved post in one array
-        users.forEach(followers => {
-            const fPost = fetch(`${postURL}?username=${followers}`,{
-                method: "GET",
-                headers: {
-                    "Authorization": `Bearer ${jwtToken}`,
-                },
-            });
-            if (fPost.ok){
-                const fdata = fpost.json();
-                postArr.concat(fdata);
-                console.log("Post:",postArr);
-            } else {
-                console.error("Error loading tweets:", response.status, response.statusText);
+        users.forEach(async (follower) => {
+            try {
+                const fPost = await fetch(`${postURL}?username=${follower}`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${jwtToken}`,
+                    },
+                });
+        
+                if (fPost.ok) {
+                    const fdata = await fPost.json();  
+                    postArr = postArr.concat(fdata);
+                    console.log("Post:", postArr);
+                } else {
+                    console.error("Error loading tweets:", fPost.status, fPost.statusText);
+                }
+            } catch (error) {
+                console.error("Error loading tweets:", error.message);
             }
         });
-
         //Step4.sort all retrieved post based on time of posting
         //Source: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
         postArr.sort((a,b) => {
@@ -155,3 +159,15 @@ async function postTweet() {
     }
 }
 
+function logout() {
+    try {
+        // Remove token and username from localStorage
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+
+        // Redirect to the login page or perform any other desired action
+        window.location.href = 'login.html'; // Change 'login.html' to your actual login page
+    } catch (error) {
+        console.error("Error during logout:", error.message);
+    }
+}
