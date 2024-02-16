@@ -102,22 +102,30 @@ async function loadTweets() {
             const post = document.createElement("div");
             post.classList.add("post");
             post.innerHTML = `
-                <div style="background: grey; padding: 60px; border-radius: 100px; margin-right: 20px; width: 20px; height: 20px;
-                    display: flex; flex-direction: row; margin-top: 10px;">
-                    <div id="user-profile">
-                        <!-- You can include user profile information here -->
-                        <p>${postContent.postedBy}</p>
-                    </div>
-                </div>
-                <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; font-size: 16px; 
-                    display:flex; flex-direction: column; margin-top: 10px; overflow: hidden; word-wrap: break-word;">
-                    <div class="post-content">
-                        <p style="color: dark-green; font-size: 14px; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px;">
-                            ${postContent.content}
-                        </p>
-                    </div>
-                    <p class="post-time"> ${new Date(postContent.dateTimePosted).toLocaleString()}</p>
-                </div>
+            <div style="margin-bottom: 20px;"></div>
+            <div style="background: darkgrey; padding: 50px; border-radius: 10px; margin-right: 20px; width: 35px; height: 20px;
+            display: flex; flex-direction: row; margin-top: 20px; max-width: 100%;">
+            <div id="user-profile">
+                <!-- You can include user profile information here -->
+                <p>${postContent.postedBy}</p>
+            </div>
+        </div>
+        <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; max-width: 100%; font-size: 16px; 
+            display:flex; flex-direction: column; margin-top: 20px; overflow: hidden; word-wrap: break-word;">
+            <div class="post-content">
+                <p style="color: dark-green; font-size: 14px; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; 
+                padding-bottom: 10px; max-width: 100%;">
+                    ${postContent.content}
+                </p>
+            </div>
+            <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
+            <div style="background-color: none; display: flex; flex-direction: row; margin-top: 10px;">
+                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fas fa-heart"></i></Button>    
+                <Button onclick="Toggle3()" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></Button>
+            </div>
+        </div>
+        
+                
             `;
             container.appendChild(post);
         });
@@ -179,3 +187,93 @@ function logout() {
         console.error("Error during logout:", error.message);
     }
 }
+
+               // First Like Button   
+                  var btnvar1 = document.getElementById('btnh1');
+           
+                  function Toggle1(){
+                           if (btnvar1.style.color =="red") {
+                               btnvar1.style.color = "grey"
+                           }
+                           else{
+                               btnvar1.style.color = "red"
+                           }
+                  }
+           
+           
+           
+               //    Second Like Button   
+                  var btnvar2 = document.getElementById('btnh2');
+           
+                  function Toggle2(){
+                           if (btnvar2.style.color =="red") {
+                               btnvar2.style.color = "grey"
+                           }
+                           else{
+                               btnvar2.style.color = "red"
+                           }
+                  }
+           
+           
+           
+           
+               //    Third Like Button   
+                  var btnvar3 = document.getElementById('btnh3');
+           
+                  function Toggle3(){
+                           if (btnvar3.style.color =="red") {
+                               btnvar3.style.color = "grey"
+                           }
+                           else{
+                               btnvar3.style.color = "red"
+                           }
+                  }
+           
+           
+
+
+               
+//code for buttons in post
+
+               // First Like Button   
+                  var btnvar1 = document.getElementById('btnh1');
+           
+                  function Toggle1(){
+                           if (btnvar1.style.color =="red") {
+                               btnvar1.style.color = "grey"
+                           }
+                           else{
+                               btnvar1.style.color = "red"
+                           }
+                  }
+           
+           
+           
+               //    Second Like Button   
+                  var btnvar2 = document.getElementById('btnh2');
+           
+                  function Toggle2(){
+                           if (btnvar2.style.color =="red") {
+                               btnvar2.style.color = "grey"
+                           }
+                           else{
+                               btnvar2.style.color = "red"
+                           }
+                  }
+           
+           
+           
+           
+               //    Third Like Button   
+                  var btnvar3 = document.getElementById('btnh3');
+           
+                  function Toggle3(){
+                           if (btnvar3.style.color =="red") {
+                               btnvar3.style.color = "grey"
+                           }
+                           else{
+                               btnvar3.style.color = "red"
+                           }
+                  }
+           
+           

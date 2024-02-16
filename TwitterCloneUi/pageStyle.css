@@ -459,3 +459,25 @@ main {
 .logout-button button:hover {
     background-color: #ddd; /* Adjust the hover color as needed */
 }
+
+
+
+/* css for buttons */
+.btns{
+    position: absolute;
+    display: flex;
+
+}
+
+.btn{
+    background: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    outline: none;
+    color: grey;
+}
+
+.btn i:hover{
+    cursor: pointer;
+}
