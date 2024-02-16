@@ -148,19 +148,38 @@
 
         }
 
+        function logout() {
+    try {
+        // Remove token and username from localStorage
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+
+        // Redirect to the login page or perform any other desired action
+        window.location.href = 'index.html'; // Change 'login.html' to your actual login page
+    } catch (error) {
+        console.error("Error during logout:", error.message);
+    }
+}
+         src="jwt.js">
+
         async function start() {
             await helloWorld()
             await register()
             await login()
         }
 
+        
         start()
     </script>
 
 
 </head>
 <body>
-    
+    <div class="logo__container">
+        <div class="logo">
+            <h2>Type Null</h2>
+        </div>
+    </div>
 <!--Start Sidebar-->
 <div class="sidebar">
 
@@ -179,7 +198,7 @@
  
         <div class="sidebarOption"> 
             <span class="material-symbols-outlined">notifications_none</span>
-            <a href ="notification.html">
+            <a href ="notifications.html">
             <h2>Notifications</h2></a>
         </div>
 

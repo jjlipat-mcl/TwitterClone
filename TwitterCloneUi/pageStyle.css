@@ -20,6 +20,31 @@ body {
     padding: 0 10px;
 }
 
+.logo__container {
+    position: absolute;
+    display: flex;
+    top: 20px;
+    left: 20px;
+    border-left:rgb(5, 5, 239);
+    border-right:rgb(5, 239, 5);
+}
+
+.logo {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    border-bottom: 0.5px solid rgb(5, 239, 5);
+    box-shadow: #138a4a;
+    border-top: 0.5px solid rgb(5, 5, 239);
+}
+
+.logo h2 {
+    font-size: 20px;
+    font-weight:bold;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(242, 246, 242);
+}
+
 .sidebar {
     
     flex: 0.2;
