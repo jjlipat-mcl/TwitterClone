@@ -481,3 +481,36 @@ main {
 .btn i:hover{
     cursor: pointer;
 }
+
+.logoutButton {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 200ms ease-out, color 200ms ease-out;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    margin-right: 5px;
+    width: 240px;
+}
+
+.logoutButton i {
+    padding: 25px;
+    color: white;
+}
+
+.logoutButton h2 {
+    font-weight: 800;
+    font-size: 25px;
+    color: white;
+    margin-left: 5%;
+    width: 240px;
+}
+
+.logoutButton:hover {
+    background-color: #0d141c;
+    color: #1da1f2;
+}
+
+.logoutButton.active {
+    color: #1da1f2;
+}
