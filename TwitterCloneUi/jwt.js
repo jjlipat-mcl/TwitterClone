@@ -111,7 +111,7 @@ async function loadTweets() {
             </div>
         </div>
 
-        <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; max-width: 100%; height: 150px; font-size: 13px; 
+        <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 350px; max-width: 100%; height: 150px;  
             display:flex; flex-direction: column; margin-top: 20px; overflow: hidden; word-wrap: break-word;">
             <div class="post-content">
                 <p style="color: dark-green; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; 

@@ -123,16 +123,19 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
+    opacity: 75%;
 }
 
 .tweetbox__input {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 15px;
+    padding: 5px;
     background-color: #1a1a1a;
-    border-radius: 8px;
+    
     margin-bottom: 10px;
+    
 }
 
 .tweetbox__input img {
@@ -146,11 +149,12 @@ body {
     height: 60px; /* Increased height for a larger input box */
     padding: 10px;
     border: none;
-    border-radius: 8px;
     outline: none;
     background-color: #1a1a1a;
     color: white;
+    width: 400px;
     font-size: 14px; /* Smaller font size for better visibility */
+    border-bottom: 1px solid white;
 }
 
 .tweetBox__tweetButton {
@@ -462,8 +466,25 @@ main {
 }
 
 
+/*design thingies start*/
+.bigLineL {
+    padding-left: 20px;
+    padding-right: 40px;
+    border-left: 1px solid rgb(45, 45, 45);
 
-/* css for buttons */
+}
+
+.bigLineR {
+    padding-left: 80px;
+    padding-right: 80px;
+    border-right: 1px solid rgb(45, 45, 45);
+
+}
+  
+
+  /*design thingies end*/
+
+/* css for buttons start */
 .btns{
     position: absolute;
     display: flex;
@@ -523,11 +544,12 @@ main {
 }
 /*logoutbutton end*/
 
+/* css for buttons end */
 
 
 /*responsive design*/
 
-    @media only screen and (max-width: 615px) {
+    @media only screen and (max-width: 500px) {
         body {
             display: flex;
             flex-direction: column;
@@ -539,14 +561,15 @@ main {
 
         .sidebar {
         
-            padding-left: 5px;
+            padding-left: -15px;
             padding-right: 5px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             user-select: none;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            width: 40px;
+            align-items: center;
+            
             transition: width 1s ease;
         }
 
@@ -581,5 +604,40 @@ main {
         /* Hide the footer */
         footer {
             display: none;
+        }
+
+        .tweetBoxContainer {
+            width: 300px;
+            margin-left: 30px;
+        }
+        .tweetBox {
+            width: 100px;
+            margin-left: 20px;
+        }
+
+        .bigLineL {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .bigLineR {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    @media only screen and (max-width: 760px){
+        .tweetBoxContainer {
+            width: 500px;
+            margin-left: 30px;
+        }
+        .bigLineL {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .bigLineR {
+            padding-left: 15px;
+            padding-right: 15px;
         }
     }
