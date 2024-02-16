@@ -61,18 +61,29 @@ async function loadTweets() {
             const data = await response.json();
             console.log("Response Data:", data);
 
+            
+
             const container = document.getElementById("container");
             data.forEach(postContent => {
                 const post = document.createElement("div");
                 post.classList.add("post");
                 post.innerHTML = `
+
+                
+                    <div style="background: grey; padding: 60px; border-radius: 100px; margin-right: 20px; width: 20px; height: 20px;">
                     <div id="user-profile">
                         <!-- You can include user profile information here -->
+                        </div>
                     </div>
+                    <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; color: dark-green; font-size: 16px; display:flex; flex-direction: column\
+                    margin-top: 10px;">
                     <div class="post-content">
+                    <p style="color: dark-green; font-size: 16px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px;"
                         <p>${postContent.content}</p>
+                        </div>
                     </div>
-                `;
+             
+                    `;
                 container.appendChild(post);
             });
         } else {
