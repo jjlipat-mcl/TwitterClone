@@ -22,11 +22,12 @@
     <button id="button" class="menu-item following" onclick="window.location.href='following.html'">Following</button>
     <button id="button" class="menu-item trends" onclick="window.location.href='trends.html'">Trends</button>
     <button id="button" class="menu-item posting" onclick="window.location.href='post.html'">Say it!</button>
-    <button id="button" class="logout" onclick="logout()">Logout</button></a>\
+    <button id="button" class="logout" onclick="logout()">Logout</button>
     <script>
         async function logout() {
             localStorage.removeItem('token');
-            window.location.href = 'login.html';
+            localStorage.removeItem('username');
+            window.location.href = 'index.html';
         }
     </script>
 </div>

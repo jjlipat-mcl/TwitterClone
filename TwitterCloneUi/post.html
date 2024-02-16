@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
-    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="post.css">
 </head>
 <body>
     <div class="container">
@@ -17,7 +17,7 @@
         <button id="button" class="menu-item following" onclick="window.location.href='following.html'">Following</button>
         <button id="button" class="menu-item trends" onclick="window.location.href='trends.html'">Trends</button>
         <button id="button" class="menu-item posting" onclick="window.location.href='post.html'">Say it!</button>
-        <a href="login.html"><button id="button" class="logout">Logout</button></a>
+        <button id="button" class="logout" onclick="logout()">Logout</button>
         <div class="username" id="display-name">@username</div>
         <div class="bio">Bio</div>
         <div class="post-count">Your posts 2</div>
@@ -39,6 +39,12 @@
         var displayName = document.querySelectorAll("[id='display-name']");
         for (var i = 0; i < displayName.length; i++)
             displayName[i].innerHTML = "@" + username;
+
+        async function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            window.location.href = 'index.html';
+        }
     </script>
 </body>
 </html>
