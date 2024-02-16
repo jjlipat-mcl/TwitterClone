@@ -42,31 +42,30 @@
                         return;
                     }
 
-            const res = await fetch("http://localhost:3000/api/v1/auth/login", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ username, password })
-            });
-            //Token is acquired from POST request
-            const token = await res.text();
+                    const res = await fetch("/api/v1/auth/login", {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ username, password })
+                    });
 
-            if (res.ok) {
-                // Token is stored in localStorage to be retrieved in another script
-                localStorage.setItem('token',token);
-                // Redirect to try.html after successful login
-                window.location.href = "try.html";
-            } else {
-                // Display error message for incorrect credentials
-                const errorData = await res.json();
-                document.getElementById('authError').innerText = `Authentication failed: ${errorData.message}`;
-                document.getElementById('authError').style.display = 'block';
-            }
-        } catch (error) {
-            console.error("Error cause: ", error.message);
-        }
-    });
+                    const checker = await res.text();
+                    console.log(checker);
+
+                    if (res.ok) {
+                        // Redirect to try.html after successful login
+                        window.location.href = "try.html";
+                    } else {
+                        // Display error message for incorrect credentials
+                        loginError.innerText = "Incorrect username or password. Please try again.";
+                        loginError.style.display = 'block';
+                    }
+
+                } catch (error) {
+                    console.error("Error cause: ", error.message);
+                }
+            });
 
             signupForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
@@ -81,7 +80,7 @@
                 }
 
                 try {
-                    const res = await fetch("http://localhost:3000/api/v1/auth/register", {
+                    const sec = await fetch("/api/v1/auth/register", {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json'
@@ -165,7 +164,7 @@
             <ul class="nav">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Discover</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
             </ul>
         </nav>
