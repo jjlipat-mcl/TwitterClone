@@ -148,12 +148,27 @@
 
         }
 
+        function logout() {
+    try {
+        // Remove token and username from localStorage
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+
+        // Redirect to the login page or perform any other desired action
+        window.location.href = 'index.html'; // Change 'login.html' to your actual login page
+    } catch (error) {
+        console.error("Error during logout:", error.message);
+    }
+}
+         src="jwt.js">
+
         async function start() {
             await helloWorld()
             await register()
             await login()
         }
 
+        
         start()
     </script>
 
