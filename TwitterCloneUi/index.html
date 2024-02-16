@@ -6,15 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="log.css">
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const loginContainer = document.getElementById('loginContainer');
             const signupContainer = document.getElementById('signupContainer');
             const showSignupBtn = document.getElementById('showSignupBtn');
             const showLoginBtn = document.getElementById('showLoginBtn');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            const loginError = document.getElementById('loginError');
 
             showSignupBtn.addEventListener('click', function () {
                 loginContainer.style.display = 'none';
@@ -26,19 +24,23 @@
                 signupContainer.style.display = 'none';
             });
 
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const loginError = document.getElementById('loginError');
+
             loginForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
+                event.preventDefault();
 
-        try {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+                try {
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
 
-            // Validate input
-            if (!username || !password) {
-                loginError.innerText = "Username and password are required.";
-                loginError.style.display = 'block';
-                return;
-            }
+                    // Validate input
+                    if (!username || !password) {
+                        loginError.innerText = "Username and password are required.";
+                        loginError.style.display = 'block';
+                        return;
+                    }
 
             const res = await fetch("http://localhost:3000/api/v1/auth/login", {
                 method: "POST",
@@ -73,7 +75,7 @@
                 const newPass = document.getElementById("newPassword").value;
                 const retyped = document.getElementById("retypePassword").value;
 
-                if (newPass !== retyped) {
+                if (newPass != retyped) {
                     console.log("Retype the password correctly.");
                     return;
                 }
@@ -84,7 +86,7 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ username: newUser, password: newPass })
+                        body: JSON.stringify({ username: newUser, password: retyped })
                     });
 
                     // Rest of your code for handling the response
@@ -106,6 +108,52 @@
                 borderDivider.style.width = '60%';
             }, 100); // Adjust the delay as needed
         });
+
+        // Sirs Code
+
+        async function helloWorld() {
+            const res = await fetch("/api")
+            const text = await res.text()
+            console.log(text);
+        }
+
+        async function register() {
+            const res = await fetch("/api/v1/auth/register", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: "joblipat",
+                    password: "password"
+                })
+            })
+            return await res.text()
+        }
+
+        async function login() {
+            const res = await fetch("/api/v1/auth/login", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: "joblipat",
+                    password: "password"
+                })
+            })
+            const token = await res.text()
+            console.log(token);
+
+        }
+
+        async function start() {
+            await helloWorld()
+            await register()
+            await login()
+        }
+
+        start()
     </script>
 </head>
 
@@ -117,7 +165,7 @@
             <ul class="nav">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Discover</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
             </ul>
         </nav>
@@ -170,7 +218,6 @@
             <p>Already have an account? <button id="showLoginBtn" class="ghost show-login-animation">Login</button>
             </p>
         </div>
-    </div>
 </body>
 
 </html>
