@@ -52,13 +52,14 @@ body {
 
 .sidebarOption .material-symbols-outlined,
 .sidebarOption .fa-twitter {
-    padding: 10px;
+    padding: 25px;
     color: white;
+    
 }
 
 .sidebarOption h2 {
     font-weight: 800;
-    font-size: 18px;
+    font-size: 25px;
     color: white;
     margin-left: 10px;
 }
@@ -179,8 +180,6 @@ body {
     margin-left: 5%;
     width: 500px;
     height: 100px;
-    margin-bottom: 10%;
-    background-color:whitesmoke;
 }
 
 .post__body img {
@@ -343,6 +342,7 @@ header {
     height: 100%;
     margin: 20px auto;
     padding: 20px;
+    background-color: #2b2626;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
