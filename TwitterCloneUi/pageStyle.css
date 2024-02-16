@@ -177,6 +177,7 @@ body {
     background-color: #1a1a1a;
     padding: 4px;
     border-radius: 15px;
+    width: 700px;
 }
 
 .post__avatar img {
