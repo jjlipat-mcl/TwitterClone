@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - Twitter Clone</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        header {
+            background: none;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .border-divider {
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            width: 60%;
+            height: 1px;
+            background-color: #ddd;
+            transition: width 1s ease-in-out;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1em;
+            margin: 0 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .nav-link:hover {
+            color: #45a049;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .post {
+            display: flex;
+            margin: 20px;
+        }
+
+        #user-profile {
+            background: grey;
+            padding: 10px;
+            border-radius: 50%;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50px;
+        }
+
+        #post-area {
+            background-color: darkgrey;
+            padding: 20px;
+            border-radius: 20px;
+            width: 400px;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .follow-button {
+            background-color: #45a049;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .follow-button:hover {
+            background-color: #3b8041;
+        }
+        /* Add this to your existing styles */
+#searchForm {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#searchUser {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+#searchForm button {
+    padding: 10px;
+    background-color: #45a049;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#searchForm button:hover {
+    background-color: #3b8041;
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li class="nav-link"><a href="#">Home</a></li>
+                <li class="nav-link"><a href="#">Explore</a></li>
+                <li class="nav-link"><a href="#">Notifications</a></li>
+                <li class="nav-link"><a href="#">Profile</a></li>
+                <li class="nav-link"><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <input type="text" id="searchUser" placeholder="Search user">
+<button onclick="exploreUser()">Search</button>
+
+    <div id="container">
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    loadTweets();
+
+    const tweetForm = document.getElementById('tweetForm');
+
+    tweetForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        postTweet();
+    });
+});
+
+async function loadTweets() {
+    try {
+        // 1. Get followed users
+        // 2. Get user posts
+        // 3. Get posts of each followed user
+        // 4. Concatenate all posts into an array
+        // 5. Sort all posts based on the time of posting
+        // 6. Display to Frontend
+
+        const jwtToken = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
+        var postArr = new Array();
+        var users = new Array();
+
+        const usernameURL = `http://localhost:3000/api/v1/users/${username}/following`;
+        const postURL = "http://localhost:3000/api/v1/posts";
+
+        const get_follower = await fetch(usernameURL, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${jwtToken}`,
+            },
+        });
+
+        // Step 1: Get followed users
+        if (get_follower.ok) {
+            users = await get_follower.json();
+            console.log("Users:", users);
+        } else {
+            console.error("Something went wrong", get_follower.status, get_follower.statusText);
+        }
+
+        // Step 2: Get own user's posts
+        const response = await fetch(postURL, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${jwtToken}`,
+            },
+        });
+
+        console.log("Response Status:", response.status);
+
+        if (response.ok) {
+            // Parse and process the response if needed
+            const data = await response.json();
+            console.log("Response Data:", data);
+
+            postArr = data;
+        } else {
+            console.error("Error loading tweets:", response.status, response.statusText);
+        }
+
+        // Step 3: Get posts of all followed users
+        // Join all retrieved posts in one array
+        for (const follower of users) {
+            try {
+                const fPost = await fetch(`${postURL}?username=${follower}`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${jwtToken}`,
+                    },
+                });
+
+                if (fPost.ok) {
+                    const fdata = await fPost.json();
+                    postArr = postArr.concat(fdata);
+                    console.log("Post:", postArr);
+                } else {
+                    console.error("Error loading tweets:", fPost.status, fPost.statusText);
+                }
+            } catch (error) {
+                console.error("Error loading tweets:", error.message);
+            }
+        }
+
+        
+        postArr.sort((a, b) => {
+            let compareA = new Date(a.dateTimePosted),
+                compareB = new Date(b.dateTimePosted);
+            return compareB - compareA;
+        });
+        console.log("All Posts:", postArr);
+
+        const container = document.getElementById("container");
+        container.innerHTML = "";
+
+        postArr.forEach(postContent => {
+            const post = document.createElement("div");
+            post.classList.add("post");
+            post.innerHTML = `
+            <div style="margin-bottom: 20px;"></div>
+            <div style="background: darkgrey; padding: 30px; border-radius: 10px; margin-right: 20px;  height: 30px;
+            display: flex; flex-direction: row; margin-top: 20px; max-width: 100%; align-items: center;">
+            <div id="user-profile">
+                <!-- You can include user profile information here -->
+                <p>${postContent.postedBy}</p>
+            </div>
+        </div>
+
+        <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; max-width: 100%; height: 150px; font-size: 13px; 
+            display:flex; flex-direction: column; margin-top: 20px; overflow: hidden; word-wrap: break-word;">
+            <div class="post-content">
+                <p style="color: dark-green; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; 
+                padding-bottom: 10px; max-width: 100%;">
+                    ${postContent.content}
+                </p>
+            </div>
+            <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
+            <div style="background-color: none; display: flex; flex-direction: row; margin-top: 10px;">
+                <button onclick="likePost('${postContent.id}')" id="btnh1" class="btn"><i class="fas fa-heart"></i></button>    
+                <button onclick="gratipayPost('${postContent.id}')" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></button>
+            </div>
+        </div>
+                
+            `;
+            container.appendChild(post);
+        });
+    } catch (error) {
+        console.error("Error loading tweets:", error.message);
+    }
+}
+
+
+
+function logout() {
+    try {
+        
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+
+     
+        window.location.href = 'index.html'; 
+    } catch (error) {
+        console.error("Error during logout:", error.message);
+    }
+}
+async function searchUser() {
+    try {
+        const searchUsername = document.getElementById('searchUser').value;
+
+        if (!searchUsername) {
+            console.error("Please enter a username to search.");
+            return;
+        }
+
+        const searchUserURL = `http://localhost:3000/api/v1/users/${searchUsername}`;
+        const searchUserResponse = await fetch(searchUserURL, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${jwtToken}`,
+            },
+        });
+
+        if (searchUserResponse.ok) {
+            const userData = await searchUserResponse.json();
+            console.log("User Profile:", userData);
+        } else {
+            console.error("Error searching user:", searchUserResponse.status, searchUserResponse.statusText);
+        }
+    } catch (error) {
+        console.error("Error searching user:", error.message);
+    }
+}
+    </script>
+</body>
+
+</html>
