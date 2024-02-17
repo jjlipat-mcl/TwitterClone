@@ -12,37 +12,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function loadTweets() {
     try {
-        // 1. Get followed users
-        // 2. Get user posts
-        // 3. Get posts of each followed user
-        // 4. Concatenate all posts into an array
-        // 5. Sort all posts based on the time of posting
-        // 6. Display to Frontend
+        //api/v1/posts doesn't just retrieve the posts of the current user.
+        //it also retrieves the post of followed users...???
+        //new posts algorithm
+        //1. Use /api/v1/posts to get all posts from the current user and the followed users
+        //2. Sort the post by posted time
+        //3. Display to frontend
 
         const jwtToken = localStorage.getItem('token');
         const username = localStorage.getItem('username');
+
         var postArr = new Array();
-        var users = new Array();
 
         const usernameURL = `http://localhost:3000/api/v1/users/${username}/following`;
         const postURL = "http://localhost:3000/api/v1/posts";
 
-        const get_follower = await fetch(usernameURL, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${jwtToken}`,
-            },
-        });
-
-        // Step 1: Get followed users
-        if (get_follower.ok) {
-            users = await get_follower.json();
-            console.log("Users:", users);
-        } else {
-            console.error("Something went wrong", get_follower.status, get_follower.statusText);
-        }
-
-        // Step 2: Get own user's posts
+        // Step 1: Use /api/v1/posts to get all posts from the current user and the followed users
         const response = await fetch(postURL, {
             method: "GET",
             headers: {
@@ -55,46 +40,25 @@ async function loadTweets() {
         if (response.ok) {
             // Parse and process the response if needed
             const data = await response.json();
-            console.log("Response Data:", data);
 
-            postArr = data;
+            for (var post of data){
+                postArr.push(post);
+            }
+            console.log("Step1:",data);
         } else {
             console.error("Error loading tweets:", response.status, response.statusText);
         }
 
-        // Step 3: Get posts of all followed users
-        // Join all retrieved posts in one array
-        for (const follower of users) {
-            try {
-                const fPost = await fetch(`${postURL}?username=${follower}`, {
-                    method: "GET",
-                    headers: {
-                        "Authorization": `Bearer ${jwtToken}`,
-                    },
-                });
-
-                if (fPost.ok) {
-                    const fdata = await fPost.json();
-                    postArr = postArr.concat(fdata);
-                    console.log("Post:", postArr);
-                } else {
-                    console.error("Error loading tweets:", fPost.status, fPost.statusText);
-                }
-            } catch (error) {
-                console.error("Error loading tweets:", error.message);
-            }
-        }
-
-        // Step 4: Sort all retrieved posts based on the time of posting
+        // Step 2: Sort the post by posted time
         // Source: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
         postArr.sort((a, b) => {
             let compareA = new Date(a.dateTimePosted),
                 compareB = new Date(b.dateTimePosted);
             return compareB - compareA;
         });
-        console.log("All Posts:", postArr);
+        console.log("Sorted Posts:", postArr);
 
-       
+        //Step 3: Display to frontend
         const container = document.getElementById("container");
         container.innerHTML = ""; 
 
@@ -124,10 +88,7 @@ async function loadTweets() {
                 <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fas fa-heart"></i></Button>    
                 <Button onclick="Toggle3()" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></Button>
             </div>
-        </div>
-        
-                
-            `;
+        </div>`;
             container.appendChild(post);
         });
     } catch (error) {
