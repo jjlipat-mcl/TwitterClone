@@ -18,7 +18,7 @@ function navigateToExplore() {
     window.location.href = "ExplorePage/explore.html";
 }
 function logOut() {
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
 
 function heartClick() {
@@ -47,7 +47,6 @@ window.onload = async () => {
     const posts = await getPosts()
     renderPosts(posts)
     displayExistingUsers();
-    renderFollowingPosts();
 }
 
 async function getPosts() {
