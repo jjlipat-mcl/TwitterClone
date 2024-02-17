@@ -80,9 +80,9 @@ body {
 
 .post-container {
     width: 635px;
-    height: 193px;
+    height: 635px;
     left: 616px;
-    top: 385px;
+    top: 212px;
     position: absolute;
     background: #DEF6F2;
     border-radius: 10px;
@@ -293,4 +293,16 @@ body {
 .mingle{
     width: 202px;
     height: 202px;
+}
+
+.timeline-title {
+    height: 21px;
+    left: 596px;
+    top: 150px;
+    position: absolute;
+    color: black;
+    font-size: 30px;
+    font-family: Helvetica;
+    font-weight: 600;
+    word-wrap: break-word;
 }

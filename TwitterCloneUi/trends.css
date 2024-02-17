@@ -80,9 +80,9 @@ body {
 
 .post-container {
     width: 635px;
-    height: 193px;
+    height: 635px;
     left: 616px;
-    top: 385px;
+    top: 212px;
     position: absolute;
     background: #DEF6F2;
     border-radius: 10px;
@@ -112,8 +112,8 @@ body {
 .post-content {
     width: 258px;
     height: 21px;
-    left: 698px;
-    top: 463px;
+    left: 648px;
+    top: 245px;
     position: absolute;
     color: black;
     font-size: 20px;
@@ -293,4 +293,17 @@ body {
 .mingle{
     width: 202px;
     height: 202px;
+}
+
+.timeline-title {
+    width: 258px;
+    height: 21px;
+    left: 596px;
+    top: 150px;
+    position: absolute;
+    color: black;
+    font-size: 30px;
+    font-family: Helvetica;
+    font-weight: 600;
+    word-wrap: break-word;
 }

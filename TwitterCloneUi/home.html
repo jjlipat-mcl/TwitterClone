@@ -23,6 +23,10 @@
     <button id="button" class="menu-item trends" onclick="window.location.href='trends.html'">Trends</button>
     <button id="button" class="menu-item posting" onclick="window.location.href='post.html'">Say it!</button>
     <button id="button" class="logout" onclick="logout()">Logout</button>
+    <div class="post-container"></div>
+        <div class="post-username" id="display-name">@username</div>
+        <div class="post-content" id="post-content">Some tweets.......</div>
+        <div class="post-likes" id="likes">2 likes</div>
     <script>
         async function logout() {
             localStorage.removeItem('token');
