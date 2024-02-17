@@ -14,11 +14,11 @@
 }
   .news_container {
     width: 100%;
-    margin-left: 190px;
+
   }
   
   .blog-section {
-    width: 85%;
+    width: 5%;
     margin: 20px auto;
     
   }
@@ -41,6 +41,7 @@
     display: grid;
     grid-gap: 50px;
     margin: 25px auto;
+    margin-right: 50px;
   }
   
   .cards .card {
@@ -198,6 +199,7 @@ body {
   position: fixed; 
   height: 100vh; 
   overflow-y: auto; 
+
 }
 
 .fa-twitter {

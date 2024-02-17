@@ -11,11 +11,11 @@ function toggleSidebar() {
 }
 
 function navigateToProfile() {
-    window.location.href = "ProfilePage/index.html";
+    window.location.href = "profiles.html";
 }
 
 function navigateToExplore() {
-    window.location.href = "../ExplorePage/explore.html";
+    window.location.href = "explore.html";
 }
 
 function logOut() {

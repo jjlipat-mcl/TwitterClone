@@ -11,11 +11,11 @@ function toggleSidebar() {
 }
 
 function navigateToProfile() {
-    window.location.href = "ProfilePage/index.html";
+    window.location.href = "profiles.html";
 }
 
 function navigateToExplore() {
-    window.location.href = "ExplorePage/explore.html";
+    window.location.href = "explore.html";
 }
 function logOut() {
     window.location.href = "index.html";
@@ -163,6 +163,7 @@ async function renderPosts() {
 
             const postBody = document.createElement('div');
             postBody.classList.add('post__body');
+            postBody.marginBottom = '10px';
 
             const postHeader = document.createElement('div');
             postHeader.classList.add('post__header');
@@ -325,11 +326,6 @@ async function displayExistingUsers() {
                 
             };
             profile.appendChild(followButton);
-
-            
-
-            
-
             profileContainer.appendChild(profile);
             usersContainer.appendChild(profileContainer);
         });
@@ -338,43 +334,137 @@ async function displayExistingUsers() {
     }
 }
 
-async function followUser(toFollow) {
+async function displayExistingUsers() {
+    console.log("displayExistingUsers called");
+    const usersContainer = document.querySelector('.follow__container');
+    usersContainer.innerHTML = ""; // Clear previous content
+
+    // Retrieve existing users from local storage
+    const existingUsers = JSON.parse(localStorage.getItem('existingUsers')) || {};
+
+    // Retrieve current user's information
+    const currentUser = localStorage.getItem("currentUser");
+
+    try {
+        let count = 0; 
+        Object.entries(existingUsers).forEach(([username, user]) => {
+            // Skip rendering for the current user
+            if (username === currentUser) {
+                return;
+            }
+
+            if (count >= 3) {
+                // If more than 3 users, make container scrollable
+                usersContainer.style.overflowY = 'auto';
+            }
+
+            const profileContainer = document.createElement('div');
+            profileContainer.classList.add('profile_container');
+
+            const profile = document.createElement('div');
+            profile.classList.add('profile');
+
+            const userImage = document.createElement('img');
+            userImage.src = 'ProfilePage/img/user.jpg'; // Update with the actual image source
+            userImage.classList.add('user-follow-pfp');
+            profile.appendChild(userImage);
+
+            const followUserDiv = document.createElement('div');
+            followUserDiv.classList.add('followuser');
+
+            const nameParagraph = document.createElement('p');
+            nameParagraph.textContent = user.name; // Assuming 'name' is the property name
+            followUserDiv.appendChild(nameParagraph);
+
+            const usernameParagraph = document.createElement('p');
+            usernameParagraph.textContent = `@${username}`;
+            followUserDiv.appendChild(usernameParagraph);
+
+            profile.appendChild(followUserDiv);
+
+            // Create a unique follow button for each user
+            const followButton = document.createElement('button');
+            followButton.classList.add('followButton');
+            followButton.textContent = 'Follow';
+            followButton.onclick = async () => {
+                if (followButton.textContent === 'Follow') {
+                    await followUser(username, followButton);
+                } else {
+                    await unfollowUser(username, followButton);
+                }
+            };
+            profile.appendChild(followButton);
+
+            profileContainer.appendChild(profile);
+            usersContainer.appendChild(profileContainer);
+
+            count++; // Increment the counter
+        });
+    } catch (error) {
+        console.error('Error parsing existing users from local storage:', error);
+    }
+}
+
+async function followUser(toFollow, followButton) {
     try {
         const currentToken = localStorage.getItem("currentToken");
         const currentUser = localStorage.getItem("currentUser");
 
-        if (following.includes(toFollow)) {
-            console.log("Already Following or cannot be followed");
-            alert("You are already following this person");
-        } else {
-            const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toFollow}`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${currentToken}`
-                }
-            });
-
-            if (res.ok) {
-                console.log(`Now following: ${toFollow}`);
-                alert(`You are now following: ${toFollow}`);
-                following.push(toFollow); // Add the followed user to the 'following' array
-                followingCount++;
-
-                // Save followed users in local storage
-                localStorage.setItem('followingUsers', JSON.stringify(following));
-
-                // Call renderPosts() to render posts after following the user
-                await renderPosts();
-
-                
-            } else {
-                const errorMessage = await res.text();
-                console.error(`Error following user: ${errorMessage}`);
+        const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toFollow}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentToken}`
             }
+        });
+
+        if (res.ok) {
+            console.log(`Now following: ${toFollow}`);
+            alert(`You are now following: ${toFollow}`);
+            followButton.textContent = 'Unfollow';
+
+            // Update following array
+            following.push(toFollow); 
+            console.log('Following:', following); // Log the updated following array
+            followingCount++; // Increment the following count
+            console.log('Following Count:', followingCount); // Log the updated following count
+
+            // Call renderPosts to refresh the posts after following the user
+            await renderPosts();
+        } else {
+            const errorMessage = await res.text();
+            console.error(`Error following user: ${errorMessage}`);
         }
     } catch (error) {
         console.error('Error following user:', error);
+    }
+}
+
+async function unfollowUser(toUnfollow, followButton) {
+    try {
+        const currentToken = localStorage.getItem("currentToken");
+        const currentUser = localStorage.getItem("currentUser");
+
+        const res = await fetch(`http://localhost:3000/api/v1/users/${currentUser}/following/${toUnfollow}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${currentToken}`
+            }
+        });
+
+        if (res.ok) {
+            console.log(`Unfollowed: ${toUnfollow}`);
+            alert(`You have unfollowed: ${toUnfollow}`);
+            followButton.textContent = 'Follow';
+        } else {
+            const errorMessage = await res.text();
+            console.error(`Error unfollowing user: ${errorMessage}`);
+        }
+
+        await renderPosts();
+    } catch (error) {
+        console.error('Error unfollowing user:', error);
     }
 }
 

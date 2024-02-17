@@ -11,7 +11,7 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="profiles.css" />
     <script src="post_profile.js"></script>
   </head>
   <body>
@@ -19,7 +19,7 @@
 <!--------------------------button for sidebar--------------------------->
     <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
     <div class="sidebar">
-      <img class="chikast" src="img/twtlogo2.png">
+      <img class="chikast" src="./assets/twtlogo2.png">
       <div class="sidebarOption" onclick="navigateToFeed()">
         <span class="material-symbols-outlined">home</span>
         <h2>Home</h2>
@@ -42,22 +42,23 @@
 <!----------------------------------sidebar ends--------------------------------->
 <!----------------------------profile and feed starts---------------------------->
   <div class="header__wrapper">
-    <header></header>
+    <header>
+    </header>
     <div class="cols__container">
       <div class="left__col">
         <div class="img__container">
-          <img src="img/user.jpg"/>
+          <img src="ProfilePage/img/user.jpg"/>
           <span></span>
         </div>
         <h2 id="name">Username</h2>
         <p id="username">@Username911</p>
 
         <ul class="about">
-          <li><span>4,073</span>Followers</li>
-          <li><span>322</span>Following</li>
+          <li><span id="followersCount">9999</span>Followers</li>
+          <li><span id="followingCount">1</span>Following</li>
           <li><span>0</span>Likes</li>
         </ul>
-
+        
         <div class="content">
           <h3>Profile</h3>
           <p>
