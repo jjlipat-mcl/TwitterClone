@@ -4,7 +4,7 @@ export async function postCreateUser(formObject) {
     let username = formObject.username;
     let password = formObject.password;
   
-    const res = await fetch("http://api/v1/auth/register", {
+    const res = await fetch("/api/v1/auth/register", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ export async function postCreateUser(formObject) {
     let username = formObject.username;
     let password = formObject.password;
   
-    const res = await fetch('http://api/v1/auth/login', {
+    const res = await fetch('/api/v1/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ export let getCurrentUser = {
     let post = document.querySelector(writePostSelector).value;
     let token = localStorage.getItem("token");
 
-    const res = await fetch('http://api/v1/posts', {
+    const res = await fetch('/api/v1/posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ export async function getPosts() {
   let token = localStorage.getItem("token");
 
   try {
-    const res = await fetch('http://api/v1/posts', {
+    const res = await fetch('/api/v1/posts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -271,7 +271,7 @@ export async function likePostAPI(postId, isChecked) {
   let token = localStorage.getItem("token");
   const likeAction = isChecked ? "like" : "unlike";
   
-  const res = await fetch(`http://api/v1/posts/${postId}`, {
+  const res = await fetch(`/api/v1/posts/${postId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -292,7 +292,7 @@ export async function likePostAPI(postId, isChecked) {
 
   export async function fetchUserList() {
     let token = localStorage.getItem("token");
-    const res = await fetch("http://api/v1/users", {
+    const res = await fetch("/api/v1/users", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -402,7 +402,7 @@ export async function likePostAPI(postId, isChecked) {
   
   async function followUser(user,following) { 
     let token = localStorage.getItem("token");
-    const res = await fetch("http://api/v1/users/"+user+"/following/"+following, {
+    const res = await fetch("/api/v1/users/"+user+"/following/"+following, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -414,7 +414,7 @@ export async function likePostAPI(postId, isChecked) {
   
   async function unfollowUser(user,following) { 
     let token = localStorage.getItem("token");
-    const res = await fetch("http://api/v1/users/"+user+"/following/"+following, {
+    const res = await fetch("/api/v1/users/"+user+"/following/"+following, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -426,7 +426,7 @@ export async function likePostAPI(postId, isChecked) {
   
   async function followCheck(user) {
     let token = localStorage.getItem("token");
-    const res = await fetch("http://api/v1/users/"+user+"/following/", {
+    const res = await fetch("/api/v1/users/"+user+"/following/", {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
