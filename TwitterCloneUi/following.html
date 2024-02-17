@@ -21,7 +21,7 @@
         <button id="button" class="logout" onclick="logout()">Logout</button>
         <div class="post-container">
                 <div id="post-content">
-                    <!-- Add your dynamic content here -->
+                    
                 </div>
 
         </div>
@@ -30,12 +30,13 @@
     <script>
         const jwtToken = localStorage.getItem('token');
         const username = localStorage.getItem('username');
+        const fetchFollow = `http://localhost:3000/api/v1/users/${username}/following/`;
         var displayName = document.querySelectorAll("[id='display-name']");
         for (var i = 0; i < displayName.length; i++)
             displayName[i].innerHTML = "@" + username +"'s Follows";
 
         window.onload = async function following() {
-        fetch('/api/v1/users/$username/following', {
+        fetch(fetchFollow, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
