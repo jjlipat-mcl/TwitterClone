@@ -59,6 +59,10 @@ async function loadTweets() {
                     break;
                 }
             }
+            var unfollow_btn = "";
+            if(username != postContent.postedBy.toString()){
+                unfollow_btn = `<button onclick="unfollowUser('${postContent.postedBy}')" class="btn"><i class="fab fa-gratipay"></i></button>`
+            }
         
             post.innerHTML = `
     <div class="user-profile-container">
@@ -75,7 +79,7 @@ async function loadTweets() {
             <i class="fas fa-heart"></i>
             <span class="like-count">${postContent.likes.length}</span>
         </button>
-        <button onclick="Toggle3()" class="btn"><i class="fab fa-gratipay"></i></button>
+        ${unfollow_btn}
     </div>
 `;
 
@@ -146,6 +150,24 @@ async function likePost(id,likeS){
     }
     else{
         console.error("Unable to Patch",error.status);
+    }
+}
+
+async function unfollowUser(followedUser) {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    const unfollowURL = `/api/v1/users/${username}/following/${followedUser}`;
+
+    const delete_follow = await fetch(unfollowURL,{
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+        }
+    });
+    if (delete_follow.ok){
+        loadTweets();
+    }else{
+        console.error("Unable to Delete",error.status);
     }
 }
 

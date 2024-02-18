@@ -141,7 +141,8 @@
     async function loadUserPosts() {
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('username');
-        let userPosts;
+        var userPosts;
+        var myPosts = new Array();
 
         const userPostURL = `/api/v1/posts?user=${username}`;
 
@@ -154,9 +155,20 @@
 
         if (get_userPost.ok) {
             userPosts = await get_userPost.json();
+            for (let post of userPosts){
+                    if(post.postedBy === username){
+                        myPosts.push(post);
+                    }
+                }
         } else {
             console.error("Loading Post Failed", get_userPost.status);
         }
+
+        userPosts.sort((a, b) => {
+            let compareA = new Date(a.dateTimePosted),
+                compareB = new Date(b.dateTimePosted);
+            return compareB - compareA;
+        });
 
         // Display user's posts
         const container = document.getElementById("postProfileContainer");
@@ -166,7 +178,6 @@
             const post = document.createElement("div");
             post.classList.add("post");
 
-            // Check if the post is liked by the user
             let like_status = "like";
             for (let x of postContent.likes) {
                 if (username === x.toString()) {
@@ -188,7 +199,6 @@
         
                 <div class="button-container">
                     <button onclick="likePost('${postContent.postId}','${like_status}')" class="btn"><i class="fas fa-heart"></i></button>
-                    <button onclick="Toggle3()" class="btn"><i class="fab fa-gratipay"></i></button>
                 </div>
             `;
 
@@ -196,8 +206,30 @@
         });
     }
 
-    async function likePost(id, likeS) {
-        // This function remains unchanged
+    async function likePost(id,likeS){
+        const username = localStorage.getItem('username');
+        const token = localStorage.getItem('token');
+        let body = "like";
+
+        const likeURL = `/api/v1/posts/${id}`;
+
+        if(likeS == "liked"){
+            body = "unlike";
+        }
+        const patch_like = await fetch(likeURL,{
+            method: "PATCH",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({action: body})
+        })
+        if(patch_like.ok){
+            loadTweets();
+        }
+        else{
+            console.error("Unable to Patch",error.status);
+        }
     }
     </script>
 </body>
