@@ -99,7 +99,8 @@ async function loadTweets() {
 async function postTweet() {
     try {
         const tweetContent = document.getElementById('tweetContent').value;
-
+        const tweetImageInput = document.getElementById('tweetImage');
+        
         // Validate tweet content
         if (!tweetContent) {
             console.error("Tweet content is required.");
@@ -109,23 +110,29 @@ async function postTweet() {
         // Token is retrieved from localStorage for the POST request
         const jwtToken = localStorage.getItem('token');
 
+        const formData = new FormData();
+        formData.append('content', tweetContent);
+
+        // Check if an image is selected
+        if (tweetImageInput.files.length > 0) {
+            formData.append('image', tweetImageInput.files[0]);
+        }
+
         const response = await fetch("http://localhost:3000/api/v1/posts", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${jwtToken}`,
-                "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                content: tweetContent,
-            }),
+            body: formData,
         });
 
         if (response.ok) {
             // Handle successful tweet post
             console.log('Tweet posted successfully');
 
-            // Clear tweet content after posting
+            // Clear tweet content and image input after posting
             document.getElementById('tweetContent').value = "";
+            tweetImageInput.value = "";
 
             // Reload tweets after posting
             loadTweets();
@@ -147,16 +154,5 @@ function logout() {
         window.location.href = 'index.html'; // Change 'login.html' to your actual login page
     } catch (error) {
         console.error("Error during logout:", error.message);
-    }
-}
-async function loadUserProfile() {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('username');
-    console.log("Current User:", username);
-
-    // Display the username in the profile header
-    const profileHeaderText = document.querySelector(".profile__headerUsername");
-    if (profileHeaderText) {
-        profileHeaderText.textContent = username;
     }
 }
