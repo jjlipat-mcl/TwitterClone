@@ -60,23 +60,6 @@ async function loadTweets() {
             post.classList.add("post");
         
             post.innerHTML = `
-<<<<<<< HEAD
-                <div class="user-profile-container">
-                    <p class="user-profile">${postContent.postedBy}</p>
-                </div>
-        
-                <div class="post-content-container">
-                    <p class="post-content">${postContent.content}</p>
-                    <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
-                </div>
-        
-                <div class="button-container">
-                    <button onclick="likePost('${postContent.id}')" class="btn"><i class="fas fa-heart"></i></button>
-                    <button onclick="Toggle3()" class="btn"><i class="fab fa-gratipay"></i></button>
-                </div>
-            `;
-        
-=======
             <div style="margin-bottom: 20px;"></div>
             <div style="background: darkgrey; padding: 30px; border-radius: 10px; margin-right: 20px;  height: 30px;
             display: flex; flex-direction: row; margin-top: 20px; max-width: 100%; align-items: center;">
@@ -99,7 +82,6 @@ async function loadTweets() {
                 <button onclick="Toggle3()" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></button>
             </div>
         </div>`;
->>>>>>> 5c1453c20294c9abaf88fba3274638f543c5e60b
             container.appendChild(post);
         });
         
