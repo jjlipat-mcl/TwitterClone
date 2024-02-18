@@ -124,12 +124,14 @@
     </script>
 </head>
 
-<body>
-    <div class="bgAnimation" id="bgAnimation">
-        <div class="backgroundAmim">
-            
-        </div>
+
+<div class="bgAnimation" id="bgAnimation">
+    <div class="backgroundAmim">
+        
     </div>
+</div>
+<body>
+    
     <!-- Navbar-->
     <header>
         <div class="border-divider"></div>
@@ -144,7 +146,10 @@
     </header>
 
     <!--Community Section-->
+
+    
     <div class="container" id="container">
+        <div class="left-section__container">    
         <div class="left-section">
             <h2>JOIN THE COMMUNITY</h2>
             <p>We can't reply to all emails but all good vibes are appreciated! You can email us at examplegmail@gmail.com</p>
@@ -155,7 +160,8 @@
                 <a href="https://instagram.com" target="_blank">INSTAGRAM</a>
             </div>
         </div>
-
+    </div>
+    
         <!--Form Section-->
         <div class="form-container" id="loginContainer">
             <form id="loginForm" action="/login" method="post">
@@ -197,7 +203,7 @@
 </body>
 
 <script>
-    const bgAnimation = document.getElementById
+const bgAnimation = document.getElementById
 ('bgAnimation');
 
 const numberOfColorBoxes = 400;
@@ -208,5 +214,7 @@ for (let i = 0; i <numberOfColorBoxes; i++) {
     colorBox.classList.add('colorBox');
     bgAnimation.append(colorBox)
 }
+
+
 </script>
 </html>

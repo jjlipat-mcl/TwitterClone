@@ -1,6 +1,7 @@
 body {
     background-color: #1a1a1a;
     color: #fff;
+    overflow:hidden;
 }
 
 header {
@@ -110,6 +111,15 @@ button:hover {
     padding: 0 150px;
     flex-direction: column;
     z-index: 500;
+    
+}
+.left-section__container{
+  
+    opacity: 1;
+    z-index:500;
+    border-radius: 20px;
+ 
+    
 }
 
 .left-section {
@@ -118,6 +128,7 @@ button:hover {
     padding-right: 20px;
     padding-left: 20px;
     z-index: 500;
+    
 }
 
 .left-section h2 {
@@ -297,6 +308,7 @@ button:hover {
     background: #1d1d1d;
     filter: saturate(2);
     overflow: hidden;
+    opacity: 5;
 }
 
 
@@ -307,11 +319,13 @@ button:hover {
     position: relative;
     margin: 2px;
     background: #1d1d1d;
+    opacity: 5;
 }
 
 .colorBox:hover {
-    background: rgb(0, 255, 0);
+    background: rgb(70, 147, 70);
     transition-duration: 0s;
+    opacity: 10;
 }
 
 .backgroundAmim {
@@ -320,9 +334,12 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100px;
-    background: rgb(0, 255, 0);
-    filter: blur(60px);
+    background: rgb(31, 69, 31);
+    filter: blur(40px);
     animation: animBack 6s linear infinite;
+    opacity: 5;
+
+    
 }
 @keyframes animBack {
     0%{
@@ -339,7 +356,7 @@ button:hover {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat();
 
