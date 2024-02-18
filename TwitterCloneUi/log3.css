@@ -1,106 +1,123 @@
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', sans-serif; 
+}
 
-        body {
-            background-color: #1a1a1a;
-            color: #fff;
-        }
+header {
+    background: none;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
 
-        header {
-            background: none;
-            padding: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
+.border-divider {
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+    background-color: #ddd;
+    transition: width 1s ease-in-out;
+}
 
-        .border-divider {
-            position: absolute;
-            bottom: 0;
-            left: 20%;
-            width: 60%;
-            height: 1px;
-            background-color: #ddd;
-            transition: width 1s ease-in-out;
-        }
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1em;
+    margin: 0 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
 
-        .nav-link {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1em;
-            margin: 0 15px;
-            padding: 10px;
-            border-radius: 5px;
-        }
+.nav-link:hover {
+    color: #45a049;
+}
 
-        .nav-link:hover {
-            color: #45a049;
-        }
+.container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh; /* 100% of viewport height */
+    
+}
+.container-center  a {
+   
+}
 
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 20px;
-        }
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px, 1fr)); /* 3 columns */
+    gap: 5px;
+    justify-content: center;
+    margin: 20px;
+    margin-left: 150px;
+}
 
-        @keyframes slideIn {
-            0% {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        .member {
-            width: 200px;
-            margin: 20px;
-            padding: 15px;
-            border-radius: 10px;
-            background-color: #1a1a1a;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            animation: slideIn 0.5s ease-out forwards; /* Add animation here */
-        }
-        
-        .member:hover {
-            background-color: #45a049;
-        }
-
-        .member img {
-            width: 100%;
-            border-radius: 50%;
-        }
-
-        .member h3 {
-            margin-top: 10px;
-            font-size: 18px;
-            color: #fff;
-        }
-
-        .member p {
-            font-size: 14px;
-            color: #ddd;
-        }
-  
-    .title-container {
-        text-align: center;
-        margin-top: 30px;
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
     }
-
-    h1 {
-        font-size: 24px;
-        color: #45a049;
-        margin-bottom: 20px;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
+
+.meet-members {
+    font-size: 30px;
+    color: #45a049;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.member {
+    width: 250px; /* Adjusted width to fit the grid */
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    animation: slideIn 0.5s ease-out forwards;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.member:hover {
+    background-color: #436850;
+    transform: translateY(-5px);
+}
+
+.member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.member h3 {
+    font-size: 16px;
+    color: #fff;
+    margin: 0;
+}
+
+.member p {
+    font-size: 14px;
+    color: #ddd;
+    margin: 0;
+}

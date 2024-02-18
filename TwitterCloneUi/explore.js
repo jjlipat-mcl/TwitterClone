@@ -119,26 +119,21 @@
                const post = document.createElement("div");
                post.classList.add("post");
                post.innerHTML = `
-               <div style="margin-bottom: 20px;"></div>
-               <div style="background: darkgrey; padding: 30px; border-radius: 10px; margin-right: 20px;  height: 30px;
-               display: flex; flex-direction: row; margin-top: 20px; max-width: 100%; align-items: center;">
-               <div id="user-profile">
-                    <!-- You can include user profile information here -->
-                    <p>${postContent.postedBy}</p>
-               </div>
-          </div>
+               <div class="user-profile-container">
+        <p class="user-profile">${postContent.postedBy}</p>
+    </div>
 
-          <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 400px; max-width: 100%; height: 150px; font-size: 13px; 
-               display:flex; flex-direction: column; margin-top: 20px; overflow: hidden; word-wrap: break-word;">
-               <div class="post-content">
-                    <p style="color: dark-green; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; 
-                    padding-bottom: 10px; max-width: 100%;">
-                    ${postContent.content}
-                    </p>
-               </div>
-               <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
+
+    <div class="post-content-container">
+    <p class="post-content">${postContent.content}</p>
+    <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
+</div>
+
+               
+<div class="button-container">
+
                <div style="background-color: none; display: flex; flex-direction: row; margin-top: 10px;">
-                    <button onclick="likePost('${postContent.postId}','${like_status}')" id="btnh1" class="btn"><i class="fas fa-heart"></i></button>    
+                     <button onclick="likePost('${postContent.postId}','${like_status}')" class="btn ${like_status === 'liked' ? 'liked' : ''}">
                     <button onclick="follow_user('${postContent.postedBy}')" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></button>
                </div>
           </div>

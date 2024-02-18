@@ -11,7 +11,6 @@
 </head>
 
 <body>
-
     <!-- Navbar -->
     <header>
         <div class="border-divider"></div>
@@ -26,51 +25,55 @@
     </header>
 
     <!-- Blog Content -->
-    <div class="blog-container">
-        <div class="member">
-            <img src="earl.jpg" alt="Member 1">
-            <h3>Member 1</h3>
-            <p>Role: Developer</p>
-        </div>
-        <div class="member">
-            <img src="angelo.jpg" alt="Member 2">
-            <h3>Member 2</h3>
-            <p>Role: Designer</p>
-        </div>
-        <div class="member">
-            <img src="luiz.png" alt="Member 3">
-            <h3>Member 3</h3>
-            <p>Role: Content Creator</p>
-        </div>
-        <div class="member">
-            <img src="john.jpg" alt="Member 4">
-            <h3>Member 4</h3>
-            <p>Role: Marketing</p>
-        </div>
-
-        <div class="member">
-            <img src="cheater.jpg" alt="Member 5">
-            <h3>Member 5</h3>
-            <p>Role: Tester</p>
-        </div>
-        <div class="member">
-            <img src="borbs.jpg" alt="Member 5">
-            <h3>Member 5</h3>
-            <p>Role: Tester</p>
+    <div class="container-center">
+        <div class="meet-members">Meet the Members</div>
+    </div>
+        <div class="blog-container">
+            <div class="member" onclick="window.open('https://www.facebook.com/ea.ugalino/', '_blank')">
+                <img src="earl.jpg" alt="Member 1">
+                <h3>Member 1</h3>
+                <p>Developer</p>
+            </div>
+            <div class="member" onclick="window.open('https://www.facebook.com/angelo.ebrada.31', '_blank')">
+                <img src="angelo.jpg" alt="Member 2">
+                <h3>Member 2</h3>
+                <p>Designer</p>
+            </div>
+            <div class="member" onclick="window.open('https://www.facebook.com/kitipat.aguirang', '_blank')">
+                <img src="john.jpg" alt="Member 3">
+                <h3>Member 3</h3>
+                <p>Content Creator</p>
+            </div>
+            <div class="member" onclick="window.open('https://www.facebook.com/ArthurPendragon47', '_blank')">
+                <img src="luiz.png" alt="Member 4">
+                <h3>Member 4</h3>
+                <p>Marketing</p>
+            </div>
+            <div class="member" onclick="window.open('https://www.facebook.com/profile.php?id=100001148719689', '_blank')">
+                <img src="cheater.jpg" alt="Member 5">
+                <h3>Member 5</h3>
+                <p>Tester</p>
+            </div>
+            <div class="member" onclick="window.open('https://www.facebook.com/raynielle.borbs', '_blank')">
+                <img src="borbs.jpg" alt="Member 6">
+                <h3>Member 6</h3>
+                <p>Tester</p>
+            </div>
         </div>
     </div>
-    <script>document.addEventListener('DOMContentLoaded', function () {
-        const borderDivider = document.querySelector('.border-divider');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const borderDivider = document.querySelector('.border-divider');
 
-        // Set initial width to 0%
-        borderDivider.style.width = '0%';
+            // Set initial width to 0%
+            borderDivider.style.width = '0%';
 
-        // Animate the width of the border-divider to 60% after a delay
-        setTimeout(() => {
-            borderDivider.style.width = '60%';
-        }, 100); // Adjust the delay as needed
-    });
-</script>
+            // Animate the width of the border-divider to 60% after a delay
+            setTimeout(() => {
+                borderDivider.style.width = '60%';
+            }, 100); // Adjust the delay as needed
+        });
+    </script>
 </body>
 
 </html>
