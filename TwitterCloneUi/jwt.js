@@ -149,3 +149,14 @@ function logout() {
         console.error("Error during logout:", error.message);
     }
 }
+async function loadUserProfile() {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    console.log("Current User:", username);
+
+    // Display the username in the profile header
+    const profileHeaderText = document.querySelector(".profile__headerUsername");
+    if (profileHeaderText) {
+        profileHeaderText.textContent = username;
+    }
+}

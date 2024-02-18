@@ -6,11 +6,9 @@
 }
 
 body {
-    --twitter-color: #45a049;
-    --twitter-background: #000;
-    --twitter-backgroundTweet: #202c3c;
-    background-color: #000;
-    color: #45a049;
+    background-color: #1a1a1a;
+    color: #fff;
+
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     display: flex;
     height: 100vh;
@@ -104,7 +102,7 @@ body {
 }
 
 .sidebarOption:hover {
-    background-color: #0d141c;
+    background-color: #2a5c45;
     color: #1da1f2;
 }
 
@@ -155,12 +153,12 @@ body {
 .tweetbox__input {
     display: flex;
     align-items: center;
-    width: 100%;
-    padding: 5px;
+    width: 300px; /* Adjust the width to your preference */
+    margin: 0 auto; /* Center the tweet box container */
+    padding: 10px;
     background-color: #1a1a1a;
-    
+    border-radius: 15px;
     margin-bottom: 10px;
-    
 }
 
 .tweetbox__input img {
@@ -171,17 +169,16 @@ body {
 
 .tweetbox__input input {
     flex: 1;
-    height: 60px; /* Increased height for a larger input box */
+    height: 40px; /* Adjust the height to your preference */
     padding: 10px;
     border: none;
     outline: none;
     background-color: #1a1a1a;
     color: white;
-    width: 400px;
-    font-size: 14px; /* Smaller font size for better visibility */
+    width: 100%; /* Make the input box take up the available width */
+    font-size: 14px;
     border-bottom: 1px solid white;
 }
-
 .tweetBox__tweetButton {
     background-color: #17bf63;
     border: none;
@@ -190,7 +187,7 @@ body {
     border-radius: 30px;
     width: 100px;
     height: 40px;
-    margin-left: 10px;  
+    margin-left: 10px;
     cursor: pointer;
 }
 
@@ -198,11 +195,15 @@ body {
     background-color: #138a4a;
 }
 
+
+
 .tweetBoxContainer {
     background-color: #1a1a1a;
-    padding: 4px;
+    padding: 10px;
     border-radius: 15px;
-    width: 700px;
+    width: 500px; /* Adjust the width to your preference */
+    margin: 0 auto; /* Center the tweet box container */
+    border: 1px solid #4d4d4d; /* Border color for a professional look */
 }
 
 .post__avatar img {
@@ -382,7 +383,7 @@ header {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #2b2626;
+    background-color: #292828;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -492,25 +493,6 @@ main {
 }
 
 
-/*design thingies start*/
-.bigLineL {
-    padding-left: 20px;
-    padding-right: 40px;
-    border-left: 1px solid rgb(45, 45, 45);
-
-}
-
-.bigLineR {
-    padding-left: 80px;
-    padding-right: 80px;
-    border-right: 1px solid rgb(45, 45, 45);
-
-}
-  
-
-  /*design thingies end*/
-
-/* css for buttons start */
 .btns{
     position: absolute;
     display: flex;
@@ -641,15 +623,7 @@ main {
             margin-left: 20px;
         }
 
-        .bigLineL {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .bigLineR {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
+        
     }
 
     @media only screen and (max-width: 960px){
@@ -675,8 +649,5 @@ main {
             margin-right: -20px;
         }
 
-        .bigLineR {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
+        
     }
