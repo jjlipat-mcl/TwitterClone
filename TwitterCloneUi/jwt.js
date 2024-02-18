@@ -51,6 +51,14 @@ async function loadTweets() {
         postArr.forEach(postContent => {
             const post = document.createElement("div");
             post.classList.add("post");
+
+            var like_status = "like";
+            for(let x of postContent.likes){
+                if(username == x.toString()){
+                    like_status = "liked";
+                    break;
+                }
+            }
         
             post.innerHTML = `
                 <div class="user-profile-container">
@@ -63,7 +71,7 @@ async function loadTweets() {
                 </div>
         
                 <div class="button-container">
-                    <button onclick="likePost('${postContent.id}')" class="btn"><i class="fas fa-heart"></i></button>
+                    <button onclick="likePost('${postContent.postId}','${like_status}')" class="btn"><i class="fas fa-heart"></i></button>
                     <button onclick="Toggle3()" class="btn"><i class="fab fa-gratipay"></i></button>
                 </div>
             `;
@@ -111,25 +119,29 @@ async function postTweet() {
     }
 }
 
-async function likePost(postId) {
-    try {
-        const jwtToken = localStorage.getItem('token');
+async function likePost(id,likeS){
+    const username = localStorage.getItem('username');
+    const token = localStorage.getItem('token');
+    let body = "like";
 
-        const response = await fetch(`/api/v1/posts/${postId}/like`, {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${jwtToken}`,
-            },
-        });
+    const likeURL = `/api/v1/posts/${id}`;
 
-        if (response.ok) {
-            console.log('Post liked successfully');
-            loadTweets();
-        } else {
-            console.error("Error liking post:", response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error("Error liking post:", error.message);
+    if(likeS == "liked"){
+         body = "unlike";
+    }
+    const patch_like = await fetch(likeURL,{
+        method: "PATCH",
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({action: body})
+    })
+    if(patch_like.ok){
+        loadTweets();
+    }
+    else{
+        console.error("Unable to Patch",error.status);
     }
 }
 
