@@ -115,6 +115,7 @@
             const token = localStorage.getItem('token');
             const username = localStorage.getItem('username');
             var userPosts;
+            var myPosts = new Array();
 
             const userPostURL = `/api/v1/posts?user=${username}`;
             //step1
@@ -126,23 +127,27 @@
             });
             if(get_userPost.ok){
                 userPosts = await get_userPost.json();
+		        for (let post of userPosts){
+                    if(post.postedBy == username){
+                        myPosts.push(post);
+                    }
+                }
             }
             else{
                 console.error("Loading Post Failed",get_userPost.status);
             }
             //step2
-            userPosts.sort((a, b) => {
+            myPosts.sort((a, b) => {
                 let compareA = new Date(a.dateTimePosted),
                     compareB = new Date(b.dateTimePosted);
                 return compareB - compareA;
             });
             console.log(userPosts);
             //step3
-            //PAKIAYOS NA LANG PO
             const container = document.getElementById("postProfileContainer");
             container.innerHTML = "";
 
-            userPosts.forEach(postContent => {
+            myPosts.forEach(postContent => {
                 const post = document.createElement("div");
                 post.classList.add("post");
 
