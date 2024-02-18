@@ -68,7 +68,7 @@
         }
     });
 
-            signupForm.addEventListener('submit', async (event) => {
+    signupForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
 
                 const newUser = document.getElementById("newUsername").value;
@@ -89,13 +89,26 @@
                         body: JSON.stringify({ username: newUser, password: newPass })
                     });
 
-                    // Rest of your code for handling the response
+                    if (res.ok) {
+                        // Registration successful
+                        alert("Registration complete. You will now be redirected to login.");
+                        showLogin(); // Redirect to login
+                    } else {
+                        // Display error message for registration failure
+                        const errorData = await res.json();
+                        alert(`Registration failed: ${errorData.message}`);
+                    }
 
                 } catch (error) {
                     console.error("Error during registration:", error.message);
                 }
             });
-        })
+        });
+
+        function showLogin() {
+            loginContainer.style.display = 'block';
+            signupContainer.style.display = 'none';
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
             const borderDivider = document.querySelector('.border-divider');
@@ -168,6 +181,7 @@
                 <input type="password" id="retypePassword" required>
                 <br>
                 <button type="submit">Sign Up</button>
+        <p id="signupError" style="color: red; display: none;"></p>
             </form>
             <p>Already have an account? <button id="showLoginBtn" class="ghost show-login-animation">Login</button>
             </p>

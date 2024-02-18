@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="pageStyle.css">
     <script src="jwt.js"></script>
 </head>
+
 <body>
+
     <div class="logo__container">
         <div class="logo">
             <h2>Type Null</h2>
@@ -19,23 +23,23 @@
 
     <!-- Start Sidebar -->
     <div class="sidebar">
-        <div class="sidebarOption active"> 
+        <div class="sidebarOption active">
             <span class="material-symbols-outlined"> home </span>
             <a href="try.html">
                 <h2>Home</h2>
             </a>
         </div>
-        <div class="sidebarOption"> 
+        <div class="sidebarOption">
             <span class="material-symbols-outlined">search</span>
             <h2>Explore</h2>
         </div>
-        <div class="sidebarOption"> 
+        <div class="sidebarOption">
             <span class="material-symbols-outlined">notifications_none</span>
             <a href="notifications.html">
                 <h2>Notifications</h2>
             </a>
         </div>
-        <div class="sidebarOption"> 
+        <div class="sidebarOption">
             <span class="material-symbols-outlined">perm_identity</span>
             <a href="profile.html">
                 <h2>Profile</h2>
@@ -63,37 +67,37 @@
                     <!-- Start Header Text -->
                     <div class="profile__headerText">
                         <a class="profile__headerUsername"></a>
-                            <span class="profile__headerSpecial">@Default user</span>
-                        </a>
-                    <!-- End Header Text -->
-                 
+                        <span class="profile__headerSpecial">@Default user</span>
                     </div>
+                    <!-- End Header Text -->
                 </div>
             </div>
         </div>
     </div>
+    
     <!-- End Profile -->
 
     <!-- Start Post -->
     <div class="postProfile" id="postProfileContainer">
-        
+
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             loadUserProfile();
-            
         });
-        async function loadUserProfile() {
-        const token = localStorage.getItem('token');
-        const username = localStorage.getItem('username');
-        console.log("Current User:", username);
 
-        // Display the username in the profile header
-        const profileHeaderText = document.querySelector(".profile__headerUsername");
-        if (profileHeaderText) {
-            profileHeaderText.textContent = username;
+        async function loadUserProfile() {
+            const token = localStorage.getItem('token');
+            const username = localStorage.getItem('username');
+            console.log("Current User:", username);
+
+            // Display the username in the profile header
+            const profileHeaderText = document.querySelector(".profile__headerUsername");
+            if (profileHeaderText) {
+                profileHeaderText.textContent = username;
+            }
         }
-    }
     </script>
 </body>
+
 </html>

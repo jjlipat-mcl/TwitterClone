@@ -51,31 +51,27 @@ async function loadTweets() {
         postArr.forEach(postContent => {
             const post = document.createElement("div");
             post.classList.add("post");
+        
             post.innerHTML = `
-            <div style="margin-bottom: 20px;"></div>
-            <div style="background: darkgrey; padding: 30px; border-radius: 10px; margin-right: 20px;  height: 30px;
-            display: flex; flex-direction: row; margin-top: 20px; max-width: 100%; align-items: center;">
-            <div id="user-profile">
-                <p>${postContent.postedBy}</p>
-            </div>
-        </div>
-
-        <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 350px; max-width: 100%; height: 150px;  
-            display:flex; flex-direction: column; margin-top: 20px; overflow: hidden; word-wrap: break-word;">
-            <div class="post-content">
-                <p style="color: dark-green; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; 
-                padding-bottom: 10px; max-width: 100%;">
-                    ${postContent.content}
-                </p>
-            </div>
-            <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
-            <div style="background-color: none; display: flex; flex-direction: row; margin-top: 10px;">
-                <button onclick="likePost('${postContent.id}')" id="btnh1" class="btn"><i class="fas fa-heart"></i></button>    
-                <button onclick="Toggle3()" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></button>
-            </div>
-        </div>`;
+                <div class="user-profile-container">
+                    <p class="user-profile">${postContent.postedBy}</p>
+                </div>
+        
+                <div class="post-content-container">
+                    <p class="post-content">${postContent.content}</p>
+                    <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
+                </div>
+        
+                <div class="button-container">
+                    <button onclick="likePost('${postContent.id}')" class="btn"><i class="fas fa-heart"></i></button>
+                    <button onclick="Toggle3()" class="btn"><i class="fab fa-gratipay"></i></button>
+                </div>
+            `;
+        
             container.appendChild(post);
         });
+        
+        
     } catch (error) {
         console.error("Error loading tweets:", error.message);
     }
@@ -144,5 +140,67 @@ function logout() {
         window.location.href = 'index.html';
     } catch (error) {
         console.error("Error during logout:", error.message);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    loadUserProfile();
+});
+
+async function loadUserProfile() {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('username');
+    console.log("Current User:", username);
+
+    // Display the username in the profile header
+    const profileHeaderText = document.querySelector(".profile__headerUsername");
+    if (profileHeaderText) {
+        profileHeaderText.textContent = username;
+    }
+
+    // Load and display posts
+    loadPosts();
+}
+
+async function loadPosts() {
+    try {
+        const jwtToken = localStorage.getItem('token');
+        const username = localStorage.getItem('username');
+
+        const postURL = `/api/v1/posts/user/${username}`;
+
+        const response = await fetch(postURL, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${jwtToken}`,
+            },
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+
+            const postContainer = document.getElementById("postProfileContainer");
+            postContainer.innerHTML = "";
+
+            data.forEach(postContent => {
+                const post = document.createElement("div");
+                post.classList.add("postProfileItem");
+
+                // Customize the post structure as needed
+                post.innerHTML = `
+                    <p class="post-content">${postContent.content}</p>
+                    <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
+                    <!-- Add more details as needed -->
+
+                `;
+
+                postContainer.appendChild(post);
+            });
+
+        } else {
+            console.error("Error loading posts:", response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error("Error loading posts:", error.message);
     }
 }
