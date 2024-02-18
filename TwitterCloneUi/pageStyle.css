@@ -313,6 +313,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+
+
 .user-profile {
     color: #fff;
     font-weight: bold;
@@ -458,8 +460,8 @@ body {
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding-bottom: 10px;
-            margin-top: 30%;
-            margin-left: -50%;
+            margin-top: 18%;
+            margin-left: -48%;
             
             height: 400px;
         }
