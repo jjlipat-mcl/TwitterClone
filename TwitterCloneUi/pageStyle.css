@@ -482,12 +482,12 @@ body {
             padding:50px; /* Add padding for spacing */
         }
         
-/* notification style Start */
 
+
+/* notification style Start */
 .notifications {
     display: flex;
     justify-content: center;
-    background-color: #1b1818;
     width: 100%;
     height: 100vh;
     margin-left: 20px;
@@ -497,8 +497,8 @@ body {
     background-color: #1b1818;
     width: 700px;
     margin: 2rem;
-    padding: 1rem;
-    border-radius: 3rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -506,31 +506,33 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #242a2d; /* Adjust the color as needed */
+    background-color: #242a2d;
     color: #fff;
     text-align: center;
-    padding: 1em;
+    padding: 1.5em;
     border-radius: 1rem;
 }
 
-.notification__Header {
+.notification__header {
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
-    background-color: #777;
+    
     border-radius: 5px;
+    
 }
 
 #num-of-notif {
-    background-color: rgb(15, 226, 110);
-    color: white;
+    
+    color: #4CAF50;
     display: flex;
     align-items: center;
     font-weight: 700;
     width: 30px;
-    height: 30px;
-    border-radius: 0.5rem;
+    height: 0px;
+    border-radius: 50%;
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 #mark-as-read {
@@ -546,13 +548,22 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    background-color: #212020;
+    background-color: transparent;
     margin: auto;
-    padding: 10px;
+    padding: 1rem;
     border-radius: 5px;
 }
 
-/* notification end */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.notificationCard {
+    margin-bottom: 1rem;
+    
+}
+/* Add any additional styles as needed */
 
 
 /* Logout button styles */
@@ -674,7 +685,7 @@ main {
 }
 
 #trendingNewsList a:hover {
-    color: #a59595; /* Adjust the color on hover */
+    color: #838181; /* Adjust the color on hover */
     transform: translateY(-2px); /* Lift the text up by 2 pixels */
     transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and transform changes */
 }

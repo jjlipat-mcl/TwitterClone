@@ -12,6 +12,7 @@ header {
     text-align: center;
     position: relative;
 }
+
 .border-divider {
     position: absolute;
     bottom: 0;
@@ -21,6 +22,7 @@ header {
     background-color: #ddd;
     transition: width 1s ease-in-out;
 }
+
 .navbar {
     display: flex;
     flex-wrap: wrap;
@@ -44,4 +46,44 @@ nav ul {
 
 .nav-link:hover {
     color: #45a049;
+}
+.blog-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h1, h2, h3 {
+    color: #45a049;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+
+p {
+    line-height: 1.5;
+}
+.read-more-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.read-more-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #45a049;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.read-more-button:hover {
+    background-color: #357e33;
 }
