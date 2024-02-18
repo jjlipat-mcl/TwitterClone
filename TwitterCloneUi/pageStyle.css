@@ -438,6 +438,8 @@ body {
             display: flex;
             align-items: center;
             padding:100px; /* Add padding for spacing */
+            width: 600px;
+            background-color: rgb(170, 151, 151);
         }
     
         

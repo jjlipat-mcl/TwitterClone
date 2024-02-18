@@ -49,18 +49,10 @@ async function loadTweets() {
         container.innerHTML = ""; 
 
         postArr.forEach(postContent => {
-            var like_status = "like";
-            for(let x of postContent.likes){
-                if(username == x.toString()){
-                    like_status = "liked";
-                    break;
-                }
-            }
             const post = document.createElement("div");
             post.classList.add("post");
         
             post.innerHTML = `
-<<<<<<< HEAD
                 <div class="user-profile-container">
                     <p class="user-profile">${postContent.postedBy}</p>
                 </div>
@@ -76,30 +68,6 @@ async function loadTweets() {
                 </div>
             `;
         
-=======
-            <div style="margin-bottom: 20px;"></div>
-            <div style="background: darkgrey; padding: 30px; border-radius: 10px; margin-right: 20px;  height: 30px;
-            display: flex; flex-direction: row; margin-top: 20px; max-width: 100%; align-items: center;">
-            <div id="user-profile">
-                <p>${postContent.postedBy}</p>
-            </div>
-        </div>
-
-        <div style="background-color: darkgrey; padding: 50px; border-radius: 20px; width: 350px; max-width: 100%; height: 150px;  
-            display:flex; flex-direction: column; margin-top: 20px; overflow: hidden; word-wrap: break-word;">
-            <div class="post-content">
-                <p style="color: dark-green; font-weight: 600px; display: flex; flex-align: start; position: relative; top: -15px; left: -10px; 
-                padding-bottom: 10px; max-width: 100%;">
-                    ${postContent.content}
-                </p>
-            </div>
-            <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
-            <div style="background-color: none; display: flex; flex-direction: row; margin-top: 10px;">
-                <button onclick="likePost('${postContent.postId}','${like_status}')" id="btnh1" class="btn"><i class="fas fa-heart"></i></button>    
-                <button onclick="Toggle3()" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></button>
-            </div>
-        </div>`;
->>>>>>> 5c1453c20294c9abaf88fba3274638f543c5e60b
             container.appendChild(post);
         });
         
@@ -143,29 +111,25 @@ async function postTweet() {
     }
 }
 
-async function likePost(id,likeS){
-    const username = localStorage.getItem('username');
-    const token = localStorage.getItem('token');
-    let body = "like";
+async function likePost(postId) {
+    try {
+        const jwtToken = localStorage.getItem('token');
 
-    const likeURL = `/api/v1/posts/${id}`;
+        const response = await fetch(`/api/v1/posts/${postId}/like`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${jwtToken}`,
+            },
+        });
 
-    if(likeS == "liked"){
-         body = "unlike";
-    }
-    const patch_like = await fetch(likeURL,{
-        method: "PATCH",
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({action: body})
-    })
-    if(patch_like.ok){
-        loadTweets();
-    }
-    else{
-        console.error("Unable to Patch",error.status);
+        if (response.ok) {
+            console.log('Post liked successfully');
+            loadTweets();
+        } else {
+            console.error("Error liking post:", response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error("Error liking post:", error.message);
     }
 }
 
@@ -179,64 +143,3 @@ function logout() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    loadUserProfile();
-});
-
-async function loadUserProfile() {
-    const token = localStorage.getItem('token');
-    const username = localStorage.getItem('username');
-    console.log("Current User:", username);
-
-    // Display the username in the profile header
-    const profileHeaderText = document.querySelector(".profile__headerUsername");
-    if (profileHeaderText) {
-        profileHeaderText.textContent = username;
-    }
-
-    // Load and display posts
-    loadPosts();
-}
-
-async function loadPosts() {
-    try {
-        const jwtToken = localStorage.getItem('token');
-        const username = localStorage.getItem('username');
-
-        const postURL = `/api/v1/posts/user/${username}`;
-
-        const response = await fetch(postURL, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${jwtToken}`,
-            },
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-
-            const postContainer = document.getElementById("postProfileContainer");
-            postContainer.innerHTML = "";
-
-            data.forEach(postContent => {
-                const post = document.createElement("div");
-                post.classList.add("postProfileItem");
-
-                // Customize the post structure as needed
-                post.innerHTML = `
-                    <p class="post-content">${postContent.content}</p>
-                    <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
-                    <!-- Add more details as needed -->
-
-                `;
-
-                postContainer.appendChild(post);
-            });
-
-        } else {
-            console.error("Error loading posts:", response.status, response.statusText);
-        }
-    } catch (error) {
-        console.error("Error loading posts:", error.message);
-    }
-}
