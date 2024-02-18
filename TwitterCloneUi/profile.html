@@ -48,10 +48,14 @@
                 <h2>Profile</h2>
             </a>
         </div>
-        <a href="javascript:void(0);" class="sidebarOption" onclick="logout()">
+
+
+        <a href="index.html" class="sidebarOptionLogout" onclick="return confirmLogout()">
             <span class="material-symbols-outlined">perm_identity</span>
             <h2>Logout</h2>
         </a>
+
+
         <footer>
             <p>Terms of Service</p>
             <p>Privacy Policy</p>
@@ -232,7 +236,23 @@
         }
     }
     </script>
+
+<script>
+    function confirmLogout() {
+        // Prompt the user with a confirmation dialog
+        var confirmLogout = confirm("Are you sure you want to logout?");
+
+      
+        if (confirmLogout) {
+            return true; // Proceed with the link navigation
+        } else {
+            return false; // Prevent the default link behavior
+        }
+    }
+</script>
+
     <script src="jwt.js"></script>
+
 </body>
 
 </html>
