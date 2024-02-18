@@ -326,7 +326,7 @@ button:hover {
 }
 @keyframes animBack {
     0%{
-        top: -60px;
+        top: -120px;
     }
     100%{
         top: 120%;
