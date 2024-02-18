@@ -333,6 +333,7 @@ body {
     font-size: 18px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
+
 .btn:hover {
     color: #436850; /* Green on hover */
     transform: translateY(-2px);
