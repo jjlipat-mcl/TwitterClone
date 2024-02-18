@@ -1,6 +1,7 @@
 body {
     background-color: #1a1a1a;
     color: #fff;
+    overflow:hidden;
 }
 
 header {
@@ -109,6 +110,16 @@ button:hover {
     height: 100vh;
     padding: 0 150px;
     flex-direction: column;
+    z-index: 500;
+    
+}
+.left-section__container{
+  
+    opacity: 1;
+    z-index:500;
+    border-radius: 20px;
+ 
+    
 }
 
 .left-section {
@@ -116,6 +127,8 @@ button:hover {
     text-align: center;
     padding-right: 20px;
     padding-left: 20px;
+    z-index: 500;
+    
 }
 
 .left-section h2 {
@@ -276,3 +289,80 @@ button:hover {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     resize: none;
 }
+
+
+
+
+
+/* bgAnimation start */
+
+.bgAnimation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    background: #1d1d1d;
+    filter: saturate(2);
+    overflow: hidden;
+    opacity: 5;
+}
+
+
+.colorBox {
+    z-index: 2;
+    filter: brightness(1.1);
+    transition: 2s ease;
+    position: relative;
+    margin: 2px;
+    background: #1d1d1d;
+    opacity: 5;
+}
+
+.colorBox:hover {
+    background: rgb(70, 147, 70);
+    transition-duration: 0s;
+    opacity: 10;
+}
+
+.backgroundAmim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: rgb(31, 69, 31);
+    filter: blur(40px);
+    animation: animBack 6s linear infinite;
+    opacity: 5;
+
+    
+}
+@keyframes animBack {
+    0%{
+        top: -120px;
+    }
+    100%{
+        top: 120%;
+    }
+    
+}
+
+.bgAnimation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat();
+
+}
+
+
+
+
+/* bgAnimation end */
