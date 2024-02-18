@@ -487,20 +487,19 @@ body {
 .notifications {
     display: flex;
     justify-content: center;
-    background-color:#1b1818;
+    background-color: #1b1818;
     width: 100%;
     height: 100vh;
     margin-left: 20px;
-    
-    
 }
 
 .notification__container {
     background-color: #1b1818;
-    width: 700px;       
+    width: 700px;
     margin: 2rem;
-    padding: 1rem 1rem;
+    padding: 1rem;
     border-radius: 3rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 header {
@@ -511,20 +510,14 @@ header {
     color: #fff;
     text-align: center;
     padding: 1em;
+    border-radius: 1rem;
 }
 
 .notification__Header {
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
-    background-color:#777;
-
-}
-
-
-.notification__Header {
-    display: flex;
-    align-items: center;
+    background-color: #777;
     border-radius: 5px;
 }
 
@@ -543,24 +536,24 @@ header {
 #mark-as-read {
     color: gray;
     cursor: pointer;
-    transition: 0.6 ease;
+    transition: color 0.6s ease;
 }
-  
+
 #mark-as-read:hover {
-    color:black;
+    color: black;
 }
 
 main {
     display: flex;
     flex-direction: column;
-    background-color:#212020;
+    background-color: #212020;
     margin: auto;
     padding: 10px;
     border-radius: 5px;
-
 }
 
 /* notification end */
+
 
 /* Logout button styles */
 .logout-button {

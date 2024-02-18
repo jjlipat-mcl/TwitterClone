@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support</title>
+    <link rel="stylesheet" href="blog.css">
+    
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="border-divider"></div>
+        <nav class="navbar">
+            <ul class="nav">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="discover.html" class="nav-link">Discover</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="support.html" class="nav-link">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const borderDivider = document.querySelector('.border-divider');
+
+            // Set initial width to 0%
+            borderDivider.style.width = '0%';
+
+            // Animate the width of the border-divider to 60% after a delay
+            setTimeout(() => {
+                borderDivider.style.width = '60%';
+            }, 100); // Adjust the delay as needed
+        });
+    </script>
+</body>
+
+</html>

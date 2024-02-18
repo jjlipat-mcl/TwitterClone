@@ -1,9 +1,6 @@
 body {
     background-color: #1a1a1a;
     color: #fff;
-    margin: 0;
-    padding: 0;
-    font-family: 'Helvetica Neue', sans-serif; 
 }
 
 header {
@@ -26,6 +23,11 @@ header {
     transition: width 1s ease-in-out;
 }
 
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -45,7 +47,6 @@ nav ul {
 .nav-link:hover {
     color: #45a049;
 }
-
 .container-center {
     display: flex;
     justify-content: center;
@@ -53,9 +54,7 @@ nav ul {
     height: 20vh; /* 100% of viewport height */
     
 }
-.container-center  a {
-   
-}
+
 
 .blog-container {
     display: grid;

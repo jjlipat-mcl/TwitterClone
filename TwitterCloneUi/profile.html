@@ -48,14 +48,10 @@
                 <h2>Profile</h2>
             </a>
         </div>
-
-
-        <a href="index.html" class="sidebarOptionLogout" onclick="return confirmLogout()">
+        <a href="javascript:void(0);" class="sidebarOption" onclick="logout()">
             <span class="material-symbols-outlined">perm_identity</span>
             <h2>Logout</h2>
         </a>
-
-
         <footer>
             <p>Terms of Service</p>
             <p>Privacy Policy</p>
@@ -67,7 +63,7 @@
 <div class="profile__container"></div>
     <div class="profile">
         <div class="profile__header">
-                
+            <div class="profile__background">
                 <div class="profile__headerContainer">
                     <div class="profile__pic" id="profilePic"></div>
                     <!-- Start Header Text -->
@@ -86,10 +82,6 @@
     <div class="postProfile" id="postProfileContainer">
 
     </div>
-    <!-- End Profile -->
-
-    <!-- Start Post -->
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -116,143 +108,97 @@
                 profilePic.style.backgroundImage = `url('${avatarURL}')`;
             }
         }
-         document.addEventListener('DOMContentLoaded', function () {
-        loadUserProfile();
-        loadUserPosts();
-    });
-
-    async function loadUserProfile() {
+        async function loadUserPosts() {
+            //use localStorage 'username' for get posts query
+            //sort posts from latest to oldest
+            //display to frontend
             const token = localStorage.getItem('token');
             const username = localStorage.getItem('username');
-            console.log("Current User:", username);
+            var userPosts;
 
-            // Display the username in the profile header
-            const profileHeaderText = document.querySelector(".profile__headerUsername");
-            if (profileHeaderText) {
-                profileHeaderText.textContent = username;
+            const userPostURL = `/api/v1/posts?user=${username}`;
+            //step1
+            const get_userPost = await fetch(userPostURL,{
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                }
+            });
+            if(get_userPost.ok){
+                userPosts = await get_userPost.json();
             }
-
-            // Generate and set profile picture using DiceBear Avatars API
-            const profilePic = document.getElementById("profilePic");
-            if (profilePic) {
-                const styleName = "avataaars"; // Replace with your desired style name
-                const avatarURL = `https://api.dicebear.com/7.x/${styleName}/svg?background=%23f4f4f4&color=%23000000&width=200&height=200&radius=50&seed=${username}`;
-                profilePic.style.backgroundImage = `url('${avatarURL}')`;
+            else{
+                console.error("Loading Post Failed",get_userPost.status);
             }
-        }
-        
+            //step2
+            userPosts.sort((a, b) => {
+                let compareA = new Date(a.dateTimePosted),
+                    compareB = new Date(b.dateTimePosted);
+                return compareB - compareA;
+            });
+            console.log(userPosts);
+            //step3
+            //PAKIAYOS NA LANG PO
+            const container = document.getElementById("postProfileContainer");
+            container.innerHTML = "";
 
-    async function loadUserPosts() {
-        const token = localStorage.getItem('token');
-        const username = localStorage.getItem('username');
-        var userPosts;
-        var myPosts = new Array();
+            userPosts.forEach(postContent => {
+                const post = document.createElement("div");
+                post.classList.add("post");
 
-        const userPostURL = `/api/v1/posts?user=${username}`;
-
-        const get_userPost = await fetch(userPostURL, {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-            }
-        });
-
-        if (get_userPost.ok) {
-            userPosts = await get_userPost.json();
-            for (let post of userPosts){
-                    if(post.postedBy === username){
-                        myPosts.push(post);
+                var like_status = "like";
+                for(let x of postContent.likes){
+                    if(username == x.toString()){
+                        like_status = "liked";
+                        break;
                     }
                 }
-        } else {
-            console.error("Loading Post Failed", get_userPost.status);
+            
+                post.innerHTML = `
+                    <div class="user-profile-container">
+                        <p class="user-profile">${postContent.postedBy}</p>
+                    </div>
+            
+                    <div class="post-content-container">
+                        <p class="post-content">${postContent.content}</p>
+                        <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
+                    </div>
+            
+                    <div class="button-container">
+                        <button onclick="likePost('${postContent.postId}','${like_status}')" class="btn"><i class="fas fa-heart"></i></button>
+                        <button onclick="Toggle3()" class="btn"><i class="fab fa-gratipay"></i></button>
+                    </div>
+                `;
+            
+                container.appendChild(post);
+            });
         }
+        async function likePost(id,likeS){
+            const username = localStorage.getItem('username');
+            const token = localStorage.getItem('token');
+            let body = "like";
 
-        userPosts.sort((a, b) => {
-            let compareA = new Date(a.dateTimePosted),
-                compareB = new Date(b.dateTimePosted);
-            return compareB - compareA;
-        });
+            const likeURL = `/api/v1/posts/${id}`;
 
-        // Display user's posts
-        const container = document.getElementById("postProfileContainer");
-        container.innerHTML = "";
-
-        userPosts.forEach(postContent => {
-            const post = document.createElement("div");
-            post.classList.add("post");
-
-            let like_status = "like";
-            for (let x of postContent.likes) {
-                if (username === x.toString()) {
-                    like_status = "liked";
-                    break;
-                }
+            if(likeS == "liked"){
+                body = "unlike";
             }
-
-            // Display post content
-            post.innerHTML = `
-                <div class="user-profile-container">
-                    <p class="user-profile">${postContent.postedBy}</p>
-                </div>
-        
-                <div class="post-content-container">
-                    <p class="post-content">${postContent.content}</p>
-                    <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
-                </div>
-        
-                <div class="button-container">
-                    <button onclick="likePost('${postContent.postId}','${like_status}')" class="btn"><i class="fas fa-heart"></i></button>
-                </div>
-            `;
-
-            container.appendChild(post);
-        });
-    }
-
-    async function likePost(id,likeS){
-        const username = localStorage.getItem('username');
-        const token = localStorage.getItem('token');
-        let body = "like";
-
-        const likeURL = `/api/v1/posts/${id}`;
-
-        if(likeS == "liked"){
-            body = "unlike";
+            const patch_like = await fetch(likeURL,{
+                method: "PATCH",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({action: body})
+            })
+            if(patch_like.ok){
+                loadTweets();
+            }
+            else{
+                console.error("Unable to Patch",error.status);
+            }
         }
-        const patch_like = await fetch(likeURL,{
-            method: "PATCH",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({action: body})
-        })
-        if(patch_like.ok){
-            loadTweets();
-        }
-        else{
-            console.error("Unable to Patch",error.status);
-        }
-    }
     </script>
-
-<script>
-    function confirmLogout() {
-        // Prompt the user with a confirmation dialog
-        var confirmLogout = confirm("Are you sure you want to logout?");
-
-      
-        if (confirmLogout) {
-            return true; // Proceed with the link navigation
-        } else {
-            return false; // Prevent the default link behavior
-        }
-    }
-</script>
-
-    <script src="jwt.js"></script>
-
 </body>
 
 </html>
