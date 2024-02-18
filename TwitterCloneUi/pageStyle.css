@@ -72,25 +72,54 @@ body {
     margin-bottom: 5px;
     border-radius: 10px;
     padding-right: 10px;
-   
-   
     
+}
+
+.sidebarOptionLogout {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 200ms ease-out, color 200ms ease-out;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    padding-right: 10px;
 }
 
 .sidebarOption .material-symbols-outlined,
-.sidebarOption .fa-twitter {
+.sidebarOption .fa-twitter, .sidebarOptionLogout .material-symbols-outlined {
     padding: 25px;
     color: white;
-
     
 }
+
+.sidebarOptionLogout h2 {
+    font-weight: 800;
+    font-size: 25px;
+    color: white;
+    margin-left: 5%;
+    white-space: nowrap;
+
+}
+
+.sidebarOptionLogout a {
+    text-decoration: none;
+}
+
+.sidebarOptionLogout:hover {
+    background-color: #994646;
+  
+}
+
+.sidebarOptionLogout.active {
+    color: #2a5c45;
+}
+
 
 .sidebarOption h2 {
     font-weight: 800;
     font-size: 25px;
     color: white;
     margin-left: 5%;
-
     white-space: nowrap;
 
 }
@@ -105,7 +134,7 @@ body {
 }
 
 .sidebarOption.active {
-    color: #1da1f2;
+    color: #2a5c45;
 }
 
 /* Responsive design */
@@ -114,6 +143,8 @@ body {
         font-size: 16px;
     }
 }
+
+
 
 .feed {
     flex: 0.5;
@@ -527,6 +558,8 @@ main {
 
 }
 
+/* notification end */
+
 /* Logout button styles */
 .logout-button {
     margin-right: 20px; /* Adjust the margin as needed */
@@ -609,105 +642,6 @@ main {
 /* css for buttons end */
 
 
-
-
-/*responsive design*/
-
-    @media only screen and (max-width: 500px) {
-        body {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            max-width: 1300px;
-            margin: auto;
-            padding: 0 10px;
-        }
-
-        .sidebar {
-        
-            padding-left: -15px;
-            padding-right: auto;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            user-select: none;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-            transition: width 1s ease;
-            width: 100px;
-            
-        }
-
-        .feed {
-            flex: 1;
-            border-right: 1px solid var(--twitter-background);
-            min-width: fit-content;
-            overflow-y: scroll;
-            margin-right: 40px;
-            user-select: none;
-            transition: margin-right 1s ease;
-        }
-
-        .profile {  
-            min-width: fit-content;
-            margin-left: 10px;
-            position: relative;
-            transition: margin-left 1s ease;
-        }
-
-        /* Align sidebar and other contents in a row */
-        .content-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-        }
-
-        .sidebar, .feed, .profile {
-            width: 100%;
-        }
-
-        /* Hide the footer */
-        footer {
-            display: none;
-        }
-
-        .tweetBoxContainer {
-            width: 400px;
-            margin-left: 30px;
-        }
-        .tweetBox {
-            width: 400px;
-            margin-left: 20px;
-        }
-
-        
-    }
-
-    @media only screen and (max-width: 960px){
-        .tweetBoxContainer {
-            width: 400px;
-            margin-left: 30px;
-        }
-        .tweetBox {
-            width: 300px;
-            margin-left: 20px;
-        }
-        .tweetBox__tweetButton {
-            width: 60px;
-            margin-left: -30px;
-        }
-        .tweet
-        .bigLineL {
-            padding-left: 15px;
-            padding-right: 15px;
-        }
-        .tweetbox__input {
-            width: 150px;
-            margin-right: -20px;
-        }
-
-        
-    }
   /* Style for the left container */
   .trend {
     width: 300px;
@@ -764,4 +698,122 @@ main {
 .trend::-webkit-scrollbar-thumb {
     background: #436850;
     border-radius: 5px;
+}
+
+
+/*responsive design*/
+
+@media only screen and (max-width: 600px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        max-width: 1300px;
+        margin: auto;
+        padding: 0 10px;
+    }
+
+    .sidebar {
+    
+        padding-left: -15px;
+        padding-right: auto;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        user-select: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        transition: width 1s ease;
+        width: 100px;
+        
+    }
+
+    .feed {
+        flex: 1;
+        border-right: 1px solid var(--twitter-background);
+        min-width: fit-content;
+        overflow-y: scroll;
+        margin-right: 40px;
+        user-select: none;
+        transition: margin-right 1s ease;
+    }
+
+    .profile {  
+        min-width: fit-content;
+        margin-left: 10px;
+        position: relative;
+        transition: margin-left 1s ease;
+    }
+
+    /* Align sidebar and other contents in a row */
+    .content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .sidebar, .feed, .profile {
+        width: 100%;
+    }
+
+    /* Hide the footer */
+    footer {
+        display: none;
+    }
+
+    .tweetBoxContainer {
+        width: 400px;
+        margin-left: 30px;
+    }
+    .tweetBox {
+        width: 400px;
+        margin-left: 20px;
+    }
+
+    
+}
+
+@media only screen and (max-width: 960px){
+    .tweetBoxContainer {
+        width: 400px;
+        margin-left: 30px;
+    }
+    .tweetBox {
+        width: 300px;
+        margin-left: 20px;
+    }
+    .tweetBox__tweetButton {
+        width: 60px;
+        margin-left: -30px;
+    }
+    .tweet
+    .bigLineL {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .tweetbox__input {
+        width: 150px;
+        margin-right: -20px;
+    }
+
+}
+
+
+@media only screen and (max-width: 1050px) {
+    .trend {
+     
+        padding: 20px;
+        background-color: #1a1a1a;
+        color: white;
+        border-radius: 10px;
+        margin: 50px auto; 
+        overflow-y: auto; 
+        max-height: 800px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: max-height 0.3s ease; 
+    
+        margin-left: auto 50px;
+        scrollbar-width: thin;
+        scrollbar-color: #436850 transparent;   
+    }
 }
