@@ -61,20 +61,24 @@ async function loadTweets() {
             }
         
             post.innerHTML = `
-                <div class="user-profile-container">
-                    <p class="user-profile">${postContent.postedBy}</p>
-                </div>
-        
-                <div class="post-content-container">
-                    <p class="post-content">${postContent.content}</p>
-                    <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
-                </div>
-        
-                <div class="button-container">
-                    <button onclick="likePost('${postContent.postId}','${like_status}')" class="btn"><i class="fas fa-heart"></i></button>
-                    <button onclick="Toggle3()" class="btn"><i class="fab fa-gratipay"></i></button>
-                </div>
-            `;
+    <div class="user-profile-container">
+        <p class="user-profile">${postContent.postedBy}</p>
+    </div>
+
+    <div class="post-content-container">
+        <p class="post-content">${postContent.content}</p>
+        <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
+    </div>
+
+    <div class="button-container">
+        <button onclick="likePost('${postContent.postId}','${like_status}')" class="btn ${like_status === 'liked' ? 'liked' : ''}">
+            <i class="fas fa-heart"></i>
+            <span class="like-count">${postContent.likes.length}</span>
+        </button>
+        <button onclick="Toggle3()" class="btn"><i class="fab fa-gratipay"></i></button>
+    </div>
+`;
+
         
             container.appendChild(post);
         });
