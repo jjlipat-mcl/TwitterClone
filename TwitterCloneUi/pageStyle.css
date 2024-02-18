@@ -21,26 +21,24 @@ body {
 .logo__container {
     position: absolute;
     display: flex;
-    top: 20px;
-    left: 20px;
+    top: 10px;
+    left: 10px;
     border-left:rgb(5, 5, 239);
     border-right:rgb(5, 239, 5);
 }
 
 .logo {
-    margin: 20px;
-    padding: 20px;
+    margin: 10px;
+    padding: 5px;
     border-radius: 15px;
-    border-bottom: 0.5px solid rgb(5, 239, 5);
-    box-shadow: #138a4a;
-    border-top: 0.5px solid rgb(5, 5, 239);
+
 }
 
-.logo h2 {
-    font-size: 20px;
-    font-weight:bold;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: rgb(242, 246, 242);
+.logo img {
+    width: 60px;
+    height: 60px;
+ 
+
 }
 
 .sidebar {
@@ -439,8 +437,6 @@ body {
             display: flex;
             align-items: center;
             padding:100px; /* Add padding for spacing */
-            width: 600px;
-            background-color: rgb(170, 151, 151);
         }
     
         
@@ -604,6 +600,8 @@ main {
 /* css for buttons end */
 
 
+
+
 /*responsive design*/
 
     @media only screen and (max-width: 500px) {
@@ -701,7 +699,7 @@ main {
         
     }
   /* Style for the left container */
-.trend {
+  .trend {
     width: 300px;
     padding: 20px;
     background-color: #1a1a1a;
@@ -740,4 +738,20 @@ main {
     color: #a59595; /* Adjust the color on hover */
     transform: translateY(-2px); /* Lift the text up by 2 pixels */
     transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and transform changes */
+}
+
+.trend::-webkit-scrollbar {
+    width: 4px;  
+    background: transparent;  
+}
+
+/* custom scrollbar track */
+.trend::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* custom scrollbar handle */
+.trend::-webkit-scrollbar-thumb {
+    background: #436850;
+    border-radius: 5px;
 }
