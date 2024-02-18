@@ -54,6 +54,14 @@ const validateForm = (formSelector, callback) => {
       }
     },
     {
+      attribute: 'pattern',
+      isValid: input => {
+        const patternRegEx = new RegExp(input.pattern);
+        return patternRegEx.test(input.value);
+      },
+      errorMessage: (input, placeholder) => `${placeholder.textContent} is invalid.`
+    },
+    {
       attribute: 'required',
       isValid: input => input.value.trim() !== '',
       errorMessage: (input, placeholder) => `${placeholder.textContent} is required.`

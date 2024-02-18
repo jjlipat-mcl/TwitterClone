@@ -30,7 +30,6 @@ main {
   display: flex;
   align-items: center;
   gap: 5rem;
-  margin: 1rem auto;
 }
 
 .title-container {
@@ -39,6 +38,7 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-top: 1rem;
 }
 
 .title-container img {
@@ -46,17 +46,23 @@ main {
 }
 
 .title-container p {
-  margin: 2rem 0;
+  margin-top: 1.5rem;
 }
 
 .login-card {
   width: 400px;
   display: flex;
   flex-direction: column;
+  margin: 1.5rem;
   background-color: var(--card);
   border-radius: var(--card-border-radius);
   padding: 3rem;
   align-items: center;
+}
+
+.login-card h4,
+.login-card p {
+  align-self: start;
 }
 
 @media screen and (max-width: 1200px) {
@@ -74,4 +80,10 @@ main {
     width: 300px;
   }
 
+}
+
+@media screen and (max-width: 900px) {
+  .content-container {
+    flex-direction: column-reverse;
+  }
 }

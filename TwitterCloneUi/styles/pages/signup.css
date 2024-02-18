@@ -28,7 +28,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem auto;
 }
 
 .title-container {
@@ -37,6 +36,7 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin: 1rem;
 }
 
 .title-container img {
@@ -44,13 +44,14 @@ main {
 }
 
 .title-container p {
-  margin: 2rem 0;
+  margin-top: 1.5rem;
 }
 
 .signup-card {
   width: 400px;
   display: flex;
   flex-direction: column;
+  margin: 1.5rem;
   background-color: var(--card);
   border-radius: var(--card-border-radius);
   padding: 3rem;
@@ -61,4 +62,10 @@ main {
 .signup-card h4,
 .signup-card p {
   align-self: start;
+}
+
+@media screen and (max-width: 900px) {
+  .content-container {
+    flex-direction: column-reverse;
+  }
 }
