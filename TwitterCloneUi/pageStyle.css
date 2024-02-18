@@ -42,7 +42,6 @@ body {
 }
 
 .sidebar {
-    
     flex: 0.2;
     min-width: 250px;
     margin-top: 15%;
@@ -72,7 +71,7 @@ body {
     transition: background-color 200ms ease-out, color 200ms ease-out;
     margin-bottom: 5px;
     border-radius: 10px;
-    margin-right: 5px;
+    padding-right: 10px;
    
    
     
@@ -82,6 +81,7 @@ body {
 .sidebarOption .fa-twitter {
     padding: 25px;
     color: white;
+
     
 }
 
@@ -101,7 +101,7 @@ body {
 
 .sidebarOption:hover {
     background-color: #2a5c45;
-    color: #1da1f2;
+  
 }
 
 .sidebarOption.active {
@@ -275,7 +275,7 @@ body {
 
 
 .post {
-    background-color: #FBFCF8;
+    background-color: #d4cfc4;
     border: 1px solid #cdc0c0; 
     border-radius: 10px;
     margin-bottom: 30px; 
@@ -314,7 +314,7 @@ body {
 }
 
 .button-container {
-    background-color: #040D12;
+    background-color: #313020;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -340,6 +340,7 @@ body {
             flex: 0.5;
             min-width: fit-content;
             margin-left: 10px;
+            margin-right: 100px;
             position: relative;
         }
 
@@ -362,6 +363,10 @@ body {
         .profile__header {
             display: flex;
             align-items: center;
+            background-color: #968770;
+            width: 100%;
+            padding-right: 10px;
+            border-radius: 0 0 20px 20px;
         }
         
         .profile__pic {
@@ -369,6 +374,7 @@ body {
             height: 120px;
             border-radius: 50%;
             background-size: cover;
+            background-color: #5c615f;
         }
         
         .profile__headerText {
@@ -418,7 +424,7 @@ body {
             padding-bottom: 10px;
             margin-top: 30%;
             margin-left: -50%;
-            width: 500px;
+            
             height: 400px;
         }
         
@@ -435,7 +441,8 @@ body {
         .profile__headerContainer {
             display: flex;
             align-items: center;
-            padding:100px; /* Add padding for spacing */
+            padding:50px; /* Add padding for spacing */
+        
         }
     
         
