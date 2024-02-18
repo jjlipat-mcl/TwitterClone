@@ -165,11 +165,12 @@ button:hover {
     max-width: 400px;
     background-color: #333;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     padding: 20px;
     position: relative;
     margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
 
 .form-container h2 {
     text-align: center;

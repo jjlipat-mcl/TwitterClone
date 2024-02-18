@@ -22,7 +22,7 @@ body {
     position: absolute;
     display: flex;
     top: 10px;
-    left: 100px;
+    left: 10px;
 
 }
 
@@ -347,7 +347,7 @@ body {
 }
 
 .button-container {
-    background-color: #313020;
+    background-color: #44433e;
     display: flex;
     justify-content: space-around;
     align-items: center;
