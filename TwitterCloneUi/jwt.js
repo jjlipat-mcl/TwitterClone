@@ -17,8 +17,8 @@ async function loadTweets() {
 
         var postArr = new Array();
 
-        const usernameURL = `http://localhost:3000/api/v1/users/${username}/following`;
-        const postURL = "http://localhost:3000/api/v1/posts";
+        const usernameURL = `/api/v1/users/${username}/following`;
+        const postURL = "/api/v1/posts";
 
         const response = await fetch(postURL, {
             method: "GET",
@@ -92,7 +92,7 @@ async function postTweet() {
 
         const jwtToken = localStorage.getItem('token');
 
-        const response = await fetch("http://localhost:3000/api/v1/posts", {
+        const response = await fetch("/api/v1/posts", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${jwtToken}`,
@@ -119,7 +119,7 @@ async function likePost(postId) {
     try {
         const jwtToken = localStorage.getItem('token');
 
-        const response = await fetch(`http://localhost:3000/api/v1/posts/${postId}/like`, {
+        const response = await fetch(`/api/v1/posts/${postId}/like`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${jwtToken}`,

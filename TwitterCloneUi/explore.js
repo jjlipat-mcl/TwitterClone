@@ -18,9 +18,9 @@
      const username = localStorage.getItem('username');
      console.log("Current User:",username)
 
-     const userListURL = "http://localhost:3000/api/v1/users";
-     const followedListURL = `http://localhost:3000/api/v1/users/${username}/following`;
-     const postListURL = "http://localhost:3000/api/v1/posts?username=";
+     const userListURL = "/api/v1/users";
+     const followedListURL = `/api/v1/users/${username}/following`;
+     const postListURL = "/api/v1/posts?username=";
 
      var userList = new Array();
      var exploringList = new Array();
@@ -146,7 +146,7 @@
           const username = localStorage.getItem('username');
           const token = localStorage.getItem('token');
       
-          const follow_url = `http://localhost:3000/api/v1/users/${username}/following/${name}`;
+          const follow_url = `/api/v1/users/${username}/following/${name}`;
       
           const post_follow = await fetch(follow_url, {
               method: "POST",
