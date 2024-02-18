@@ -11,16 +11,6 @@
     <link rel="stylesheet" href="pageStyle.css">
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            /*const borderDivider = document.querySelector('.border-divider');
-
-            // Set initial width to 0%
-            borderDivider.style.width = '0%';
-
-            // Animate the width of the border-divider to 60% after a delay
-            setTimeout(() => {
-                borderDivider.style.width = '60%';
-            }, 100); // Adjust the delay as needed*/
-
             loadLogs();
         });
 
@@ -40,56 +30,81 @@
                     "Authorization": `Bearer ${jwtToken}`,
                 }
             })
-            if(get_followed.ok){
+            if (get_followed.ok) {
                 followed = await get_followed.json();
             }
 
-            for (const followee of followed){
+            for (const followee of followed) {
                 const get_posts = await fetch(`${postURL}${followee}`, {
                     method: "GET",
                     headers: {
-                            "Authorization": `Bearer ${jwtToken}`,
+                        "Authorization": `Bearer ${jwtToken}`,
                     }
                 })
-                if(get_posts.ok){
+                if (get_posts.ok) {
                     const post = await get_posts.json();
-                    for (const post1 of post){
-                            fposts.push(post1);
+                    for (const post1 of post) {
+                        fposts.push(post1);
                     }
-                }
-                else{
+                } else {
                     console.error("Error loading tweets:", get_posts.status, get_posts.statusText);
                 }
             }
 
-            fposts.sort((a,b) => {
-                let compareA = new Date(a.dateTimePosted), compareB = new Date(b.dateTimePosted);
+            fposts.sort((a, b) => {
+                let compareA = new Date(a.dateTimePosted),
+                    compareB = new Date(b.dateTimePosted);
                 return compareB - compareA;
             });
             console.log(fposts);
 
-            //Display Here
+            // Display notifications
+            const mainContainer = document.querySelector('main');
+            const numOfNotif = document.getElementById('num-of-notif');
+            const markAsReadBtn = document.getElementById('mark-as-read');
+
+            numOfNotif.textContent = fposts.length; // Set the number of notifications
+
             fposts.forEach(postContent => {
                 var time_diff = Date.now() - new Date(postContent.dateTimePosted);
-                var elapsed_str = ""; //Use to display time past
+                var elapsed_str = ""; // Use to display time past
 
-                var day = Math.floor(time_diff / (24*60*60*1000));
+                var day = Math.floor(time_diff / (24 * 60 * 60 * 1000));
                 console.log(day);
                 var remD, remH, hour, minute;
-                if (day > 0){
+                if (day > 0) {
                     elapsed_str += `${day}d `;
                 }
-                remD = time_diff % (24*60*60*1000);
-                hour = Math.floor(remD / (60*60*1000));
-                if (hour > 0){
+                remD = time_diff % (24 * 60 * 60 * 1000);
+                hour = Math.floor(remD / (60 * 60 * 1000));
+                if (hour > 0) {
                     elapsed_str += `${hour}hr `;
                 }
-                remH = remD % (60*60*1000);
-                minute = Math.floor(remH / (60*1000));
+                remH = remD % (60 * 60 * 1000);
+                minute = Math.floor(remH / (60 * 1000));
                 elapsed_str += `${minute}m ago`;
-                
-                console.log(elapsed_str);
-            })
+
+                // Create a notification card
+                const notificationCard = document.createElement('div');
+                notificationCard.classList.add('notificationCard', 'unread');
+
+                // Set the content of the notification card
+                notificationCard.innerHTML = `
+                    <div class="description">
+                        <p>${postContent.content}</p>
+                        <p>${elapsed_str}</p>
+                    </div>
+                `;
+
+                // Append the notification card to the container
+                mainContainer.appendChild(notificationCard);
+            });
+
+            // Mark as Read button functionality (you can add your logic here)
+            markAsReadBtn.addEventListener('click', function () {
+                // Add your logic to mark notifications as read
+                console.log('Mark as read button clicked');
+            });
         }
     </script>
 
@@ -149,22 +164,15 @@
 <div class="notifications">
     <div class="notification__container">
         <header>
-        <div class="notification__header">
-            <h1>Notification</h1>
-            <span id="num of notif"></span>
+            <div class="notification__header">
+                <h1>Notification</h1>
+                <span id="num-of-notif">0</span>
             </div>
-            <p id ="mark-as-read"> Mark as All Read</p>
-            </header>
-            <main>
-                <div class="notificaitonCard unread">
-                    <div class="description">
-                        <p>Hi Hello</p>
-                        <p id="notif-time">1m ago</p>
-                    </div>
-                </div>
-
-            </main>
-        </div>
+            <p id="mark-as-read">Mark as All Read</p>
+        </header>
+        <main>
+            <!-- Notification cards will be dynamically added here -->
+        </main>
     </div>
 </div>
 
@@ -182,6 +190,17 @@
     }
 </script>
 
+<script>
+    function confirmLogout() {
+        // Prompt the user with a confirmation dialog
+        var confirmLogout = confirm("Are you sure you want to logout?");
 
+        if (confirmLogout) {
+            return true; // Proceed with the link navigation
+        } else {
+            return false; // Prevent the default link behavior
+        }
+    }
+</script>
 </body>
 </html>
