@@ -70,7 +70,7 @@ body {
     align-items: center;
     cursor: pointer;
     transition: background-color 200ms ease-out, color 200ms ease-out;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     border-radius: 10px;
     margin-right: 5px;
    
@@ -90,7 +90,7 @@ body {
     font-size: 25px;
     color: white;
     margin-left: 5%;
-    width: 200px;
+
     white-space: nowrap;
 
 }
@@ -616,15 +616,16 @@ main {
         .sidebar {
         
             padding-left: -15px;
-            padding-right: 5px;
+            padding-right: auto;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             user-select: none;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             align-items: center;
-            
             transition: width 1s ease;
+            width: 100px;
+            
         }
 
         .feed {
