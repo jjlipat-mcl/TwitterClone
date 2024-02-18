@@ -58,12 +58,11 @@
     </div>
     <!-- End Sidebar -->
 
-    <!-- Start Profile -->
     <div class="profile">
         <div class="profile__header">
             <div class="profile__background">
-                <img src="https://flowbite.com/docs/images/examples/image-3@2x.jpg" alt="Profile Picture">
-                <div class="profile__pic" style="background-image: url('https://i.pinimg.com/originals/c0/c2/16/c0c216b3743c6cb9fd67ab7df6b2c330.jpg');">
+                <div class="profile__headerContainer">
+                    <div class="profile__pic" id="profilePic"></div>
                     <!-- Start Header Text -->
                     <div class="profile__headerText">
                         <a class="profile__headerUsername"></a>
@@ -74,13 +73,13 @@
             </div>
         </div>
     </div>
-    
     <!-- End Profile -->
 
     <!-- Start Post -->
     <div class="postProfile" id="postProfileContainer">
 
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             loadUserProfile();
@@ -95,6 +94,14 @@
             const profileHeaderText = document.querySelector(".profile__headerUsername");
             if (profileHeaderText) {
                 profileHeaderText.textContent = username;
+            }
+
+            // Generate and set profile picture using DiceBear Avatars API
+            const profilePic = document.getElementById("profilePic");
+            if (profilePic) {
+                const styleName = "avataaars"; // Replace with your desired style name
+                const avatarURL = `https://api.dicebear.com/7.x/${styleName}/svg?background=%23f4f4f4&color=%23000000&width=200&height=200&radius=50&seed=${username}`;
+                profilePic.style.backgroundImage = `url('${avatarURL}')`;
             }
         }
     </script>
