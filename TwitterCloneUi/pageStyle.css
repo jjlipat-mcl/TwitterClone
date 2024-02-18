@@ -381,6 +381,7 @@ header {
 
 #container {
     max-width: 600px;
+    width: 600px;
     margin: 20px auto;
     padding: 20px;
     background-color: #292828;

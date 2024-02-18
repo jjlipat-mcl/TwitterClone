@@ -12,13 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function loadTweets() {
     try {
-        //api/v1/posts doesn't just retrieve the posts of the current user.
-        //it also retrieves the post of followed users...???
-        //new posts algorithm
-        //1. Use /api/v1/posts to get all posts from the current user and the followed users
-        //2. Sort the post by posted time
-        //3. Display to frontend
-
         const jwtToken = localStorage.getItem('token');
         const username = localStorage.getItem('username');
 
@@ -27,7 +20,6 @@ async function loadTweets() {
         const usernameURL = `http://localhost:3000/api/v1/users/${username}/following`;
         const postURL = "http://localhost:3000/api/v1/posts";
 
-        // Step 1: Use /api/v1/posts to get all posts from the current user and the followed users
         const response = await fetch(postURL, {
             method: "GET",
             headers: {
@@ -35,22 +27,17 @@ async function loadTweets() {
             },
         });
 
-        console.log("Response Status:", response.status);
-
         if (response.ok) {
-            // Parse and process the response if needed
             const data = await response.json();
 
             for (var post of data){
                 postArr.push(post);
             }
-            console.log("Step1:",data);
+            console.log("Step1:", data);
         } else {
             console.error("Error loading tweets:", response.status, response.statusText);
         }
 
-        // Step 2: Sort the post by posted time
-        // Source: https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
         postArr.sort((a, b) => {
             let compareA = new Date(a.dateTimePosted),
                 compareB = new Date(b.dateTimePosted);
@@ -58,7 +45,6 @@ async function loadTweets() {
         });
         console.log("Sorted Posts:", postArr);
 
-        //Step 3: Display to frontend
         const container = document.getElementById("container");
         container.innerHTML = ""; 
 
@@ -70,7 +56,6 @@ async function loadTweets() {
             <div style="background: darkgrey; padding: 30px; border-radius: 10px; margin-right: 20px;  height: 30px;
             display: flex; flex-direction: row; margin-top: 20px; max-width: 100%; align-items: center;">
             <div id="user-profile">
-                <!-- You can include user profile information here -->
                 <p>${postContent.postedBy}</p>
             </div>
         </div>
@@ -85,8 +70,8 @@ async function loadTweets() {
             </div>
             <p class="post-time">${new Date(postContent.dateTimePosted).toLocaleString()}</p>
             <div style="background-color: none; display: flex; flex-direction: row; margin-top: 10px;">
-                <Button onclick="Toggle1()" id="btnh1" class="btn"><i class="fas fa-heart"></i></Button>    
-                <Button onclick="Toggle3()" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></Button>
+                <button onclick="likePost('${postContent.id}')" id="btnh1" class="btn"><i class="fas fa-heart"></i></button>    
+                <button onclick="Toggle3()" id="btnh3" class="btn"><i class="fab fa-gratipay"></i></button>
             </div>
         </div>`;
             container.appendChild(post);
@@ -99,42 +84,28 @@ async function loadTweets() {
 async function postTweet() {
     try {
         const tweetContent = document.getElementById('tweetContent').value;
-        const tweetImageInput = document.getElementById('tweetImage');
-        
-        // Validate tweet content
+
         if (!tweetContent) {
             console.error("Tweet content is required.");
             return;
         }
 
-        // Token is retrieved from localStorage for the POST request
         const jwtToken = localStorage.getItem('token');
-
-        const formData = new FormData();
-        formData.append('content', tweetContent);
-
-        // Check if an image is selected
-        if (tweetImageInput.files.length > 0) {
-            formData.append('image', tweetImageInput.files[0]);
-        }
 
         const response = await fetch("http://localhost:3000/api/v1/posts", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${jwtToken}`,
+                "Content-Type": "application/json",
             },
-            body: formData,
+            body: JSON.stringify({
+                content: tweetContent,
+            }),
         });
 
         if (response.ok) {
-            // Handle successful tweet post
             console.log('Tweet posted successfully');
-
-            // Clear tweet content and image input after posting
             document.getElementById('tweetContent').value = "";
-            tweetImageInput.value = "";
-
-            // Reload tweets after posting
             loadTweets();
         } else {
             console.error("Error posting tweet:", response.status, response.statusText);
@@ -144,14 +115,33 @@ async function postTweet() {
     }
 }
 
+async function likePost(postId) {
+    try {
+        const jwtToken = localStorage.getItem('token');
+
+        const response = await fetch(`http://localhost:3000/api/v1/posts/${postId}/like`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${jwtToken}`,
+            },
+        });
+
+        if (response.ok) {
+            console.log('Post liked successfully');
+            loadTweets();
+        } else {
+            console.error("Error liking post:", response.status, response.statusText);
+        }
+    } catch (error) {
+        console.error("Error liking post:", error.message);
+    }
+}
+
 function logout() {
     try {
-        // Remove token and username from localStorage
         localStorage.removeItem('token');
         localStorage.removeItem('username');
-
-        // Redirect to the login page or perform any other desired action
-        window.location.href = 'index.html'; // Change 'login.html' to your actual login page
+        window.location.href = 'index.html';
     } catch (error) {
         console.error("Error during logout:", error.message);
     }

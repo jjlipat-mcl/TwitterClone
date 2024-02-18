@@ -143,43 +143,35 @@
 
 
      async function follow_user(name) {
-     const username = localStorage.getItem('username');
-     const token = localStorage.getItem('token');
-
-     const follow_url = `http://localhost:3000/api/v1/users/${username}/following/${name}`;
-
-     const post_follow = await fetch(follow_url, {
-          method: "POST",
-          headers: {
-               "Authorization": `Bearer ${token}`,
-               "Content-Type": "application/json",
-               }
-     })
-     if (post_follow.ok){
-          location.reload();
-     }
-     }
-
-     function logout() {
-          try {
-          
-          localStorage.removeItem('token');
-          localStorage.removeItem('username');
-     
-          
-          window.location.href = 'index.html'; 
-          } catch (error) {
-          console.error("Error during logout:", error.message);
-          }
-     }
-     async function loadUserProfile() {
-          const token = localStorage.getItem('token');
           const username = localStorage.getItem('username');
-          console.log("Current User:", username);
-
-          // Display the username in the profile header
-          const profileHeaderText = document.querySelector(".profile__headerUsername");
-          if (profileHeaderText) {
-              profileHeaderText.textContent = username;
+          const token = localStorage.getItem('token');
+      
+          const follow_url = `http://localhost:3000/api/v1/users/${username}/following/${name}`;
+      
+          const post_follow = await fetch(follow_url, {
+              method: "POST",
+              headers: {
+                  "Authorization": `Bearer ${token}`,
+                  "Content-Type": "application/json",
+              }
+          });
+      
+          if (post_follow.ok) {
+              // You can update the UI to reflect the user being followed
+              console.log(`${name} followed successfully`);
+              location.reload(); // Reload the page or update UI as needed
+          } else {
+              console.error("Error following user:", post_follow.status, post_follow.statusText);
+          }
+      }
+      
+      function logout() {
+          try {
+              localStorage.removeItem('token');
+              localStorage.removeItem('username');
+      
+              window.location.href = 'index.html';
+          } catch (error) {
+              console.error("Error during logout:", error.message);
           }
       }
