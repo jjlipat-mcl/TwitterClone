@@ -411,34 +411,32 @@ body {
         }
 
         /* Post Start */
-
-        .postProfile {
-            display: flex;
-            align-items: flex-start;
-            border-radius: 10px;
-            padding-bottom: 10px;
-            margin-top: 30%;
-            margin-left: -50%;
-            width: 500px;
-            height: 400px;
-        }
         
-
-        #container {
+        .postProfile {
             max-width: 600px;
-            width: 600px;
+            width: 100%; /* Adjusted to take full width */
             margin: 20px auto;
             padding: 20px;
             background-color: transparent;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        
+        #container {
+            max-width: 600px;
+            width: 100%; /* Adjusted to take full width */
+            margin: 20px auto;
+            padding: 20px;
+            background-color: transparent;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
         .profile__headerContainer {
             display: flex;
             align-items: center;
-            padding:100px; /* Add padding for spacing */
+            padding: 20px; /* Adjusted for spacing */
         }
-    
         
 /* notification style Start */
 
