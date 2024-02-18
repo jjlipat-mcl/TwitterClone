@@ -125,6 +125,11 @@
 </head>
 
 <body>
+    <div class="bgAnimation" id="bgAnimation">
+        <div class="backgroundAmim">
+            
+        </div>
+    </div>
     <!-- Navbar-->
     <header>
         <div class="border-divider"></div>
@@ -187,6 +192,21 @@
             </p>
         </div>
     </div>
+
+
 </body>
 
+<script>
+    const bgAnimation = document.getElementById
+('bgAnimation');
+
+const numberOfColorBoxes = 400;
+
+for (let i = 0; i <numberOfColorBoxes; i++) {
+    const colorBox = document.createElement
+    ('div');
+    colorBox.classList.add('colorBox');
+    bgAnimation.append(colorBox)
+}
+</script>
 </html>
