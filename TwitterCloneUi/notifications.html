@@ -9,98 +9,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="pageStyle.css">
-    <script src="jwt.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const loginContainer = document.getElementById('loginContainer');
-            const signupContainer = document.getElementById('signupContainer');
-            const showSignupBtn = document.getElementById('showSignupBtn');
-            const showLoginBtn = document.getElementById('showLoginBtn');
-
-            showSignupBtn.addEventListener('click', function () {
-                loginContainer.style.display = 'none';
-                signupContainer.style.display = 'block';
-            });
-
-            showLoginBtn.addEventListener('click', function () {
-                loginContainer.style.display = 'block';
-                signupContainer.style.display = 'none';
-            });
-
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            const loginError = document.getElementById('loginError');
-
-            loginForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
-
-                try {
-                    const username = document.getElementById('username').value;
-                    const password = document.getElementById('password').value;
-
-                    // Validate input
-                    if (!username || !password) {
-                        loginError.innerText = "Username and password are required.";
-                        loginError.style.display = 'block';
-                        return;
-                    }
-
-                    const res = await fetch("/api/v1/auth/login", {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ username, password })
-                    });
-
-                    const checker = await res.text();
-                    console.log(checker);
-
-                    if (res.ok) {
-                        // Redirect to try.html after successful login
-                        window.location.href = "try.html";
-                    } else {
-                        // Display error message for incorrect credentials
-                        loginError.innerText = "Incorrect username or password. Please try again.";
-                        loginError.style.display = 'block';
-                    }
-
-                } catch (error) {
-                    console.error("Error cause: ", error.message);
-                }
-            });
-
-            signupForm.addEventListener('submit', async (event) => {
-                event.preventDefault();
-
-                const newUser = document.getElementById("newUsername").value;
-                const newPass = document.getElementById("newPassword").value;
-                const retyped = document.getElementById("retypePassword").value;
-
-                if (newPass != retyped) {
-                    console.log("Retype the password correctly.");
-                    return;
-                }
-
-                try {
-                    const sec = await fetch("/api/v1/auth/register", {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ username: newUser, password: retyped })
-                    });
-
-                    // Rest of your code for handling the response
-
-                } catch (error) {
-                    console.error("Error during registration:", error.message);
-                }
-            });
-        })
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const borderDivider = document.querySelector('.border-divider');
+            /*const borderDivider = document.querySelector('.border-divider');
 
             // Set initial width to 0%
             borderDivider.style.width = '0%';
@@ -108,54 +19,78 @@
             // Animate the width of the border-divider to 60% after a delay
             setTimeout(() => {
                 borderDivider.style.width = '60%';
-            }, 100); // Adjust the delay as needed
+            }, 100); // Adjust the delay as needed*/
+
+            loadLogs();
         });
 
-        // Sirs Code
+        async function loadLogs() {
+            const jwtToken = localStorage.getItem('token');
+            const username = localStorage.getItem('username');
 
-        async function helloWorld() {
-            const res = await fetch("/api")
-            const text = await res.text()
-            console.log(text);
-        }
+            var followed = new Array();
+            var fposts = new Array();
 
-        async function register() {
-            const res = await fetch("/api/v1/auth/register", {
-                method: "POST",
+            const followedURL = `/api/v1/users/${username}/following`;
+            const postURL = "/api/v1/posts/?username=";
+
+            const get_followed = await fetch(followedURL, {
+                method: "GET",
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
-                })
+                    "Authorization": `Bearer ${jwtToken}`,
+                }
             })
-            return await res.text()
-        }
+            if(get_followed.ok){
+                followed = await get_followed.json();
+            }
 
-        async function login() {
-            const res = await fetch("/api/v1/auth/login", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: "joblipat",
-                    password: "password"
+            for (const followee of followed){
+                const get_posts = await fetch(`${postURL}${followee}`, {
+                    method: "GET",
+                    headers: {
+                            "Authorization": `Bearer ${jwtToken}`,
+                    }
                 })
+                if(get_posts.ok){
+                    const post = await get_posts.json();
+                    for (const post1 of post){
+                            fposts.push(post1);
+                    }
+                }
+                else{
+                    console.error("Error loading tweets:", get_posts.status, get_posts.statusText);
+                }
+            }
+
+            fposts.sort((a,b) => {
+                let compareA = new Date(a.dateTimePosted), compareB = new Date(b.dateTimePosted);
+                return compareB - compareA;
+            });
+            console.log(fposts);
+
+            //Display Here
+            fposts.forEach(postContent => {
+                var time_diff = Date.now() - new Date(postContent.dateTimePosted);
+                var elapsed_str = ""; //Use to display time past
+
+                var day = Math.floor(time_diff / (24*60*60*1000));
+                console.log(day);
+                var remD, remH, hour, minute;
+                if (day > 0){
+                    elapsed_str += `${day}d `;
+                }
+                remD = time_diff % (24*60*60*1000);
+                hour = Math.floor(remD / (60*60*1000));
+                if (hour > 0){
+                    elapsed_str += `${hour}hr `;
+                }
+                remH = remD % (60*60*1000);
+                minute = Math.floor(remH / (60*1000));
+                elapsed_str += `${minute}m ago`;
+                
+                console.log(elapsed_str);
             })
-            const token = await res.text()
-            console.log(token);
-
         }
-
-        async function start() {
-            await helloWorld()
-            await register()
-            await login()
-        }
-
-        start()
     </script>
 
 
