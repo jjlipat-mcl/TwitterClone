@@ -1,0 +1,376 @@
+body {
+  overflow-x: hidden;
+}
+
+/* *Main */
+main {
+  margin-top: 4.2rem;
+}
+
+  /* *Container */
+main .container {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 225px auto 335px;
+  column-gap: 1.2rem;
+}
+
+main .container .left {
+  height: max-content;
+  position: sticky;
+  top: 4.2rem;
+}
+
+/* *Left Side */
+  /* *Profile Card */
+.left .profile-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--card);
+  border-radius:  var(--card-border-radius);
+  padding: var(--card-padding);
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tablet-profile-container {
+  display: none;
+}
+
+.left .profile-card::before {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: var(--gradient);
+  background-size: 300%;
+  animation: gradientChange 16s infinite alternate;
+}
+
+@keyframes gradientChange {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+.left .profile-card .handle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  column-gap: 0.9rem;
+}
+
+.left .profile-card .handle p {
+  margin-top: 4px;
+  font-size: small;
+}
+
+.left .profile-card .status {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.8rem;
+  font-size: small;
+}
+
+.left .profile-card .profile-photo {
+  z-index: 2;
+}
+
+
+  /* *Sidebar Card */
+.left .sidebar-card {
+  margin-top: 0.9rem;
+  background-color: var(--card);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+}
+
+.left .sidebar-card .menu-item {
+  cursor: pointer;
+  display: flex;
+  column-gap: 1.2em;
+  align-items: center;
+  height: 3rem;
+  margin: 0.5rem 0;
+  border-radius: var(--card-border-radius);
+  transition: background-color 0.2s ease;
+}
+
+.left .sidebar-card .menu-item:hover {
+  background-color: var(--card-focused);
+}
+
+.left .sidebar-card .menu-item.active {
+  background-color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.left .sidebar-card .menu-item.active:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 80px -10px var(--primary);
+}
+
+
+.left .sidebar-card i {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+.left label {
+  margin-top: 0.9rem;
+}
+
+/* *Middle Side */
+  /* *Create Post Card */
+  #postButton:disabled,
+  #postButtonModal:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+.middle .post-card {
+  width: 100%;
+  background-color: var(--card);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.middle .post-card .post-container {
+  margin-left: 1rem;
+}
+
+.middle .post-card .post-container textarea {
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 1rem 0;
+  resize: none;
+  color: var(--text);
+  background-color: var(--card);
+  white-space: pre-wrap;
+  overflow: hidden;
+}
+
+.middle .post-card .post-container .button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.middle .post-card .post-container .button-container .char-count {
+  color: var(--muted);
+}
+
+  /* *Posts-Feed */
+.middle .posts-feed .feed-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--card);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+  /* *Post Card */
+.middle .feed-card .post-container {
+  margin-left: 1rem;
+}
+
+.middle .post-container .user .handle {
+  font-weight: 300;
+}
+
+.middle .post-container .user p {
+  font-size: small;
+  margin-top: 0.2rem;
+}
+
+.middle .post-container .post-content {
+  margin-top: 0.9rem;
+}
+
+
+
+.middle .feed-card .post-logo {
+  color: var(--card-focused);
+  font-size: 1.6rem;
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+}
+
+/* *Right Side */
+  /* *Trending Card */
+.right .trending-card {
+  background-color: var(--card);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+}
+
+  /* *Suggest Follows Card */
+main .container .right {
+    height: max-content;
+    position: sticky;
+    top: 4.2rem;
+  }
+
+.right .suggest-follows-card {
+  background-color: var(--card);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right .suggest-follows-card h4 {
+  align-self: self-start;
+  margin-bottom: 0.9rem;
+}
+
+.right .suggest-follows-card p {
+  align-self: self-start;
+}
+
+.follow-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0.6rem 0;
+}
+
+.follow-container .profile-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.9rem
+}
+
+.follow-container .profile-container .profile-photo {
+  align-self: self-start;
+}
+
+.follow-container .profile-container .handle p {
+  font-size: small;
+}
+
+
+/* *Other Styles *
+  /* ?Like Button */
+.like-btn {
+  display: inline-block;
+  position: relative;
+  margin-top: 0.9rem;
+}
+
+.like-btn input {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.like-btn input:checked ~ .like-btn-content {
+  color: var(--heart);
+}
+
+.like-btn .like-btn-content {
+  color: var(--white-700);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.like-btn:hover .like-btn-content {
+  transform: scale(1.1);
+}
+
+.like-effect {  
+  animation: growButton 0.4s ease;
+}
+
+@keyframes growButton {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+.main-profile-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--card);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  margin-bottom: 0.9rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-profile-card .cover-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.main-profile-card .cover-container .cover-photo {
+  width: 100%;
+  object-fit: cover;
+  height: 12rem;
+}
+
+.main-profile-card .cover-container .profile-photo {
+  position: absolute;
+  top: 9.4rem;
+  left: 0.9rem;
+  width: 5rem;
+}
+
+.main-profile-card .profile-container {
+  z-index: 1; 
+  margin-top: 14.5rem;
+}
+
+.main-profile-card .profile-container .handle p {
+  font-size: small;
+}
+
+.main-profile-card .status {
+  margin-top: 0.9rem;
+}
+
+.main-profile-card .follow-count-container {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.9rem;
+}

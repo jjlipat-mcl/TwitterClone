@@ -1,90 +1,42 @@
-# Twitter Clone
+# How your website accomplished each item in the criteria:
+	
+## Where could the concepts discussed in class be seen in your website?  
+In the process of developing the web application, our group has applied some of the teachings that was used to apply various several key practices and applications. Whereby Git commands enabled our group with applying commands such as fetch, pull, and push ensuring efficient collaboration and management of codebase. HTML tags were structured to creating essential pages such as login, signup, homepage, and profile pages. The integration of tags and attributes is implemented to configure HTML elements, harmonizing them with other languages like CSS for styling and JavaScript for backend functionality. A systematic approach is maintained through the segregation of codes based on their use and functionality, ensuring a clear distinction between the user interface, HTML page styles, and the backend functionality implemented in JavaScript. Furthermore, CSS selectors are employed to precisely target and style specific HTML elements, contributing to a cohesive and visually appealing web application.
 
-## Repository Owner
+Our team has optimized the organization and layout of webpages for enhanced user experience. With the implementation of seperating of div elements to systematically structure each column on the webpage, employing tools like Flexbox for efficient manipulation of elements. Ensuring a seamless user experience across various devices, we prioritize the responsiveness of our webpages. This is achieved through an indirect approach using media queries, ensuring that the layout adjusts dynamically to different screen sizes. Furthermore, we incorporate animations to engage users, employing subtle movements to prompt responses and create an interactive environment. 
 
-- Each group must assign one repository owner
-- The repository owner must fork this repository. Only the repository owner should fork the repository
-  - This could be done by clicking the "Fork" button on the top right.
-- The repository owner must invite their goupmates as collaborators in their fork
-  - This could be done by going to Settings>Collaborators>Add people
-- The group must use the fork to collaborate on their project. They must commit and push their code in their forks.
-- The group must submit the link of the repository of the repository owner in the submission bin
+Other such functions were used in recording user interactions within the system to create a dynamic and responsive interface. Additionally, the incorporation of validation methods further enhances the system's robustness by ensuring the accuracy and integrity of user inputs. Validation methods act as a safeguard, preventing erroneous or inappropriate data from compromising the functionality of the system. Together, the implementation of functions and validation methods contributes to an efficient and user-friendly experience, promoting reliability and precision in handling user interactions.
 
-## Getting Started
+The integration of API serves multiple purposes within the system. Firstly, it facilitates the posting of user information while ensuring the validation of user inputs. Then, it enables the retrieval of user information, crucial for validating existing users through the creation of unique user instances using tokens that are then stored in the website's local storage. The implementation of post methods allows users to input content, which is subsequently displayed in the webpage's timeline through the post API. Furthermore, the system incorporates a follower system, utilizing get and delete APIs to obtain and display other instances of user data along with their posts. A like system is also integrated, utilizing the post API. Lastly, a trend system is implemented, breaking down a user's post to record terms or words accompanied by hashtags, contributing to a comprehensive and dynamic user experience
 
-Follow these steps to set up and run the Twitter Clone project:
+	
+## What was your inspiration for the design of the website?
+The design inspiration for the website is strongly influenced by the beauty of outer space and the distinctive style of Kurzgesagt. Our group collectively agreed on exploring the theme of space, drawing from the prevalent use of minimalism and glass design as it is somewhat overused. Consequently, the overall ambiance of the website aims to capture the beauty of space, reflected in the choice of fonts, layout, and the integration of animated elements that enhance the user experience with a touch of dynamism. The design focuses on a minimalistic flat style with subtle and deep colors, occasionally incorporating gradients. The website structure exhibits similarities to Twitter, complemented by additional elements to enhance its uniqueness.
 
-1. **Install Node.js**:
-   Make sure you have Node.js installed on your system. If not, download and install it from the official website.
+## What was your approach in creating the content of the website?
+The approach involved segmenting elements into their respective parts on the website and adding comments to identify tasks and address complex functionalities in the program. This was done to enhance the readability and organization of elements, as well as to separate files into their designated groups. HTML primarily manages the exterior user interface for user interaction, with visual feedback incorporated through styles and responsive design within the JavaScript code. CSS styles are organized to facilitate reuse and integration with other elements, while JavaScript files handle data processing and recording. Our initial website development approach included creating a prototype to determine the placement and responsiveness of various webpage components. We utilized Figma's conceptual framework, generating conceptual responses to integrate with our team's designer. This process allowed us to finalize our framework and seamlessly integrate components into the final product. Subsequently, we shifted towards implementing an API to facilitate data manipulation and information handling. The backend design, named "TwitterCloneAPI," was paired with the frontend UI of the site. In the final stages, we focused on incorporating essential features such as Posts, Likes, Followers, and Trends. With the goal of maximizeing production efficiency, manage time effectively, and minimize conflicts related to bugs and merging processes.
 
-2. **Fork and Clone the Repository**:
+## How is your website creative?
+The overall purpose of working on the website is to develop features that enable us to engage more effectively with users. With the involvement of implementing visual prompts and designs specifically tailored to enhance the overall user experience.
 
-   - Clone your forked repository to your local machine using Git.
+## What did you use to deploy your website?
+To deploy the project, our group followed a sequence of steps involving NPM, GitHub deployment pages, and Netlify. By cloning the project code from an example repository on GitHub and utilized the Netlify UI to create a new site. Leveraging continuous deployment in Netlify, we initiated an automated build process that generated site assets. Upon completion, we visited the demo project's URL to explore the site, now available through a content delivery network (CDN). Subsequently, we deployed the project to Netlify, establishing a connection to the group's GitHub repository. To ensure proper functionality, we installed dependencies necessary for the project. This comprehensive approach allowed us to seamlessly deploy, connect, and configure the project, utilizing key features of both Netlify and GitHub.
 
-3. **Install Dependencies**:
+# How you worked as a team to accomplish the project:
 
-   - Open a terminal and navigate to the cloned repository.
-   - Install the API dependencies by running the command:
-     ```
-     npm run init-api
-     ```
-   - Install the UI dependencies by running the command:
-     ```
-     npm run init-ui
-     ```
+## How did you divide the tasks between the team, and what is the responsibility of each one?
+With the use of Figma, we were able to organize tasks based on the requirements and assign them individually according to capabilities and a volunteering system. This enabled our group to document various task points, whether it was the completed UI or API, development periods, or the implementation of additional features.
+- Gerona UI and HTML response
+- Alcantara API 
+- Rea API and HTML response
+- Santos API and HTML response
+- Tiongco API and HTML response
 
-4. **Run the API**:
+## How did you prevent your changes in code from conflicting with each other?
+When working as a team, conflicting code will be inevitable. So to combat this, the team has made use of the different git commands such as "git status", "git fetch", "git merge", and "git pull". These commands help us by allowing all group members to code at the same time. Using git status to check how behind or ahead the file that is being worked with is. Git fetch used to get the latest version of the main repository. Git merge to merge the fetched version and your workspace's version. And git pull to directly get the latest version straight to your workspace.
 
-   - Start the API server by running:
-     ```
-     npm run start-api
-     ```
-   - Visit `http://localhost:3000/api` in your web browser to check if the API is up and running.
-   - Visit `http://localhost:3000/api/docs` in your web browser to see the documentation of the API.
+# How you could improve your website in the future:
+As our group or section has recently begun working with HTML, CSS, and JS languages, we possess a fundamental understanding of these languages along with some knowledge of code and functions. That our familiarity with certain code or functions may be limited, and there might be more efficient alternatives within these languages that we are yet to discover. Acknowledging this, we recognize the potential for enhancing our website by incorporating more efficient functions or optimizing our code for better logic and efficiency.
 
-5. **Run the UI**:
-
-   - Open a new terminal window (keep the API terminal running).
-   - Start the UI development server with:
-     ```
-     npm run start-ui
-     ```
-   - Visit `http://127.0.0.1:8080` in your web browser to see if the UI is working.
-
-6. **Start Developing**:
-   - Begin working on the UI in the `TwitterCloneUi` folder.
-   - Add your HTML, CSS, and JS files to build the Twitter Clone interface.
-
-Remember: **Do not modify the `TwitterCloneApi` folder**; it contains essential API code.
-
-## Deployment
-
-To deploy this application you need to to use netlify. See the [documentation](https://docs.netlify.com/) to see how deployments are done in Netlify.
-
-The netlify.toml file contains nearly all the necessary values needed for deploying the application. There are no additional values needed to be set up except the JWT_KEY environment variable
-
-## Step by step Deployment Guide
-
-The deployment process for netlify should be straight forward, but here's a step by step guide in case you need it.
-
-1. Make sure that your forked is synced
-2. Visit [the netlify website](https://netlify.app/) and click on "Deploy to Netlify"
-3. Create an account and sign up with your github profile
-4. Click on the "Add new site" button and select "Import and Exisitng Project"
-5. Click on "Deploy with Github". Netlify might ask for Authentication in which case you would need to allow Netlify.
-6. Select your repository from the list.
-7. Set the site name to your desired name.
-8. The `Build command`, `Publish directory`, and `Functions directory` should be prefilled with the necessary information. If not, make sure to sync your fork and check again.
-9. Click on "Deploy" and wait a couple of minutes for netlify to deploy your application. Once netlify is finished, a green tag with the text "Published" should appear in "Production Deploys"
-10. Et voila, you have deployed your application 🎉 Now you need to step up the JWT_KEY
-
-### Setting up the JWT_KEY
-
-The JWT_KEY is used to generate the tokens and make sure that the tokens generated by the system is indeed generated by the system itself. Otherwise, attackers might be able to generate tokens themselves and compromise the system. This is why the key needs to be generated and entered manually. They must not be known to anyone but the developers.
-
-1. To setup the JWT_KEY environment variable, you would first need to generate a secret key. You may refer to [this](https://dev.to/tkirwa/generate-a-random-jwt-secret-key-39j4) tutorial for generating a secret key
-   - Once generated, your private key may look something like this `ddcb75b4f402f240234eec4bf175fa9e8c15aea5...`
-2. Once you have created a secret key, you need to add your private key as an environment variable. The name of the key must be `JWT_KEY` and the value is your private key.
-   - You may refer to [this](https://docs.netlify.com/environment-variables/get-started/#site-environment-variables) documentation for a tutorial on how to set environment variables in netlify
-
-Happy coding! 🚀🐦
+# Other thoughts that might be noteworthy:
+Some additional thoughts and ideas that we intend to work on include implementing more visual interactions and designing with a focus on unleashing pure creativity and innovation to create something unique. Additionally, we aim to further explore additional functionalities as time permits.

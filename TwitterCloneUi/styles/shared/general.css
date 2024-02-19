@@ -1,0 +1,482 @@
+/* *Google Fonts: Inter (weight 300, 500, 700) and DM Sans (weight 400) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&family=Inter:wght@300;500;700&display=swap');
+
+/* *Website Colors and Variables Set-up */
+:root {
+  /* ?Color Palette */
+  --gradient-background: linear-gradient(180deg, hsla(0, 0%, 0%, 1) 35%, hsla(0, 0%, 0%, 0.5) 80%, hsla(0, 0%, 0%, 0));
+  --gradient: linear-gradient(90deg, 	hsl(18, 91%, 60%), hsl(299, 63%, 52%));
+  --primary: 	hsl(233, 96%, 65%);
+  --secondary:  hsl(217, 100%, 70%);
+  --heart:	hsl(331, 100%, 50%);
+
+  /* ?Text and Background Variables */
+  --black: #000;
+  --gray-600: #666;
+  --white-100: hsla(0,0%,100%,0.1);
+  --white-200: hsla(0,0%,100%,0.2);
+  --white-300: hsla(0,0%,100%,0.333);
+  --white-500: hsla(0,0%,100%,0.5);
+  --white-700: hsla(0,0%,100%,0.72);
+  --white-800: hsla(0,0%,100%,0.82);
+  --white: #fff;
+
+  --background: var(--black);
+  --title: var(--white);
+  --text: var(--white-800);
+  --muted: var(--white-500);
+  --link:	hsl(233, 96%, 70%);
+  --link-hover: hsla(233, 96%, 70%, 0.82);
+
+  /* ?Card Variables */
+  --card: hsl(228, 24%, 4%);
+  --card-focused: hsl(228, 24%, 10%);
+  --card-border-radius: 8px;
+  --card-padding: 1rem;
+
+  /* ?Validations */
+  --success: hsl(123, 38.5%, 56.7%);
+  --warning: hsl(38, 100%, 57.5%);
+  --error: hsl(4, 89.6%, 58.4%);
+}
+
+
+/* *Font and Headings Set-up */
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+}
+
+button, input, textarea {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 100%;
+}
+
+h1, h2 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+
+h3, h4, h5 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+html {font-size: 100%;}
+
+h1 {font-size: 4.110rem;}
+
+h2 {font-size: 3.158rem;}
+
+h3 {font-size: 2.369rem;}
+
+h4 {font-size: 1.555rem;}
+
+h5 {font-size: 1.188rem;}
+
+small {font-size: 0.750rem;}
+
+/* *General Set-up */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--title);
+  background-color: var(--black);
+}
+
+::-webkit-scrollbar {
+  width: 8px; 
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-600);
+}
+
+p, a {
+  color: var(--text);
+}
+
+input {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 100%;
+}
+
+/* *Reusable Styles Set-up */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--card-focused);
+}
+
+.profile-photo {
+  width: 3rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: var(--gradient);
+  padding: 1px;
+  overflow: hidden;
+}
+
+.profile-photo img {
+  display: block;
+  width: 100%;
+}
+
+.section-title {
+  text-align: center;
+}
+
+/* ?Simple Header Set-up */
+.logo-header {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--gradient-background);
+  padding-bottom: 1rem;
+}
+
+.logo-header img {
+  margin-top: 1.5rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 100px;
+}
+
+.success {
+  color: var(--success);
+}
+
+.warning {
+  color: var(--warning);
+}
+
+.error {
+  color: var(--error);
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.secondary {
+  color: var(--secondary);
+}
+
+.heart {
+  color: var(--heart);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.link-1 a,
+.link-2 a {
+  text-decoration: none;
+  color: var(--link);
+  transition: all 0.2s ease;
+}
+
+.link-1:hover i {
+  transform: translate(2px ,-3px);
+}
+
+.link-2:hover i {
+  transform: translate(3px);
+}
+
+/* ?Footnote Link Styles */
+.footnote {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
+.footnote a i {
+  display: inline-block; 
+  transition: transform 0.2s ease;
+}
+
+.footnote a:hover {
+  transition: all 0.2s ease;
+  color: var(--link-hover);
+}
+
+/* *Components Set-up */
+/* ?Buttons */
+
+.btn {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.default-btn {
+  z-index: 2;
+  white-space: nowrap;
+  color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  background-color: var(--title);
+  border-radius: 6px;
+  padding: 1em 2em;
+  transition: transform 0.2s ease;
+}
+
+.primary-btn {
+  z-index: 3;
+  white-space: nowrap;
+  color: var(--title);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  background-color: var(--primary);
+  border-radius: 6px;
+  padding: 0.8em 2em;
+  transition: 0.2s ease;
+}
+
+.default-btn i,
+.primary-btn i {
+  transition: transform 0.2s ease;
+}
+
+.default-btn:hover {
+  transform: translateY(-3px);
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 80px -10px var(--primary);
+}
+
+.follow-btn {
+  position: relative;
+  padding: 0.8em 1em;
+}
+
+.follow-btn input {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+/* ?Loader */
+.loader-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-section {
+  background-color: var(--background);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.75s, visibility 0.75s;
+}
+
+.loader-icon-wrapper, 
+.loader-logo {
+  position: absolute;
+  text-align: center;
+}
+
+.loader-logo {
+  margin-top: 300px;
+}
+
+.loader-logo p {
+  margin-top: 30px;
+  color: var(--text);
+  font-size: small;
+  animation: fadeText 3s infinite;
+}
+
+@keyframes fadeText {
+  0% { 
+    color: var(--text); 
+  }
+  50% { 
+    color: var(--muted); 
+  } 
+  100% { 
+    color: var(--text); 
+  } 
+}
+
+.loader-logo img {
+  width: 250px;
+}
+ 
+
+.loader {
+  transform: scale(2.5);
+  --duration: 3s;
+  width: 44px;
+  height: 44px;
+  position: relative;
+}
+
+.loader img {
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  display: block;
+  top: 37px;
+  left: 19px;
+  transform: translate(-18px, -18px);
+  animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+
+.loader svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.loader svg circle {
+  fill: none;
+  stroke: var(--title);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.loader svg circle {
+  stroke-dasharray: 160 40 160 40;
+  stroke-dashoffset: 80;
+  animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
+}
+
+@keyframes dotRect {
+  25% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(18px, -18px);
+  }
+
+  75% {
+    transform: translate(0, -36px);
+  }
+
+  100% {
+    transform: translate(-18px, -18px);
+  }
+}
+
+@keyframes pathCircle {
+  25% {
+    stroke-dashoffset: 130;
+  }
+
+  50% {
+    stroke-dashoffset: 180;
+  }
+
+  75% {
+    stroke-dashoffset: 230;
+  }
+
+  100% {
+    stroke-dashoffset: 280;
+  }
+}
+
+.loader {
+  display: inline-block;
+}
+
+.zoom-out {
+  animation: zoomOut 1s ease-out;
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.9);
+  }
+}
+
+.modal {
+  max-width: 50%;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  z-index: 1000;
+}
+
+#closeModalButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #fff; 
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

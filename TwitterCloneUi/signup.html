@@ -5,6 +5,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preload" href="./styles/shared/general.css" as="style">
   <link rel="preload" href="./styles/shared/forms.css" as="style">
+  <link rel="preload" href="./styles/pages/signup.css" as="style">
 
   <!-- Metadata of the HTML page -->
   <meta charset="UTF-8">
@@ -15,8 +16,7 @@
   <!-- CSS files are loaded here -->
   <link rel="stylesheet" href="./styles/shared/general.css">
   <link rel="stylesheet" href="./styles/shared/forms.css">
-  <link rel="stylesheet" href="./styles/pages/login.css">
-  <link rel="stylesheet" href="./styles/shared/mediaqueries.css">
+  <link rel="stylesheet" href="./styles/pages/signup.css">
 
   <!-- Remix Icons for icons -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
@@ -39,7 +39,7 @@
   </section>
 
   <div class="background-container">
-    <img src="./images/background/login-background.png" alt="Login Background">
+    <img src="./images/background/signup-background.png" alt="Login Background">
   </div>
   
   <main>
@@ -47,19 +47,23 @@
     <div class="content-container">
       <div class="title-container">
         <img src="./images/logo/Orbit.svg" alt="Title Logo">
-        <p>Ready to lauch again into Orbit? Log in to discover what's trending, connect with friends, and share your orbiting moments.</p>
+        <p>Welcome aboard, Captain! Connect with individuals who share similar interests, passions, and values, for free. <br /> Let's explore the Orbit together!</p>
       </div>
   
-      <div class="login-card">
-        <h4>Sign in to Orbit</h4>
-        <form id="JS-loginForm" 
+      <div class="signup-card">
+        <h4>Sign up to Orbit for <span class="primary">free</span></h4>
+        <form id="JS-signupForm" 
           autocomplete="off" 
           spellcheck="false"
         >
-  
+
           <div class="JS-formGroup">
             <div class="text-field">
               <input 
+                required 
+                minlength="3"
+                maxlength="255"
+                pattern="^[a-zA-Z0-9-_]+$"
                 type="text" 
                 id="username"
               />
@@ -67,10 +71,12 @@
               <label class="helper" for="username"></label>
             </div>
           </div>
-  
+
           <div class="JS-formGroup">
             <div class="text-field">
               <input 
+                required 
+                minlength="8"
                 type="password" 
                 id="password"
               />
@@ -79,21 +85,35 @@
               <label class="helper" for="password"></label>
             </div>       
           </div>
-  
-          <button type="submit" class="btn default-btn link-2">
-            Log In <i class="ri-arrow-right-line"></i>
+
+          <div class="JS-formGroup">
+            <div class="text-field">
+              <input 
+                required
+                match="password" 
+                type="password" 
+                id="confirmPassword"
+              />
+              <label class="placeholder" for="confirmPassword">Confirm Password</label>
+              <i class="ri-eye-off-fill"></i>
+              <label class="helper" for="confirmPassword"></label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn default-btn link-1">
+            Sign Up <i class="ri-arrow-right-up-line"></i>
           </button>
-  
+
         </form>
         <p class="footnote link-2">
-          Don't have an account? <a href="signup.html">Sign up<i class="ri-arrow-right-line"></i></a> 
+          Have an account? <a href="index.html">Log in<i class="ri-arrow-right-line"></i></a> 
         </p>
       </div>
     </div>
 
   </main>
-
-  <script type="module" src="scripts/login.js"></script>
-  <script src="./scripts/utils/preLoader.js"></script>
+  
+  <script type="module" src="scripts/signup.js"></script>
+  <script src="scripts/utils/preLoader.js"></script>
 </body>
 </html>

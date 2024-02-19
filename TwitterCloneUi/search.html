@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Resource prioritization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preload" href="./styles/shared/general.css" as="style">
+  <link rel="preload" href="./styles/pages/search.css" as="style">
+
+  <!-- Metadata of the HTML page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./images/logo/favicon.ico" type="image/x-icon">
+  <title>Orbit</title>
+
+  <!-- CSS files are loaded here -->
+  <link rel="stylesheet" href="./styles/shared/general.css">
+  <link rel="stylesheet" href="./styles/pages/search.css">
+  <link rel="stylesheet" href="./styles/shared/main.css">
+  <link rel="stylesheet" href="./styles/shared/mediaqueries.css">
+
+  <!-- Remix Icons for icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+
+<body>
+  <div class="modal-backdrop"></div>
+  <!-- * Loading Screen -->
+  <section class="loader-section">
+    <div class="loader-icon-wrapper">
+      <div class="loader">
+        <img src="images/logo/icon.svg" alt="Orbit Icon">
+        <svg viewBox="0 0 80 80">
+            <circle id="test" cx="40" cy="40" r="32"></circle>
+        </svg>
+      </div>
+    </div>
+    <div class="loader-logo">
+      <img src="images/logo/Orbit.svg" alt="Orbit Logo">
+      <p>Launching into orbit . . .</p>
+    </div>
+  </section>
+
+  <!-- * Header Section -->
+  <header>
+    <div class="logo-header">
+      <img src="./images/logo/Orbit.svg" alt="Logo">
+    </div>
+  </header>
+
+  <!-- * Main Content Section -->
+  <main>
+    
+    <!-- * Start of Left Side Content -->
+    <div class="search-container">
+
+      <!-- * Profile Card -->
+      <div class="left">
+        <a class="profile-card" href="./profile.html">
+          <div class="handle-container">
+            <div class="profile-photo">
+              <img src="./images/profile-photo-1.png" alt="Profile Photo">
+            </div>
+            <div class="handle">
+              <h5 id="username">Orbit User</h5> 
+              <p id="@username" class="muted">@OrbitUser</p> 
+            </div>           
+          </div>  
+          <div class="status">
+            <hr>
+            <p>Is currently <span class="success">in orbit <i class="ri-meteor-fill"></i></span></p> 
+          </div>
+        </a>
+
+        <a class="tablet-profile-container" href="./profile.html">
+          <div class="profile-photo">
+            <img src="./images/profile-photo-1.png" alt="Profile Photo">
+          </div>
+        </a>
+
+        <!-- * Left Side Bar Card -->
+        <div class="sidebar-card">
+          <a class="menu-item" href="./home.html">
+            <span><i class="ri-home-2-line"></i></span><p>Home</p>
+          </a>
+          <a class="menu-item active" href="./search.html">
+            <span><i class="ri-search-fill"></i></i></span><p>Explore</p>
+          </a>
+          <a class="menu-item" href="./profile.html">
+            <span><i class="ri-user-smile-line"></i></span><p>Profile</p>
+          </a>
+          <a class="menu-item">
+            <span><i class="ri-mail-line"></i></span><p>Messages</p>
+          </a>
+          <a class="menu-item">
+            <span><i class="ri-settings-3-line"></i></span><p>Settings</p>
+          </a>
+          <a class="menu-item" href="./index.html">
+            <span><i class="ri-logout-box-line"></i></span><p>Logout</p>
+          </a>
+        </div>
+
+        <div class="left-post-container">
+          <label class="btn primary-btn link-1"><p>Post</p> <i class="ri-quill-pen-fill"></i></label>
+        </div>
+
+      <!-- * End of Left Side Content -->
+      </div>
+
+      <!-- * Start of Middle Side Content -->
+      <div class="middle">
+        <form id="JS-createPostModal" class="post-card modal" autocomplete="off" style="display: none;">
+          <button id="closeModalButton" class="btn secondary-btn"><i class="ri-close-line"></i></button>
+          <div class="profile-photo">
+            <img src="./images/profile-photo-1.png" alt="Profile Photo">
+          </div>
+
+          <div class="post-container">
+            <textarea 
+              required
+              maxlength="280"
+              placeholder="Tell your cosmic tales!" 
+              id="writePostModal" 
+            ></textarea>
+            <hr>
+
+            <div class="button-container">
+              <div class="char-count"></div>
+              <button type="submit" value="Post" id="postButtonModal" class="btn primary-btn link-2">
+                Post <i class="ri-arrow-right-line"></i>
+              </button>
+            </div>
+          </div>
+         
+      </form>
+        <div class="searchbar-container">
+          <input type="text" placeholder="Search for users in Orbit" id="searchInput">
+          <i class="ri-search-line"></i>
+        </div>
+
+        <div class="users-grid">
+
+          
+        <!-- * End of User Grid Content -->
+        </div>     
+        
+      <!-- * End of Middle Side Content -->
+      </div>
+
+    </div>
+
+  </main>
+  <script>
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const postButton = document.querySelector('.btn.link-1');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
+    const modal = document.querySelector('.post-card.modal');
+    const closeModalButton = document.getElementById('closeModalButton');
+  
+    postButton.addEventListener('click', function () {
+      modalBackdrop.style.display = 'block';
+      modal.style.display = 'block';
+    });
+  
+    closeModalButton.addEventListener('click', function () {
+      modalBackdrop.style.display = 'none';
+      modal.style.display = 'none';
+    });
+  });</script>
+  <script type="module" src="scripts/main.js"></script>
+  <script src="scripts/utils/preLoader.js"></script> 
+</body>
+</html>

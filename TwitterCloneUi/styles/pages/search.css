@@ -1,0 +1,218 @@
+body {
+  overflow-x: hidden;
+}
+
+/* *Main */
+main {
+  margin-top: 4.2rem;
+}
+
+  /* *Container */
+main .search-container {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 225px auto;
+  column-gap: 1.2rem;
+}
+
+main .search-container .left {
+  height: max-content;
+  position: sticky;
+  top: 4.2rem;
+}
+
+/* *Left Side */
+  /* *Profile Card */
+.left .profile-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--card);
+  border-radius:  var(--card-border-radius);
+  padding: var(--card-padding);
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.tablet-profile-container {
+  display: none;
+}
+
+.left .profile-card::before {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: var(--gradient);
+  background-size: 300%;
+  animation: gradientChange 16s infinite alternate;
+}
+
+@keyframes gradientChange {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+.left .profile-card .handle-container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  column-gap: 0.9rem;
+}
+
+.left .profile-card .handle p {
+  margin-top: 4px;
+  font-size: small;
+}
+
+.left .profile-card .status {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.8rem;
+  font-size: small;
+}
+
+.left .profile-card .profile-photo {
+  z-index: 2;
+}
+
+
+  /* *Sidebar Card */
+.left .sidebar-card {
+  margin-top: 0.9rem;
+  background-color: var(--card);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+}
+
+.left .sidebar-card .menu-item {
+  cursor: pointer;
+  display: flex;
+  column-gap: 1.2em;
+  align-items: center;
+  height: 3.5rem;
+  margin: 0.5rem 0;
+  border-radius: var(--card-border-radius);
+  transition: background-color 0.2s ease;
+}
+
+.left .sidebar-card .menu-item:hover {
+  background-color: var(--card-focused);
+}
+
+.left .sidebar-card .menu-item.active {
+  background-color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+.left .sidebar-card .menu-item.active:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 80px -10px var(--primary);
+}
+
+
+.left .sidebar-card i {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+.left label {
+  margin-top: 0.9rem;
+}
+
+/* *Middle Side */
+.middle .searchbar-container {
+  position: relative;
+  display: flex;
+  margin-bottom: 0.9rem;
+  max-width: 500px;
+}
+
+.middle .searchbar-container input {
+  flex: 1;
+  height: 48px;
+  padding-left: 15px;
+  padding-right: 35px;
+  color: var(--text);
+  background-color: transparent;
+  outline: none;
+  border: 1px solid var(--muted);
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.middle .searchbar-container input:focus {
+  border-color: var(--title);
+}
+
+.middle .searchbar-container i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 12px;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.middle .searchbar-container input:focus~i {
+  color: var(--text);
+}
+
+.middle .users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.9rem;
+}
+
+.user-profile-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--card);
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  margin-bottom: 0.9rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.user-profile-card .cover-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.user-profile-card .cover-container .cover-photo {
+  width: 100%;
+  object-fit: cover;
+  height: 6rem;
+}
+
+.user-profile-card .cover-container .profile-photo {
+  position: absolute;
+  width: 5rem;
+  top: 3.5rem;
+  left: 0.9rem;
+}
+
+.user-profile-card .profile-container {
+  z-index: 1; 
+  margin-top: 8.5rem;
+}
+
+.user-profile-card .profile-container .handle p {
+  font-size: small;
+}
+
+.user-profile-card .profile-container .follow-btn {
+  margin-top: 1.2rem;
+}
