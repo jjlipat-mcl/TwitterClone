@@ -87,6 +87,17 @@ body {
     background: #DEF6F2;
     border-radius: 10px;
 }
+.posted-container {
+    width: max-content;
+    height: max-content;
+    left: 616px;
+    top: 385px;
+    display: flex;
+    flex-direction: row;
+    flex: auto;
+    background: #DEF6F2;
+    border-radius: 10px;
+}
 
 .post-username {
     width: 258px;
@@ -281,6 +292,32 @@ body {
 #button:active {
     background-color: #0A5C8C;
 }
+
+/*textarea for post*/
+.post-area{
+    width: 625px;
+    height: 200px;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #DEF6F2;
+}
+/*post button*/
+.post-button {
+    display: inline-block;
+    width: 60px;
+    height: 35px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-size: medium;
+    background-color: #1DA1F2;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    
+}
+
 
 .website-image {
     width: auto;
