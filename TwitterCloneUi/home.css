@@ -179,3 +179,8 @@
     font-weight: 400;
     word-wrap: break-word;
 }
+
+.like {
+    color: black;
+    position:relative;
+}
