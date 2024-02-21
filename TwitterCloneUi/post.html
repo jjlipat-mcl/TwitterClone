@@ -5,6 +5,7 @@
     <title>Profile</title>
     <link rel="stylesheet" href="post.css">
 </head>
+
 <body>
     <div class="container">
         <div class="profile-card"></div>
@@ -20,23 +21,22 @@
         <button id="button" class="logout" onclick="logout()">Logout</button>
         <div class="username" id="display-name">@username</div>
         <div class="bio">Bio</div>
-        <div class="post-count">Your posts 2</div>
-        <div class="post-container"></div>
-        <div class="post-username" id="display-name">@username</div>
-        <div class="post-content">Some tweets.......</div>
-        <div class="post-likes">2 likes</div>
-        <div class="post-timestamp">11:11 - 2/10/2024</div>
-        <div class="follower-count">2</div>
-        <div class="follower-title">Followers</div>
-        <div class="following-count">1</div>
-        <div class="following-title">Following</div>
-        <div></div>
+        <div class="post-container">
+            <form>
+                <textarea id="postText" class="post-area" placeholder="What's on your mind?"></textarea>
+                <button class="post-button" id="postButton" onClick="toPost()"><i></i>Post</button>
+            </form>
+            
+            <p id="charLimitMessage">0 / 280 characters</p>
+        </div>
     </div>
 
     <script>
         const jwtToken = localStorage.getItem('token');
         const username = localStorage.getItem('username');
+        const fetchPost = `http://localhost:3000/api/v1/posts`;
         var displayName = document.querySelectorAll("[id='display-name']");
+
         for (var i = 0; i < displayName.length; i++)
             displayName[i].innerHTML = "@" + username;
 
@@ -45,6 +45,78 @@
             localStorage.removeItem('username');
             window.location.href = 'index.html';
         }
+
+        async function charLimit(){
+            const postText = document.getElementById("postText").value;
+            const charLimit = 280;
+            const charCount = postText.length;
+            const remainingChars = charLimit - charCount;
+        
+            charLimitMessage.textContent = charCount + " / 280 characters";
+        
+            if (charCount > charLimit) {
+                postButton.disabled = true;
+                alert("Exceeded character limit!");
+            }
+            else if (charCount === 0) {
+                postButton.disabled = true;
+            }
+            else{
+                postButton.disabled = false;
+            }
+        };
+
+//3
+        async function toPost1() {
+            const response = await fetch(
+              `/api/v1/posts`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${jwtToken}`,
+                },
+                body : JSON.stringify({
+                    "content": postText.value
+                  })
+              }
+
+            );
+            
+            if(!response.ok){
+              console.log(response.text());
+              return
+            }
+    
+            console.log(postText.value);
+          }
+
+        async function toPost() {
+            const postText = document.getElementById("postText").value;
+            const postButton = document.getElementById("postButton").value;
+            const charLimitMessage = document.getElementById("charLimitMessage");
+        
+                postButton.disabled = false;
+                const postMSG = await fetch('http://localhost:3000/api/v1/posts',{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${jwtToken}`,
+                    },
+                    body: JSON.stringify({
+                        "content": postText
+                    }),
+                });
+                
+                if(postMSG.ok){
+                    console.log(postMSG.text());
+                    console.log(`Posted: ${postText}`);
+                    return
+                    
+                }
+            }
+        
+        document.getElementById("postText").addEventListener("input", charLimit);
     </script>
 </body>
 </html>
