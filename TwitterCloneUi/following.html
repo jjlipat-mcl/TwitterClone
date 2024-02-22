@@ -12,18 +12,15 @@
         <div class="website-image">
             <img class="website-image mingle" src="mingle.png">
         </div>
-        <button id="button" class="menu-item home" onclick="window.location.href='home.html'">Home</button>
-        <button id="button" class="menu-item profile" onclick="window.location.href='profile.html'">Profile</button>
-        <button id="button" class="menu-item likes" onclick="window.location.href='likes.html'">Likes</button>
-        <button id="button" class="menu-item following" onclick="window.location.href='following.html'">Following</button>
-        <button id="button" class="menu-item trends" onclick="window.location.href='trends.html'">Trends</button>
-        <button id="button" class="menu-item posting" onclick="window.location.href='post.html'">Say it!</button>
-        <button id="button" class="logout" onclick="logout()">Logout</button>
+        <button class="menu-item home" onclick="window.location.href='home.html'">Home</button>
+        <button class="menu-item profile" onclick="window.location.href='profile.html'">Profile</button>
+        <button class="menu-item likes" onclick="window.location.href='likes.html'">Likes</button>
+        <button class="menu-item following" onclick="window.location.href='following.html'">Following</button>
+        <button class="menu-item trends" onclick="window.location.href='trends.html'">Trends</button>
+        <button class="menu-item posting" onclick="window.location.href='post.html'">Say it!</button>
+        <button class="logout" onclick="logout()">Logout</button>
         <div class="post-container">
-                <div id="post-content">
-                    
-                </div>
-
+            <div id="post-content"></div>
         </div>
     </div>
 
@@ -31,30 +28,30 @@
         const jwtToken = localStorage.getItem('token');
         const username = localStorage.getItem('username');
         const fetchFollow = `http://localhost:3000/api/v1/users/${username}/following/`;
-        var displayName = document.querySelectorAll("[id='display-name']");
+        var displayName = document.querySelectorAll(".timeline-title");
         for (var i = 0; i < displayName.length; i++)
-            displayName[i].innerHTML = "@" + username +"'s Follows";
+            displayName[i].innerHTML = "@" + username + "'s Follows";
 
         window.onload = async function following() {
-        fetch(fetchFollow, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${jwtToken}`,
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            var followingList = document.getElementById("post-content");
-            data.forEach(user => {
-                var listItem = document.createElement("li");
-                listItem.textContent = user.username;
-                followingList.appendChild(listItem);
+            fetch(fetchFollow, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${jwtToken}`,
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                var followingList = document.getElementById("post-content");
+                data.forEach(user => {
+                    var listItem = document.createElement("div");
+                    listItem.textContent = user.username;
+                    followingList.appendChild(listItem);
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
             });
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
         }
 
         async function logout() {
