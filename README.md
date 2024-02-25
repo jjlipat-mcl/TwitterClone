@@ -88,3 +88,64 @@ The JWT_KEY is used to generate the tokens and make sure that the tokens generat
    - You may refer to [this](https://docs.netlify.com/environment-variables/get-started/#site-environment-variables) documentation for a tutorial on how to set environment variables in netlify
 
 Happy coding! 🚀🐦
+
+
+How your website accomplished each item in the criteria.
+
+Where could the concepts discussed in your website?
+We have obviously used html forms and tags throughout our frontend implementation, as for the design we have used CSS to put styling
+and design on our website. We used flexbox for the layouting on all our html pages and used animations and transitions in the sidebar
+for a more ui friendly user experience. We used media query for the responiveness of our website to ensure that the layout will always
+be in our defined terms. In our javascript files, we used loops and control structures to make sure our functions and event listeners
+keep working and accept proper parameters. Arrays, functions, Objects and Exports are used for the funtionality of all our javascript files. 
+Lastly, event handlers and fetch APIs are used to fetch data from the server and trigger functions everytime a user clicked a functional
+entities in the website.
+
+
+What is your inspiration for the design of the website?
+The website is inspired by the color theme of the github website, we wanted our theme to be similar to it because of the beautiful simplicity
+it offers. Not only that but we are also inspired of game community patch notes, so we decided to put a blog on the website to let the users know
+about the direction and the plans of the developers going forward. Finally for the website layout, we used a touch of gray for a bit of "our" style 
+to show a more personal touch from ours.
+
+
+What was your approach in creating the content of the website?
+We decided to keep the contents minimum and limit it to the text. The conteent should be user friendly but at the same time, the developers
+should not have much difficulty assessing and developing the website for future updates. Most of the content we offer come from the users themselves
+so we concerned ourseves with the functionality and the ui-friendliness of our product.
+
+
+How is your website creative?
+By sticking to one color scheme and keeping the design at the minimum, we made sure that the design is kept to a minimum but at the same time shows
+simple beauty. I think that is where our creativity shines, the balance between simplicity and beauty is what keeps our website unique.
+
+
+What did you use to deploy your website?
+Netlify
+
+
+How you worked as a team to accomplish the project
+
+
+How did you divide the tasks between the team, and what is the responsibility of each one?
+
+Chris Santos- worked for the front end implementation and main developer for front end implementation.
+Angelo Ebrada- designed the main page log in. 
+Reynielle Borbe- designed the figma design for the twitter clone page.
+Earl Ugalino- helped the integration between front end and back end. 
+John Luiz Gonzzaga- developed backend functions and deployed the website.
+John Edward Aguirang- main developer for backend implementation.
+
+We divided the tasks to three categories: Design, Front-end development and Back-end development. This is to make sure that people have enough responsibilitiesand 
+
+How did you prevent your changes in code from conflicting with each other?
+We made sure that we are working on different areas of the code as the same time, there must not be two people working on the same
+file at once. All commits and push must be notified for all the members to know.
+
+How you could improve your website in the future?
+Sadly,we cannot implement the profile page, likes and follows to our website. We look forward to impelmenting this into the foreseeable future.
+
+Other thoughts that might be worthy.
+I think we struggled with the backend too much because of the fact that we have absolutely no idea how it works, granted we have documentations
+provided but we are still not adept at it because of the fact that we do not know the thought process in the twitter api code. The fault still lies
+on us though, but if we are to do this again maybe we could have some background on backend design this time.

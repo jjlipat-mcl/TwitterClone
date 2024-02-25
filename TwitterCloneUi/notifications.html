@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="pageStyle.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadLogs();
+        });
+
+        async function loadLogs() {
+            const jwtToken = localStorage.getItem('token');
+            const username = localStorage.getItem('username');
+
+            var followed = new Array();
+            var fposts = new Array();
+
+            const followedURL = `/api/v1/users/${username}/following`;
+            const postURL = "/api/v1/posts/?username=";
+
+            const get_followed = await fetch(followedURL, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${jwtToken}`,
+                }
+            })
+            if (get_followed.ok) {
+                followed = await get_followed.json();
+            }
+
+            for (const followee of followed) {
+                const get_posts = await fetch(`${postURL}${followee}`, {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${jwtToken}`,
+                    }
+                })
+                if (get_posts.ok) {
+                    const post = await get_posts.json();
+                    for (const post1 of post) {
+                        fposts.push(post1);
+                    }
+                } else {
+                    console.error("Error loading tweets:", get_posts.status, get_posts.statusText);
+                }
+            }
+
+            fposts.sort((a, b) => {
+                let compareA = new Date(a.dateTimePosted),
+                    compareB = new Date(b.dateTimePosted);
+                return compareB - compareA;
+            });
+            console.log(fposts);
+
+            // Display notifications
+            const mainContainer = document.querySelector('main');
+            const numOfNotif = document.getElementById('num-of-notif');
+            const markAsReadBtn = document.getElementById('mark-as-read');
+
+            numOfNotif.textContent = fposts.length; // Set the number of notifications
+
+            fposts.forEach(postContent => {
+                var time_diff = Date.now() - new Date(postContent.dateTimePosted);
+                var elapsed_str = ""; // Use to display time past
+
+                var day = Math.floor(time_diff / (24 * 60 * 60 * 1000));
+                console.log(day);
+                var remD, remH, hour, minute;
+                if (day > 0) {
+                    elapsed_str += `${day}d `;
+                }
+                remD = time_diff % (24 * 60 * 60 * 1000);
+                hour = Math.floor(remD / (60 * 60 * 1000));
+                if (hour > 0) {
+                    elapsed_str += `${hour}hr `;
+                }
+                remH = remD % (60 * 60 * 1000);
+                minute = Math.floor(remH / (60 * 1000));
+                elapsed_str += `${minute}m ago`;
+
+                // Create a notification card
+                const notificationCard = document.createElement('div');
+                notificationCard.classList.add('notificationCard', 'unread');
+
+                // Set the content of the notification card
+                notificationCard.innerHTML = `
+                    <div class="description">
+                        <p>${postContent.content}</p>
+                        <p>${elapsed_str}</p>
+                    </div>
+                `;
+
+                // Append the notification card to the container
+                mainContainer.appendChild(notificationCard);
+            });
+
+            // Mark as Read button functionality (you can add your logic here)
+            markAsReadBtn.addEventListener('click', function () {
+                // Add your logic to mark notifications as read
+                console.log('Mark as read button clicked');
+            });
+        }
+    </script>
+
+
+</head>
+<body>
+    <div class="logo__container">
+        <div class="logo">
+            <img src="logo.jpg" alt="Type Null Logo">
+        </div>
+    </div>
+<!-- Start Sidebar -->
+<div class="sidebar">
+    <div class="sidebarOption active"> 
+        <span class="material-symbols-outlined"> home </span>
+        <a href="try.html">
+            <h2>Home</h2>
+        </a>
+    </div>
+
+    <div class="sidebarOption"> 
+        <span class="material-symbols-outlined">search</span>
+        <a href ="explore.html">
+        <h2>Explore</h2>
+    </a>
+    </div>
+
+    <div class="sidebarOption"> 
+        <span class="material-symbols-outlined">notifications_none</span>
+        <a href ="notifications.html">
+            <h2>Notifications</h2>
+        </a>
+    </div>
+
+    <div class="sidebarOption"> 
+        <span class="material-symbols-outlined">perm_identity</span>
+        <a href="profile.html">
+            <h2>Profile</h2>
+        </a>
+    </div>
+
+    <a href="index.html" class="sidebarOptionLogout" onclick="return confirmLogout()">
+        <span class="material-symbols-outlined">perm_identity</span>
+        <h2>Logout</h2>
+    </a>
+
+    <footer>
+        <p>Terms of Service</p>
+        <p>Privacy Policy</p>
+        <p>Cookie Policy</p>
+        <p>© 2024 Mapua Gang, Inc.</p>
+    </footer>
+</div>
+<!-- End Sidebar -->
+
+
+<!--Start Notif bar-->
+<div class="notifications">
+    <div class="notification__container">
+        <header>
+            <div class="notification__header">
+                <h1>Notification</h1>
+                <span id="num-of-notif">0</span>
+            </div>
+            
+        </header>
+        <main>
+            <!-- Notification cards will be dynamically added here -->
+        </main>
+    </div>
+</div>
+
+<script>
+    function confirmLogout() {
+        // Prompt the user with a confirmation dialog
+        var confirmLogout = confirm("Are you sure you want to logout?");
+
+      
+        if (confirmLogout) {
+            return true; // Proceed with the link navigation
+        } else {
+            return false; // Prevent the default link behavior
+        }
+    }
+</script>
+
+<script>
+    function confirmLogout() {
+        // Prompt the user with a confirmation dialog
+        var confirmLogout = confirm("Are you sure you want to logout?");
+
+        if (confirmLogout) {
+            return true; // Proceed with the link navigation
+        } else {
+            return false; // Prevent the default link behavior
+        }
+    }
+</script>
+<script>
+    function confirmLogout() {
+        // Prompt the user with a confirmation dialog
+        var confirmLogout = confirm("Are you sure you want to logout?");
+
+      
+        if (confirmLogout) {
+            return true; // Proceed with the link navigation
+        } else {
+            return false; // Prevent the default link behavior
+        }
+    }
+</script>
+</body>
+</html>
